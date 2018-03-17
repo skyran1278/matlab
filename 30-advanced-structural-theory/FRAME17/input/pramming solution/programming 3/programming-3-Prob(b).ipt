@@ -1,0 +1,34 @@
+Program Assignment3 - Problem(b)
+kN
+mm
+
+* NNOD NBC NMAT NSEC ITP NNE IFORCE
+     3   3    1    3   2   2      1
+
+* COOR
+1 6928. 4000.
+2 10928. 0.
+3 0. 0.
+
+* NFIX
+1 0 0
+2 0 -1
+3 -1 -1
+
+* External Load
+1 383.02 321.39
+2 0. 0.
+3 0. 0.
+
+* IDBC
+1 1 2 1 1 0
+2 2 3 1 2 0
+3 1 3 1 3 0
+
+* PROP
+1 200. 0. 0. 0. 0.
+
+* SECT
+1 20e3 0. 0. 0. 0.
+2 18e3 0. 0. 0. 0.
+3 15e3 0. 0. 0. 0.

@@ -1,0 +1,30 @@
+Programming 2e  ITP=6
+N
+cm
+
+*NNOD NBC NMAT NSEC ITP NNE IFORCE
+   2   1    1    1   6   2     1
+
+*COOR (cm)
+1  0   0  0
+2  0  900 0
+
+*NFIX (u,v,w,thetax,thetay,thetaz)
+1  -1 -1 -1 -1 -1 -1
+2   0  0  0  0  0  0
+
+*External Load (N) (Fx,Fy,Fz,Mx,My,Mz)
+1   0   0    0   0  0  0
+2   0  550 2500  0  0  0
+
+*IDBC
+1   1 2 1 1 0
+
+*VECTY
+1  1  0  0
+
+*PROP  (E,v, , , )
+1  9500  0  0  0  0
+
+*SECT (A,Iz,Iy,J, )
+1  16 9 28 25 0

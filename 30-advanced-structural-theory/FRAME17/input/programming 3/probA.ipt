@@ -1,0 +1,39 @@
+1-D beam: Example a in program3
+kN
+mm
+
+* NNOD NBC NMAT NSEC ITP NNE IFORCE
+  4    2   1    1    1   2   1
+
+* COOR (mm)
+1  0*10^3
+2  6*10^3
+3  6*10^3
+4  9*10^3
+
+
+* NFIX
+1  -1 -1
+2   0  0
+3   2  0
+4  -1 -1
+
+
+* External Load (kN)
+1   0     0
+2   -250  0
+3   0     0
+4   0     0
+
+
+* IDBC
+1   1  2  1  1  0
+2   3  4  1  1  0
+
+
+* PROP
+1 120 0 0 0 0
+
+* SECT
+1 0 8*10^7 0 0 0
+
