@@ -25,8 +25,6 @@ function [] = find_damping(file)
 
 
   figure;
-  plot((1 : length(EL50RFA)) * 0.0125, EL50RFA, damping(:, TIME_COL), damping(:, ACCEL_COL), '--')
-  figure;
 
   [~, El50AXBS_ampl] = fft_improve(El50AXBS, 0.0125);
   [EL50RFA_freq, EL50RFA_ampl] = fft_improve(EL50RFA, 0.0125);
@@ -71,6 +69,10 @@ function [] = find_damping(file)
   xlabel('f (Hz)');
   ylabel('Amplitude');
   legend('對照資料', 'ETABS');
+
+  [~, transfer_function_index]=max(output_transfer_function(2 : end));
+
+  1 / damping_freq(transfer_function_index)
 
 end
 
