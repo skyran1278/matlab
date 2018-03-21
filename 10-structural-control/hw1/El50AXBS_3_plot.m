@@ -17,6 +17,8 @@ EL50RFA = fscanf(EL50RFA_FILEID, '%f');
 % EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
 % EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
 % EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
+figure(5);
+cpsd(El50AXBS_3(:, TIME_COL), El50AXBS_3(:, ACCEL_COL))
 
 figure(1);
 plot((1 : length(EL50RFA)) * 0.0125, EL50RFA);
