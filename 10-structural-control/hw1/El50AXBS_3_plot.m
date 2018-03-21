@@ -5,18 +5,18 @@ ACCEL_COL = 2;
 DISP_COL = 3;
 BASE_COL = 4;
 
-El50AXBS_3_FILEID = fopen('El50AXBS_1.1%.txt', 'r');
-El50AXBS_3 = fscanf(El50AXBS_3_FILEID, '%f %f %f %f', [4 Inf]);
+El50AXBS_3_fileid = fopen('El50AXBS_1.1%.txt', 'r');
+El50AXBS_3 = fscanf(El50AXBS_3_fileid, '%f %f %f %f', [4 Inf]);
 El50AXBS_3 = El50AXBS_3';
 El50AXBS_3(:, ACCEL_COL) = El50AXBS_3(:, ACCEL_COL) / 9.81;
 El50AXBS_3(:, BASE_COL) = El50AXBS_3(:, BASE_COL) / 9.81;
 
-EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
-EL50RFA = fscanf(EL50RFA_FILEID, '%f');
+EL50RFA_fileid = fopen('EL50RFA.txt', 'r');
+EL50RFA = fscanf(EL50RFA_fileid, '%f');
 
-% EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
-% EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
-% EL50RFA_FILEID = fopen('EL50RFA.txt', 'r');
+% EL50RFA_fileid = fopen('EL50RFA.txt', 'r');
+% EL50RFA_fileid = fopen('EL50RFA.txt', 'r');
+% EL50RFA_fileid = fopen('EL50RFA.txt', 'r');
 figure(5);
 cpsd(El50AXBS_3(:, TIME_COL), El50AXBS_3(:, ACCEL_COL))
 
