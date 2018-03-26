@@ -46,8 +46,8 @@ G = elastic / 2.6;
 delta_beam_detail = (2 * length_beam)^3 / (24 * elastic * inertia_beam) * p1;
 delta_col_detail = (2 * length_beam)^2 * (h - db)^2 / (24 * elastic * inertia_col * h) * p1;
 delta_pz = 1 / 2 * (2 * length_beam - dc) / (db * t * G) * ((2 * length_beam) / (0.95 *db) * (1 - db / h) - 1) * p1;
-delta_total = delta_beam_detail + delta_col_detail + delta_pz
+delta_total = delta_beam_detail + delta_col_detail + delta_pz;
 
-delta_beam_detail / delta_total
-delta_col_detail / delta_total
-delta_pz / delta_total
+delta_beam_detail / delta_total;
+delta_col_detail / delta_total;
+delta_pz / delta_total;
