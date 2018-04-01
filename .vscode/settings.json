@@ -1,4 +1,5 @@
 {
   "files.autoGuessEncoding": true,
-  "files.encoding": "cp950"
+  "files.encoding": "cp950",
+  "editor.tabSize": 4
 }
