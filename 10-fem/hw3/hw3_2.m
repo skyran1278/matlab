@@ -36,3 +36,39 @@ fe_gamma = subs(Ne.' * Ae * t_bar, x, 0);
 
 fe1 = subs(fe_omega + fe_gamma, [xe1 xe2], [0, 1])
 fe2 = subs(fe_omega, [xe1 xe2], [1, 2])
+
+K = zeros(3);
+
+for index = 1 : 2
+    K([index, index + 1], [index, index + 1]) = K([index, index + 1], [index, index + 1]) + eval(['Ke' num2str(index)]);
+end
+
+K
+
+f = zeros(3, 1);
+
+for index = 1 : 2
+    f([index, index + 1], 1) = f([index, index + 1], 1) + eval(['fe' num2str(index)]);
+end
+
+f
+
+d = zeros(3, 1)
+d([1 2], 1) = K([1 2], [1 2]) \ f([1 2], 1)
+
+r = K * d - f
+
+
+t = 0 : 0.01 : 2;
+
+u_linear = 10^-7 * (30 - 15 * t);
+
+u_exact = (-6 * (t + 1).^2 - 8 * log(t + 1) + 54 + 8 * log(3)) / (2 * 10^7);
+
+x = [0; 1; 2];
+
+figure;
+plot(t, u_linear, t, u_exact, x, d);
+legend('linear', 'exact', 'fem');
+xlabel('x (m)');
+ylabel('disp (m)');
