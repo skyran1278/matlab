@@ -9,7 +9,7 @@ N = sym(ones(7, 1));
 
 for i = 1 : length(N)
     xj = (xe(xe ~= xe(i)));
-    N(i, 1) = simplify(prod((x - xj) ./ (xe(i) - xj)));
+    N(i, 1) = simplify(prod((x - xj) ./ (xe(i) - xj))); % broadcasting
 end
 
 thickness = 10; % mm
