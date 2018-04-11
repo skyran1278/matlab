@@ -1,4 +1,9 @@
 function [frequency, amplitude] = fft_improve(data, time_interval)
+%fft_improve - improve fft matlab original function
+%
+% Syntax: [frequency, amplitude] = fft_improve(data, time_interval)
+%
+% improve fft matlab original function
 
   data_length = length(data);
 
