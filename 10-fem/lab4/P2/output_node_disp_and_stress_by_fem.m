@@ -1,37 +1,21 @@
-clc; clear; close all;
-
-% output_node_disp_and_stress_by_fem(1);
-% output_node_disp_and_stress_by_fem(2);
-% output_node_disp_and_stress_by_fem(4);
-% output_node_disp_and_stress_by_fem(8);
-output_node_disp_and_stress_by_fem(16);
-
-% output_node_disp_and_stress_by_fem(1000);
-
-% legend('1 element', '2 element', '4 element', '8 element', '16 element', 'exact solution', 'Location', 'northwest');
-% title('displacement vs. from exact solution and from 1, 2, 4, 8, 16 elements');
-% xlabel('x (m)');
-% ylabel('displacement (m)');
-
-% [node_1, disp_1] = output_node_disp_by_lagrange(1);
-% [node_2, disp_2] = output_node_disp_by_lagrange(2);
-% [node_4, disp_4] = output_node_disp_by_lagrange(4);
-% [node_8, disp_8] = output_node_disp_by_lagrange(8);
-[node_16, disp_16] = output_node_disp_by_lagrange(16);
-plot(node_16, disp_16, '--o');
-% plot(node_1, disp_1, node_2, disp_2, node_4, disp_4, node_8, disp_8, node_16, disp_16);
-
-% legend('1 node', '2 node', '4 node', '8 node', '16 node', 'exact solution', 'Location', 'northwest');
-% title('displacement vs. from exact solution and from 1, 2, 4, 8, 16 nodes');
-% xlabel('x (m)');
-% ylabel('displacement (m)');
-
-% TODO: exact solution
-% TODO: stress
-function [] = output_node_disp_and_stress_by_fem(n)
+function [node_coordinates, displacements, stress] = output_node_disp_and_stress_by_fem(n)
+%output_node_disp_and_stress_by_fem - for 1D 座標系統
+%
+% Syntax: [node_coordinates, displacements, stress] = output_node_disp_and_stress_by_fem(n)
+%
+% for 1D 座標系統。
+% TODO: 下次應該可以把參數移出去，做得更 general 一點。
+%
+% @since 0.1.0
+% @param {n}: 代表 1 個 element 切成 n 份。
+% @return {node_coordinates}: 節點。
+% @return {displacements}: 位移。
+% @return {stress}: 壓力。
+%
 
     % E: modulus of elasticity (N/m^2)
     % L: length of bar (m)
+    % Le: length of element (m)
     Ee = 70e9 * ones(1, n); % Pa
     L = 0.5; % m
     Le = L / n * ones(1, n); % m
@@ -77,10 +61,6 @@ function [] = output_node_disp_and_stress_by_fem(n)
     GDof = nodes_number;
     displacements = solution(GDof, prescribedDof, stiffness, force);
 
-    plot(node_coordinates, displacements, '-*');
-    hold on;
+    stiffness * displacements
 
 end
-
-
-
