@@ -35,25 +35,3 @@ legend('1 element', '2 element', '4 element', '8 element', '16 element', 'exact 
 title('stress vs. from exact solution and from 1, 2, 4, 8, 16 elements');
 xlabel('x (m)');
 ylabel('stress (N/m^2)');
-
-
-% figure;
-% plot(node_constrast_1, disp_constrast_1, node_constrast_2, disp_constrast_2, node_constrast_4, disp_constrast_4, node_constrast_8, disp_constrast_8, node_constrast_16, disp_constrast_16);
-
-% setdiff(disp_1, disp_constrast_1)
-% setdiff(disp_2, disp_constrast_2)
-% setdiff(disp_4, disp_constrast_4)
-% setdiff(disp_8, disp_constrast_8)
-% setdiff(disp_16, disp_constrast_16)
-
-% legend('1 node', '2 node', '4 node', '8 node', '16 node', 'exact solution', 'Location', 'northwest');
-% title('displacement vs. from exact solution and from 1, 2, 4, 8, 16 nodes');
-% xlabel('x (m)');
-% ylabel('displacement (m)');
-
-% TODO: exact solution
-% TODO: stress
-
-
-
-
