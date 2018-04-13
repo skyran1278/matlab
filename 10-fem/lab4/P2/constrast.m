@@ -1,4 +1,4 @@
-% lagrange 比較準
+% lagrange 比較準，但速度較慢。
 
 clc; clear; close all;
 

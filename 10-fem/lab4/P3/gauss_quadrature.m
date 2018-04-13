@@ -5,6 +5,8 @@ function I = gauss_quadrature(f, a, b, ngp)
 %
 % Long description
 
+    % syms I_hat;
+
     % gauss_quadrature const
     switch ngp
         case 3
