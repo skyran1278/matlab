@@ -6,7 +6,7 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
 % for 1D 座標系統。
 % TODO: 下次應該可以把參數移出去，做得更 general 一點。
 %
-% @since 0.2.0
+% @since 0.2.1
 % @param {n}: 代表 1 個 element 切成 n 個 elements。
 % @return {node_coordinates}: 節點。
 % @return {displacements}: 位移。
@@ -26,8 +26,8 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
     % number_elements: number of elements
     number_elements = n;
 
-    % nodes_number: number of nodes
-    nodes_number = n + 1;
+    % number_nodes: number of nodes
+    number_nodes = n + 1;
 
     % generation of coordinates and connectivities
     element_nodes = [(1 : n); (2 : n + 1)].';
@@ -41,8 +41,8 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
         % displacements: displacement vector
         % force : force vector
         % stiffness: stiffness matrix
-    force = zeros(nodes_number, 1);
-    stiffness = zeros(nodes_number, nodes_number);
+    force = zeros(number_nodes, 1);
+    stiffness = zeros(number_nodes, number_nodes);
     k = zeros(number_elements, 1);
 
     % applied load at node 2
@@ -58,14 +58,14 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
 
     % boundary conditions and solution
     % prescribed dofs
-    prescribedDof = nodes_number;
+    prescribedDof = number_nodes;
 
     % solution
-    GDof = nodes_number;
+    GDof = number_nodes;
     displacements = solution(GDof, prescribedDof, stiffness, force);
 
     % stress
-    stress = zeros(nodes_number, 1);
+    stress = zeros(number_nodes, 1);
 
     for e = 1 : number_elements
         k = Ee(e) * Ae(e) / Le(e) * [1 -1; -1 1];
