@@ -6,8 +6,8 @@ function [node_coordinates, displacements] = output_node_disp_by_lagrange(n)
 % for 1D 座標系統。
 % TODO: 下次應該可以把參數移出去，做得更 general 一點。
 %
-% @since 0.1.1
-% @param {n}: 代表 1 個 element 切成 n 份。
+% @since 0.1.2
+% @param {n}: 代表 1 個 element 切成 n 份做 lagrange。
 % @return {node_coordinates}: 節點。
 % @return {displacements}: 位移。
 %

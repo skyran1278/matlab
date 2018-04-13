@@ -6,13 +6,16 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
 % for 1D 座標系統。
 % TODO: 下次應該可以把參數移出去，做得更 general 一點。
 %
-% @since 0.1.0
-% @param {n}: 代表 1 個 element 切成 n 份。
+% @since 0.2.0
+% @param {n}: 代表 1 個 element 切成 n 個 elements。
 % @return {node_coordinates}: 節點。
 % @return {displacements}: 位移。
 % @return {stress}: 壓力。
 %
 
+    if nargin == 0
+        n = 16;
+    end
     % E: modulus of elasticity (N/m^2)
     % L: length of bar (m)
     % Le: length of element (m)
@@ -32,7 +35,7 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
 
     % A: area of cross section (m^2)
     A0 = 12.5e-4; % m2
-    A = A0 * (1 + (((node_coordinates(1 : end - 1) + node_coordinates(2 : end)) / 2) / L));
+    Ae = A0 * (1 + (((node_coordinates(1 : end - 1) + node_coordinates(2 : end)) / 2) / L));
 
     % for structure:
         % displacements: displacement vector
@@ -48,7 +51,7 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
     for e = 1 : number_elements
         % elementDof: element degrees of freedom (Dof)
         elementDof = element_nodes(e, :);
-        k(e) = Ee(e) * A(e) / Le(e);
+        k(e) = Ee(e) * Ae(e) / Le(e);
         stiffness(elementDof, elementDof) = ...
             stiffness(elementDof, elementDof) + k(e) * [1 -1; -1 1];
     end
@@ -61,6 +64,12 @@ function [node_coordinates, displacements, stress] = output_node_disp_and_stress
     GDof = nodes_number;
     displacements = solution(GDof, prescribedDof, stiffness, force);
 
-    stiffness * displacements
+    % stress
+    stress = zeros(nodes_number, 1);
+
+    for e = 1 : number_elements
+        k = Ee(e) * Ae(e) / Le(e) * [1 -1; -1 1];
+        stress(e : e + 1) = abs(k * displacements(element_nodes(e, :)) / Ae(e));
+    end
 
 end
