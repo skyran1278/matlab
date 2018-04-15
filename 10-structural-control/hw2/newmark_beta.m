@@ -33,8 +33,6 @@ function [] = newmark_beta(filename)
     v = zeros(size(p_t));
     a = zeros(size(p_t));
 
-
-
     for index_1 = 1 : damping_length
 
         damping_ratio = damping_ratios(index_1);
