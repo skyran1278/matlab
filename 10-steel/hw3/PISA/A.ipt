@@ -1,0 +1,33 @@
+PISA3D
+A
+kN
+mm
+ControlData    GeometricNL  1
+GUI_GRID  XDIR  1000  2000
+GUI_GRID  YDIR  0  1800  3600
+GUI_GRID  ZDIR  0  4000  8000
+
+
+
+
+Node  N1 1000 1800 0
+Node  N2 1000 1800 4000
+Node  N3 1000 1800 8000
+Node  N4 1000 0 4000
+Node  N5 1000 3600 4000
+DOF  N4 -1 -1 -1 0 0 0 
+
+DOF  N5 -1 -1 -1 0 0 0 
+
+Element  BeamColumn   E1 N1 N2 Undefined!  0 0 0  0 0 0  0  0   
+Element  BeamColumn   E2 N2 N3 Undefined!  0 0 0  0 0 0  0  0   
+Element  BeamColumn   E3 N4 N2 Undefined!  0 0 0  0 0 0  0  0   
+Element  BeamColumn   E4 N2 N5 Undefined!  0 0 0  0 0 0  0  0   
+
+% MATERIAL DATA %
+
+% SECTION DATA %
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+STOP
