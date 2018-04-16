@@ -1,4 +1,12 @@
 function p_k = legendre_polynomials(k)
+%legendre_polynomials - Legendre polynomials recursion
+%
+% Syntax: p_k = legendre_polynomials(k)
+%
+% @since 1.0.0
+% @param {k}: integer 需要求第幾個。
+% @return {p_k}: function of x - Legendre polynomials eqution
+%
 
     syms x;
 

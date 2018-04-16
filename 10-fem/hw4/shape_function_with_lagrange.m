@@ -1,9 +1,12 @@
 function shape_function = shape_function_with_lagrange(xe)
-%shape_function_with_lagrange - Description
+%shape_function_with_lagrange - 回傳形狀函數
 %
 % Syntax: shape_function = shape_function_with_lagrange(xe)
 %
-% Long description
+% @since 1.1.0
+% @param {xe}: [arrays]
+% @return {shape_function}: [arrays] shape function
+%
 
     syms x;
 
