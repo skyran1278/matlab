@@ -30,13 +30,13 @@ function [node_coordinates, displacements] = output_node_disp_by_lagrange(n)
 
     Ne = sym(ones(1, node_number));
 
-    for index = 1 : length(n)
+    for index = 1 : length(Ne)
         xi = node_coordinates(index);
         xj = node_coordinates(node_coordinates ~= xi);
         Ne(1, index) = simplify(prod((x - xj) ./ (xi - xj))); % broadcasting
     end
 
-    Be = diff(n, x);
+    Be = diff(Ne, x);
 
     % for structure:
         % force : force vector

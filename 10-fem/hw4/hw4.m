@@ -16,15 +16,22 @@ clc; clear; close all;
 % double(int(g, x, 3, 7))
 
 
-syms x k p(k);
+syms x xe1 xe2 xe3 xe4 Le;
 
-% p(0) == 1;
-% p(1) == x;
-% p(k) = (2 * k - 1) / k * x * p(k - 1) - (k - 1) / k * p(k - 2);
+ngp = 3;
 
-% for index = 3 : n
-%     k = 1
-% end
+abscissa = double(solve(legendre_polynomials(ngp) == 0))
 
-double(solve(legendre_poly(3) == 0))
+p(x) = legendre_polynomials(ngp - 1);
 
+weight = double(2 * (1 - (abscissa .^ 2)) ./ ((ngp * p(abscissa)) .^ 2))
+
+xe = [xe1; xe2; xe3; xe4];
+
+abscissa = [- 1, - 1 / 3, 1 / 3, 1];
+
+shape_function = shape_function_with_lagrange(abscissa);
+
+Jacobian_(xe1, xe2, xe3, xe4) = diff(shape_function * xe, x)
+
+Jacobian = simplify(Jacobian_(0, Le / 3, Le * 2 / 3, Le))

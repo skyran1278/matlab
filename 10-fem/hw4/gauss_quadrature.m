@@ -5,7 +5,7 @@ function I = gauss_quadrature(f, a, b, ngp)
 %
 % 计秆
 %
-% @since 0.2.0
+% @since 1.1.0
 % @param {f}: symfun惠璶暗縩だㄧ计
 % @param {a}: 
 % @param {b}: 
@@ -13,21 +13,14 @@ function I = gauss_quadrature(f, a, b, ngp)
 % @return {I}: 计縩だㄧ计
 %
 
-    % gauss_quadrature const
-    switch ngp
-        case 1
-            location = 0;
-            weight = 2;
-        case 2
-            location = [- 1 / sqrt(3), 1 / sqrt(3)];
-            weight = [1 1];
-        case 3
-            location = [-0.7745966692 0.7745966692 0];
-            weight = [0.5555555556 0.5555555556 0.8888888889];
-        case 4
-            location = [-0.8611363116 0.8611363116 -0.3399810436 0.3399810436];
-            weight = [0.3478548451 0.3478548451 0.6521451549 0.6521451549];
-    end
+    % cal gauss_quadrature const
+    syms x;
+
+    abscissa = solve(legendre_polynomials(ngp) == 0);
+
+    p(x) = legendre_polynomials(ngp - 1);
+
+    weight = 2 * (1 - (abscissa .^ 2)) ./ ((ngp * p(abscissa)) .^ 2);
 
     % Jacobian
     J = (b - a) / 2;
@@ -35,7 +28,7 @@ function I = gauss_quadrature(f, a, b, ngp)
     I_hat = sym(zeros(size(f)));
 
     for index = 1 : ngp
-        x_subs = (a + b) / 2 + location(index) / 2 * (b - a);
+        x_subs = (a + b) / 2 + abscissa(index) / 2 * (b - a);
         I_hat = I_hat + weight(index) * f(x_subs);
     end
 
