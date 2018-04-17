@@ -1,0 +1,37 @@
+Programming 2a  ITP=1
+kN
+mm
+
+*NNOD NBC NMAT NSEC ITP NNE IFORCE
+  3    2    1    2   1   2    2
+
+*COOR (mm)
+1  0
+2  5*10^3
+3  7*10^3
+
+*NFIX (v,theta)
+1  -1  0
+2  -1  0
+3  -1 -1
+
+*External Load (kN) (Fy,M)
+1  0  0
+2  0  0
+3  0  0
+
+*IDBC
+1  1 2 1 1 0
+2  2 3 1 2 0
+
+*FEF(Py,Mz1,Py2,Mz2)
+1  46.08    115200  -46.08    115200
+2   -180   -180000     180   -180000
+
+*PROP  (E,v, , , )
+1  200 0.3 0 0 0
+
+*SECT (A,Iz,Iy,J, )
+1  6*10^3 200e6 0 300e3 0
+2  4*10^3  50*10^6 0 100*10^3 0
+
