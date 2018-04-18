@@ -1,4 +1,4 @@
-function [u, v, a] = newmark_beta(ag, time_interval, damping_ratio, tn, method, m, c, k)
+function [u, v, a] = newmark_beta(ag, time_interval, damping_ratio, tn, method)
 %
 % newmark beta.
 %
@@ -31,9 +31,9 @@ function [u, v, a] = newmark_beta(ag, time_interval, damping_ratio, tn, method, 
 
     wn = (2 * pi) / tn;
 
-    % m = 1;
-    % c = 2 * damping_ratio * wn * m;
-    % k = (wn ^ 2) * m;
+    m = 10;
+    c = 2 * damping_ratio * wn * m;
+    k = (wn ^ 2) * m;
 
     p_t = - m * ag;
 
@@ -52,7 +52,5 @@ function [u, v, a] = newmark_beta(ag, time_interval, damping_ratio, tn, method, 
         [u(ag_index), v(ag_index), a(ag_index)] = newmark_beta_calculation(m, c, k, u(ag_index - 1), v(ag_index - 1), a(ag_index -1), dp, time_interval, gamma_, beta_);
 
     end
-
-    a = a + ag;
 
 end
