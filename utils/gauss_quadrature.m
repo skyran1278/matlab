@@ -1,17 +1,14 @@
 function I = gauss_quadrature(f, a, b, ngp)
-%gauss_quadrature - gauss quadrature
 %
-% Syntax: I = gauss_quadrature(ngp)
+% TODO: J not const condition.
+% 计秆.
 %
-% TODO: J not const condition
-% 计秆
-%
-% @since 1.2.0
-% @param {f}: symfun惠璶暗縩だㄧ计
-% @param {a}: 
-% @param {b}: 
-% @param {ngp}: integration pointsngp >= (p + 1) / 2
-% @return {I}: 计縩だㄧ计
+% @since 1.0.0
+% @param {f}: symfun惠璶暗縩だㄧ计.
+% @param {a}: .
+% @param {b}: .
+% @param {ngp}: integration pointsngp >= (p + 1) / 2.
+% @return {I}: 计縩だㄧ计.
 % @see legendre_polynomials
 %
 

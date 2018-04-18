@@ -2,6 +2,22 @@ function [u, v, a] = newmark_beta_calculation(m, c, k, up, vp, ap, dp, dt, gamma
 %
 % newmark beta calculation
 %
+% @since 1.0.0
+% @param {number} [m] 質量.
+% @param {number} [c] 阻尼.
+% @param {number} [k] 勁度.
+% @param {number} [up] 前一個點的位移.
+% @param {number} [vp] 前一個點的速度.
+% @param {number} [ap] 前一個點的加速度.
+% @param {number} [dp] 位移.
+% @param {number} [dt] 時間間隔.
+% @param {number} [gamma_] 常數.
+% @param {number} [beta_] 常數.
+% @return {number} [u] 位移.
+% @return {number} [v] 速度.
+% @return {number} [a] 加速度.
+%
+
     %------------------
     % Calculate effective stiffness
     %------------------

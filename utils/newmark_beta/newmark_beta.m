@@ -1,4 +1,18 @@
 function [u, v, a] = newmark_beta(ag, time_interval, damping_ratio, tn, method)
+%
+% newmark beta.
+%
+% @since 1.0.0
+% @param {array} [ag] input 的地震力歷時資料.
+% @param {number} [time_interval] 時間間隔.
+% @param {number} [damping_ratio] 阻尼比.
+% @param {number} [tn] 自然週期.
+% @param {string} [method] 'average' or 'linear'.
+% @return {array} [u] 位移.
+% @return {array} [v] 速度.
+% @return {array} [a] 加速度.
+% @see newmark_beta_calculation
+%
 
     % average Acceleration Method
     gamma_ = 1 / 2;

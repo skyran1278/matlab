@@ -1,9 +1,6 @@
 function [node_coordinates, displacements, stress] = exact_solution()
-%exact_solution - Description
 %
-% Syntax: [node_coordinates, displacements, stress] = exact_solution()
-%
-% Long description
+% exact solution.
 % TODO: ¤@¯ë¤Æ
 %
     syms x u(x);
