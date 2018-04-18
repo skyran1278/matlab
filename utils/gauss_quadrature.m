@@ -3,6 +3,7 @@ function I = gauss_quadrature(f, a, b, ngp)
 %
 % Syntax: I = gauss_quadrature(ngp)
 %
+% TODO: J not const condition
 % ¼Æ­È¸Ñ
 %
 % @since 1.2.0
