@@ -1,6 +1,7 @@
 clc; clear; close all;
 
 ag = filename_to_ag('TCU052', 4);
+time = filename_to_ag('TCU052', 1);
 
 time_interval = 0.005;
 
@@ -25,3 +26,6 @@ potential_energy = 1 / 2 * k * (u .^ 2);
 modal_damping_energy = c * (v .^ 2);
 
 input_energy = kinetic_energy + potential_energy + modal_damping_energy;
+
+
+plot(time, kinetic_energy, time, potential_energy, time, modal_damping_energy);
