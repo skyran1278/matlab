@@ -23,6 +23,7 @@ function I = gauss_quadrature(f, a, b, ngp)
 
     % Jacobian
     J = (b - a) / 2;
+    % J = lagrange_interpolation(abscissa) *
 
     I_hat = sym(zeros(size(f)));
 

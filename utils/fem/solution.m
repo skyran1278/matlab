@@ -1,5 +1,3 @@
-%................................................................
-
 function displacements = solution(GDof, prescribedDof, stiffness, force, displacements)
 
     if nargin == 4

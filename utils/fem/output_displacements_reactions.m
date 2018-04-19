@@ -1,7 +1,4 @@
-%................................................................
-
-function output_displacements_reactions ...
-    (displacements, stiffness, GDof, prescribedDof, force)
+function [] = output_displacements_reactions(displacements, stiffness, GDof, prescribedDof, force)
 
     % output of displacements and reactions in
     % tabular form
