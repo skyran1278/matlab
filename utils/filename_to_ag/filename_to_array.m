@@ -1,11 +1,11 @@
-function ag = filename_to_ag(filename, ag_col)
+function data = filename_to_array(filename, array_col)
 %
 % 適用於被動控制給的 file_input.
 %
-% @since 1.1.0
+% @since 2.0.0
 % @param {string} [filename] 檔案名稱.
-% @param {number} [ag_col] 要回傳第幾欄.
-% @return {array} [ag] 加速度歷時資料.
+% @param {number} [array_col] 要回傳第幾欄.
+% @return {array} [data] 加速度歷時資料.
 % @see dependencies
 %
 
@@ -19,6 +19,6 @@ function ag = filename_to_ag(filename, ag_col)
 
     fclose(fileID);
 
-    ag = A(:, ag_col);
+    data = A(:, array_col);
 
 end
