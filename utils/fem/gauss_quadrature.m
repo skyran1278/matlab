@@ -10,7 +10,7 @@ function I = gauss_quadrature(f, ngp, a, b)
 % @param {number syms} [a] 下限.
 % @param {number syms} [b] 上限.
 % @return {function} [I] 數值積分函數.
-% @see legendre_polynomials, gauss_const
+% @see gauss_const
 %
 
     % abscissa

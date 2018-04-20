@@ -1,81 +1,67 @@
-% 1D Simple Bar
-% clear memory
-clc; clear; close all;
+function [] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof)
+%
+% fem for 1D.
+%
+% @since 1.0.0
+% @param {type} [E] modulus of elasticity (N/m^2).
+% @param {type} [A] area of cross section (m^2).
+% @param {type} [L] length of bar (m).
+% @param {type} [b] internal force.
+% @param {type} [force] boundary conditions.
+% @param {type} [number_elements] number of elements.
+% @param {type} [number_nodes] number of nodes.
+% @param {type} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
+% @param {type} [node_coordinates] 節點位置.
+% @param {type} [prescribed_dof] essential boundary conditions.
+% @see lagrange_interpolation, gauss_quadrature, solution, output_displacements_reactions, output_element_forces
+%
 
-syms x;
-% E: modulus of elasticity (N/m^2)
-% A: area of cross section (m^2)
-% L: length of bar (m)
-E = [2e7 2e7];
-A = [1.5 2.5];
-L = [1 1];
-force = [20; 0; 0];
-A0 = 1;
-b(x) = 24 * A0 * (x + 1);
+    syms xi;
 
-% numberElements: number of elements
-numberElements = 2;
+    number_element_nodes = length(element_nodes);
 
-% numberNodes: number of nodes
-numberNodes = 3;
+    ngp = fix(number_element_nodes / 2) + 1;
 
-% generation of coordinates and connectivities
-elementNodes = [1 2; 2 3];
-nodeCoordinates = [0 1 2];
+    Ne = lagrange_interpolation(linspace(-1, 1, number_element_nodes), xi);
 
-% boundary conditions and solution
-% prescribed dofs
-prescribedDof = 3;
+    Ke = sym(zeros(number_element_nodes, number_element_nodes));
 
-% for structure:
-   % displacements: displacement vector
-   % force : force vector
-   % stiffness: stiffness matrix
-% force = zeros(numberNodes, 1);
-syms xi;
+    fe = sym(zeros(number_element_nodes, 1));
 
-number_element_nodes = length(elementNodes);
+    stiffness = zeros(number_nodes, number_nodes);
 
-ngp = 5;
-% ngp = fix(number_element_nodes / 2) + 1;
+    % computation of the system stiffness matrix
+    for e = 1 : number_elements
 
-Ne = lagrange_interpolation(linspace(-1, 1, number_element_nodes));
-Be = zeros(1, number_element_nodes);
-Ke = sym(zeros(number_element_nodes, number_element_nodes));
-fe = sym(zeros(number_element_nodes, 1));
-stiffness = zeros(numberNodes, numberNodes);
-force = sym(force);
+        % elementDof: element degrees of freedom (Dof)
+        elementDof = element_nodes(e, :);
 
-% computation of the system stiffness matrix
-for e = 1 : numberElements
+        xe = node_coordinates(elementDof).';
 
-    % elementDof: element degrees of freedom (Dof)
-    elementDof = elementNodes(e, :);
+        J = diff(Ne) * xe;
 
-    xe = nodeCoordinates(elementDof).';
+        Be = 1 / J * diff(Ne);
 
-    J = diff(Ne) * xe;
+        fe(xi) = Ne.' * b(Ne * xe);
 
-    Be = 1 / J * diff(Ne);
+        Ke(xi) = Be.' * E(e) * A(e) * Be;
 
-    fe(xi) = Ne.' * b(Ne * xe);
+        stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + J * gauss_quadrature(Ke, ngp);
 
-    Ke(xi) = Be.' * E(e) * A(e) * Be;
+        force(elementDof) = force(elementDof) + J * gauss_quadrature(fe, ngp);
 
-    stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + J * gauss_quadrature(Ke, ngp);
+    end
 
-    % TODO: 剩下 force 需要處理
-    force(elementDof) = force(elementDof) + J * gauss_quadrature(fe, ngp);
+    % solution
+    G_dof = number_nodes;
+    displacements = solution(G_dof, prescribed_dof, stiffness, force);
+
+    % output displacements/reactions
+    output_displacements_reactions(displacements, stiffness, number_nodes, prescribed_dof, force);
+
+    % output element forces
+    output_element_forces(E, A, L, number_elements, element_nodes, displacements);
 
 end
 
-% solution
-GDof = numberNodes;
-displacements = solution(GDof, prescribedDof, stiffness, force);
 
-% output displacements/reactions
-output_displacements_reactions(displacements, stiffness, ...
-    numberNodes, prescribedDof, force);
-
-% output element forces
-output_element_forces(E, A, L, numberElements, elementNodes, displacements);

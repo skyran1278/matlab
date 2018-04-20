@@ -12,9 +12,9 @@ function [abscissa, weight] = gauss_const(ngp)
     % cal gauss_quadrature const
     syms x;
 
-    abscissa = solve(legendre_polynomials(ngp) == 0);
+    abscissa = solve(legendre_polynomials(ngp, x) == 0);
 
-    p(x) = legendre_polynomials(ngp - 1);
+    p(x) = legendre_polynomials(ngp - 1, x);
 
     weight = 2 * (1 - (abscissa .^ 2)) ./ ((ngp * p(abscissa)) .^ 2);
 
