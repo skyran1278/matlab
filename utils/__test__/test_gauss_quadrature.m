@@ -1,7 +1,7 @@
 classdef test_gauss_quadrature < matlab.unittest.TestCase
     methods (Test)
 
-        function varibale_tast(testCase)
+        function varibale_subs_tast(testCase)
 
             syms x xe1 xe2;
 
@@ -9,11 +9,20 @@ classdef test_gauss_quadrature < matlab.unittest.TestCase
 
             ngp = 5;
 
-            I(xe1, xe2) = gauss_quadrature(f, xe1, xe2, ngp);
+            I(xe1, xe2) = gauss_quadrature(f, ngp, xe1, xe2);
 
-            act_solution = double(I(-1, 1));
+            f(xe1, xe2) = int(f, x, xe1, xe2);
 
-            exp_solution = double(int(f, x, -1, 1));
+            for index = 1 : 100
+
+                rand_1 = rand;
+                rand_2 = rand;
+
+                act_solution = double(I(rand_1, rand_2));
+
+                exp_solution = double(f(rand_1, rand_2));
+
+            end
 
             testCase.verifyEqual(act_solution, exp_solution, 'RelTol', 1e-10);
 
@@ -28,7 +37,7 @@ classdef test_gauss_quadrature < matlab.unittest.TestCase
 
             ngp = 2;
 
-            act_solution = double(gauss_quadrature(f, -1, 1, ngp));
+            act_solution = double(gauss_quadrature(f, ngp));
 
             exp_solution = double(int(f, x, -1, 1));
 

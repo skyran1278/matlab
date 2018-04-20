@@ -1,4 +1,4 @@
-function [] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof)
+function [displacements, stiffness, force] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof)
 %
 % fem for 1D.
 %
@@ -55,12 +55,6 @@ function [] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_n
     % solution
     G_dof = number_nodes;
     displacements = solution(G_dof, prescribed_dof, stiffness, force);
-
-    % output displacements/reactions
-    output_displacements_reactions(displacements, stiffness, number_nodes, prescribed_dof, force);
-
-    % output element forces
-    output_element_forces(E, A, L, number_elements, element_nodes, displacements);
 
 end
 
