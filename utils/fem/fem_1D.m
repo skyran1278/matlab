@@ -2,6 +2,7 @@
 % clear memory
 clc; clear; close all;
 
+syms x;
 % E: modulus of elasticity (N/m^2)
 % A: area of cross section (m^2)
 % L: length of bar (m)
@@ -9,8 +10,8 @@ E = [2e7 2e7];
 A = [1.5 2.5];
 L = [1 1];
 force = [20; 0; 0];
-
-b = 24;
+A0 = 1;
+b(x) = 24 * A0 * (x + 1);
 
 % numberElements: number of elements
 numberElements = 2;
@@ -31,18 +32,19 @@ prescribedDof = 3;
    % force : force vector
    % stiffness: stiffness matrix
 % force = zeros(numberNodes, 1);
-syms x;
+syms xi;
 
 number_element_nodes = length(elementNodes);
 
-ngp = fix(number_element_nodes / 2) + 1;
+ngp = 5;
+% ngp = fix(number_element_nodes / 2) + 1;
 
 Ne = lagrange_interpolation(linspace(-1, 1, number_element_nodes));
 Be = zeros(1, number_element_nodes);
 Ke = sym(zeros(number_element_nodes, number_element_nodes));
 fe = sym(zeros(number_element_nodes, 1));
 stiffness = zeros(numberNodes, numberNodes);
-
+force = sym(force);
 
 % computation of the system stiffness matrix
 for e = 1 : numberElements
@@ -56,9 +58,9 @@ for e = 1 : numberElements
 
     Be = 1 / J * diff(Ne);
 
-    fe(x) = Ne.' * b(e);
+    fe(xi) = Ne.' * b(Ne * xe);
 
-    Ke(x) = Be.' * E(e) * A(e) * Be;
+    Ke(xi) = Be.' * E(e) * A(e) * Be;
 
     stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + J * gauss_quadrature(Ke, ngp);
 
