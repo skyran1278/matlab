@@ -1,0 +1,45 @@
+PISA3D
+A
+kN
+mm
+ControlData    GeometricNL  1
+GUI_GRID  XDIR  1000  2000
+GUI_GRID  YDIR  0  1800  3600
+GUI_GRID  ZDIR  0  4000  8000
+
+
+
+
+Node  N1 1000 1800 0
+Node  N2 1000 1800 4000
+Node  N3 1000 1800 8000
+Node  N4 1000 0 4000
+Node  N5 1000 3600 4000
+DOF  N4 -1 -1 -1 0 0 0 
+
+DOF  N5 -1 -1 -1 0 0 0 
+
+Element  BeamColumn   E1 N1 N2 Beam-Sec 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E2 N2 N3 Beam-Sec 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E3 N4 N2 Col-Sec 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E4 N2 N5 Col-Sec 0 0 0  0 0 0  0  0   
+
+% MATERIAL DATA %
+Material  Elastic Steel 200 0.3 
+
+
+% SECTION DATA %
+GUI_Section I_SHAPE_SECTION Beam-Sec Steel Steel Steel Steel Steel Steel Steel Steel Steel 0 600 250 26 14 250 26 
+GUI_SECTION_PROPERTY_FACTOR Beam-Sec 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR Beam-Sec 1  0.501961  0.501961  
+Section  BCSection03 Beam-Sec Steel Steel Steel Steel Steel Steel Steel Steel Steel 0 20672 1.26352e+09 6.78336e+07 3.23058e+06 4.21175e+06 542669 8400 10833.3 
+
+GUI_Section I_SHAPE_SECTION Col-Sec Steel Steel Steel Steel Steel Steel Steel Steel Steel 0 400 400 32 20 32 400 
+GUI_SECTION_PROPERTY_FACTOR Col-Sec 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR Col-Sec 0.501961  1  0.501961  
+Section  BCSection03 Col-Sec Steel Steel Steel Steel Steel Steel Steel Steel Steel 0 24960 3.83382e+08 1.71738e+08 1.08286e+13 1.30243e+06 858688 8000 21333.3 
+
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+STOP

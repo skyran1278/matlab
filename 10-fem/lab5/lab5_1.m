@@ -6,13 +6,13 @@ syms x;
 % A: area of cross section (m^2)
 % L: length of bar (m)
 E = [2e7 2e7];
-A = [1.5 2.5];
 L = [1 1];
 
 force = [20; 0; 0];
 
 A0 = 1;
-b(x) = 24 * A0 * (x + 1);
+A(x) = A0 * (1 + x);
+b(x) = 24 * A;
 
 % number_elements: number of elements
 number_elements = 2;

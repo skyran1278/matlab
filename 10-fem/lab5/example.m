@@ -6,7 +6,6 @@ syms x;
 % A: area of cross section (m^2)
 % L: length of bar (m)
 E = [2e7 2e7];
-% A = [1.5 2.5];
 L = [1 1];
 
 force = [20; 0; 0; 0; 0];
@@ -31,6 +30,7 @@ prescribed_dof = 5;
 
 [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof);
 
+% exact
 E = 2e7;
 A = 1 + x;
 L = 2;

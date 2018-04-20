@@ -4,7 +4,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 %
 % @since 2.0.1
 % @param {array} [E] modulus of elasticity (N/m^2).
-% @param {array} [A] area of cross section (m^2).
+% @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
 % @param {symfun} [b] internal force.
 % @param {array} [force] boundary conditions.
@@ -26,12 +26,9 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
     ngp = fix(number_element_nodes / 2) + 1;
 
-    [abscissa, ~] = gauss_const(ngp);
-    abscissa_length = length(abscissa);
+    xc = linspace(-1, 1, number_element_nodes);
 
-    index_stress = 0;
-
-    Ne = lagrange_interpolation(linspace(-1, 1, number_element_nodes), xi);
+    Ne = lagrange_interpolation(xc, xi);
 
     diff_Ne = diff(Ne);
 
@@ -41,7 +38,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
     stiffness = zeros(number_nodes, number_nodes);
 
-    stress = zeros(abscissa_length * number_elements, 1);
+    stress = zeros(number_nodes, 1);
 
     % computation of the system stiffness matrix
     for e = 1 : number_elements
@@ -57,7 +54,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
         fe(xi) = Ne.' * b(Ne * xe);
 
-        Ke(xi) = Be.' * E(e) * A(e) * Be;
+        Ke(xi) = Be.' * E(e) * A(Ne * xe) * Be;
 
         stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + J * gauss_quadrature(Ke, ngp);
 
@@ -83,9 +80,9 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
         Be(xi) = 1 / J * diff_Ne;
 
-        for index_abscissa = 1 : abscissa_length
-            index_stress = index_stress + 1;
-            stress(index_stress) = E(e) * Be(abscissa(index_abscissa)) * displacements(elementDof);
+        for index_xc = 1 : number_element_nodes
+
+            stress(elementDof(index_xc)) = E(e) * Be(xc(index_xc)) * displacements(elementDof);
 
         end
 
