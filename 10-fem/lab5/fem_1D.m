@@ -2,21 +2,18 @@ function [displacements, stiffness, force] = fem_1D(E, A, L, b, force, number_el
 %
 % fem for 1D.
 %
-% @since 1.1.0
-% @param {array} [E] modulus of elasticity (N/m^2).
-% @param {array} [A] area of cross section (m^2).
-% @param {array} [L] length of bar (m).
-% @param {symfun} [b] internal force.
-% @param {array} [force] boundary conditions.
-% @param {number} [number_elements] number of elements.
-% @param {number} [number_nodes] number of nodes.
-% @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
-% @param {array} [node_coordinates] 節點位置.
-% @param {array} [prescribed_dof] essential boundary conditions.
-% @return {array} [displacements] displacements.
-% @return {array} [stiffness] stiffness.
-% @return {array} [force] force.
-% @see lagrange_interpolation, gauss_quadrature, solution
+% @since 1.0.0
+% @param {type} [E] modulus of elasticity (N/m^2).
+% @param {type} [A] area of cross section (m^2).
+% @param {type} [L] length of bar (m).
+% @param {type} [b] internal force.
+% @param {type} [force] boundary conditions.
+% @param {type} [number_elements] number of elements.
+% @param {type} [number_nodes] number of nodes.
+% @param {type} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
+% @param {type} [node_coordinates] 節點位置.
+% @param {type} [prescribed_dof] essential boundary conditions.
+% @see lagrange_interpolation, gauss_quadrature, solution, output_displacements_reactions, output_element_forces
 %
 
     syms xi;

@@ -1,16 +1,14 @@
-function shape_function = lagrange_interpolation(xe)
+function shape_function = lagrange_interpolation(xe, x)
 %
 % lagrange interpolation.
 %
-% @since 1.0.0
+% @since 2.0.0
 % @param {array} [xe] 要對哪些點做 lagrange.
-% @return {function} [shape_function] shape function of x.
-% @see dependencies
+% @param {sym} [x] 變數名稱.
+% @return {symfun} [shape_function] shape function of x.
 %
 
-    syms x;
-
-    shape_function = sym(ones(size(xe)));
+    shape_function = sym(zeros(size(xe)));
 
     for index = 1 : length(shape_function)
         xi = xe(index);
