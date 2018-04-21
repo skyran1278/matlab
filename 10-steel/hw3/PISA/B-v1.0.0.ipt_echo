@@ -3,22 +3,30 @@
 ----------------------------------------
   a.UpperCase()
   b.First String
+    [ANALYSIS] = 1
     [CONTROLDATA] = 1
-    [DOF] = 2
-    [ELEMENT] = 4
+    [DOF] = 3
+    [ELEMENT] = 5
+    [GUI_ANALYSIS] = 1
+    [GUI_AREA_LOAD_ASSIGNED_TYPE] = 1
+    [GUI_ELEMENT] = 1
+    [GUI_ELEMENTLOAD] = 4
     [GUI_GRID] = 3
+    [GUI_LOADCASE] = 1
+    [GUI_LOADPATTERN] = 2
     [GUI_OUTPUT] = 1
     [GUI_SECTION] = 2
     [GUI_SECTION_DISPLAY_COLOR] = 2
     [GUI_SECTION_PROPERTY_FACTOR] = 2
     [KN] = 1
-    [MATERIAL] = 1
+    [LOADPATTERN] = 2
+    [MATERIAL] = 5
     [MM] = 1
-    [NODE] = 5
+    [NODE] = 6
     [OUTPUT] = 1
     [SECTION] = 2
     [STOP] = 1
-   The Num. of COMMAND = 29
+   The Num. of COMMAND = 49
 ========================================
 
 
@@ -29,9 +37,11 @@
   a.UpperCase()
   b.Get COMMANDs of [ELEMENT]
     [BEAMCOLUMN] = 4
-   The Num. of [ELEMENT] = 4
+    [JOINT] = 1
+   The Num. of [ELEMENT] = 5
   c.Get COMMANDs of [GUI_ELEMENT]
-   The Num. of [GUI_ELEMENT] = 0
+    [JOINT] = 1
+   The Num. of [GUI_ELEMENT] = 1
 ========================================
 
 
@@ -92,13 +102,60 @@
   a.Get COMMANDs of [MATERIAL]
 ----------------------
     [MATERIAL_No] = 1
-    [MATERIAL_TAG] = Steel
-      [MATERIAL_TYPE] = Elastic
-      [E] = 200
+    [MATERIAL_TAG] = Steel-Col
+      [MATERIAL_TYPE] = Bilinear
+      [Ei] = 200
+      [SHR] = 0.02
+      [fyt] = 0.33
+      [fyc] = 0.33
       [Nu] = 0.3
 ----------------------
 
-   The Num. of [MATERIAL] = 1
+----------------------
+    [MATERIAL_No] = 2
+    [MATERIAL_TAG] = Steel-Beam
+      [MATERIAL_TYPE] = Bilinear
+      [Ei] = 200
+      [SHR] = 0.02
+      [fyt] = 0.25
+      [fyc] = 0.25
+      [Nu] = 0.3
+----------------------
+
+----------------------
+    [MATERIAL_No] = 3
+    [MATERIAL_TAG] = Steel-Col-V
+      [MATERIAL_TYPE] = Bilinear
+      [Ei] = 200
+      [SHR] = 0.02
+      [fyt] = 0.198
+      [fyc] = 0.198
+      [Nu] = 0.3
+----------------------
+
+----------------------
+    [MATERIAL_No] = 4
+    [MATERIAL_TAG] = Steel-Beam-V
+      [MATERIAL_TYPE] = Bilinear
+      [Ei] = 200
+      [SHR] = 0.02
+      [fyt] = 0.15
+      [fyc] = 0.15
+      [Nu] = 0.3
+----------------------
+
+----------------------
+    [MATERIAL_No] = 5
+    [MATERIAL_TAG] = PZ
+      [MATERIAL_TYPE] = Bilinear
+      [Ei] = 200
+      [SHR] = 0.02
+      [fyt] = 0.5148
+      [fyc] = 0.33
+      [Nu] = 0.3
+----------------------
+
+   The Num. of [MATERIAL] = 5
 ========================================
 
 
@@ -147,5 +204,27 @@
 ========================================
 [5]ReadNodalLoad()
 ----------------------------------------
-  a.Get COMMAND of [LOADPATTERN]W/O[GUI_LOADPATTERN]
+  b.Get COMMAND of [GUI_LOADPATTERN]
+----------------------
+    [NODE_TAG] = N1
+      [LOAD_CASE] = PLoad
+        [FX] = 0
+        [FY] = 0
+        [FZ] = 0
+        [MX] = 0
+        [MY] = 0
+        [MZ] = 0
+----------------------
+
+----------------------
+    [NODE_TAG] = N3
+      [LOAD_CASE] = PLoad
+        [FX] = 0
+        [FY] = 0
+        [FZ] = 0
+        [MX] = 0
+        [MY] = 0
+        [MZ] = 0
+----------------------
+
 ========================================
