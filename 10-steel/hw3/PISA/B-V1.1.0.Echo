@@ -1,0 +1,137 @@
+                                   PISA3D
+           Platform of Inelastic Structural Analysis for 3D Systems
+
+           Developed by: Bo-Zhou LIN, Yi-Jer YU, and Ker-Chyuan TSAI
+           PISA3D Website: http://pisa.ncree.org.tw 
+           Copyright(C) 2003-2011,
+           National Center for Research on Earthquake Engineering, Taiwan
+           Dept. of Civil Engineering, National Taiwan University
+           All rights reserved.
+ ================================================================================
+ Analysis Title : A
+ Force Unit     : kN
+ Length Unit    : mm
+ --------------------------------------------------------------------------------
+
+ Control Data
+
+	 Dimension        = 3
+	 GeometricNLCode  = 1
+ --------------------------------------------------------------------------------
+
+ Analysis Method
+
+   1.Static Analysis (Load Control): Load Steps=100
+                                     Load Pattern: { PLOAD 1.000  }
+ --------------------------------------------------------------------------------
+
+ Model Scope
+
+   Model Type             :   3D Model
+   Num. of Nodes          :          6    Num. of Materials     :          5
+   Num. of Fibers         :          0    Num. of InterSurfaces :          0
+   Num. of Sections       :          2    Num. of RigidEndZones :          4
+   Num. of Elements       :          5    Num. of ElementLoads  :          0
+   Num. of ElemLoadCases  :          0    Num. of LoadPatterns  :          1
+   Num. of Energy Groups  :          0    Num. of Force Groups  :          0
+   Num. of Equations      :         25
+   Reqd. Size of K Matrix :       1.00 KB (205)
+ --------------------------------------------------------------------------------
+
+ Node Data
+
+                       Coordinates                          Restraints
+   Tag         X            Y            Z          UX   UY   UZ   RX   RY   RZ
+ -------  --------------------------------------  -------------------------------
+   N1      1.000E+003   1.800E+003   0.000E+000      0    0    0    0    0    0
+   N2      1.000E+003   1.800E+003   4.000E+003      0    0    0    0    0    0
+   N3      1.000E+003   1.800E+003   8.000E+003      0    0    0    0    0    0
+   N4      1.000E+003   0.000E+000   4.000E+003     -1   -1   -1    0    0    0
+   N5      1.000E+003   3.600E+003   4.000E+003     -1   -1   -1    0    0    0
+   NEW-NODE   1.000E+003   1.800E+003   4.000E+003     N2   N2   N2    0   N2   N2
+ --------------------------------------------------------------------------------
+
+ DOF ID Table
+
+   Nodal                 ID Number of Nodal DOF
+    Tag        UX      UY      UZ      RX      RY      RZ
+ ----------  --------------------------------------------------
+   N1          7       8       9       10      11      12      
+   N2          13      14      15      22      17      18      
+   N3          1       2       3       4       5       6       
+   N4          0       0       0       23      24      25      
+   N5          0       0       0       19      20      21      
+   NEW-NODE    13      14      15      16      17      18      
+ --------------------------------------------------------------------------------
+
+ Nodal Lump Mass Data
+
+   Node       UX          UY          UZ          RX          RY          RZ
+ ------- ------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+
+ Material Data
+
+   Tag       Type                          Parameters
+ --------  ---------------  -----------------------------------------------------
+   STEEL-COL    Bilinear       Ei=200.000  SHR=0.02  fyt=0.33  fyc=-0.33 £h=0.30  
+   STEEL-BEAM    Bilinear       Ei=200.000  SHR=0.02  fyt=0.25  fyc=-0.25 £h=0.30  
+   STEEL-COL-V    Bilinear       Ei=200.000  SHR=0.02  fyt=0.20  fyc=-0.20 £h=0.30  
+   STEEL-BEAM-V    Bilinear       Ei=200.000  SHR=0.02  fyt=0.15  fyc=-0.15 £h=0.30  
+   PZ        Bilinear       Ei=200.000  SHR=0.02  fyt=0.51  fyc=-0.33 £h=0.30  
+ --------------------------------------------------------------------------------
+
+ Section Data
+
+   Tag       Type                          Parameters
+ --------  ---------------  -----------------------------------------------------
+   BEAM-SEC    BCSection03    Mat.= STEEL-BEAM, STEEL-BEAM, STEEL-BEAM, STEEL-BEAM, STEEL-BEAM-V, STEEL-BEAM-V, STEEL-BEAM-V, STEEL-BEAM-V, STEEL-BEAM
+                            A=2.067E+004 Iz=1.264E+009 Iy=6.783E+007 J=3.231E+006
+                            InterSurf.=None Sz=4.212E+006 Sy=5.427E+005 Avy=8.400E+003 Avz=1.083E+004
+   COL-SEC    BCSection03    Mat.= STEEL-COL, STEEL-COL, STEEL-COL, STEEL-COL, STEEL-COL-V, STEEL-COL-V, STEEL-COL-V, STEEL-COL-V, STEEL-COL
+                            A=3.232E+004 Iz=9.321E+008 Iy=3.416E+008 J=9.160E+006
+                            InterSurf.=None Sz=4.661E+006 Sy=1.708E+006 Avy=8.000E+003 Avz=2.133E+004
+ --------------------------------------------------------------------------------
+
+ RigidEndZone Data
+
+   Tag      EccX-I      EccX-J      EccY-I      EccY-J      EccZ-I      EccZ-J
+ ------- ------------------------------------------------------------------------
+   E2_REZ  0.000E+000  0.000E+000  0.000E+000  0.000E+000  2.000E+002  0.000E+000
+   E1_REZ  0.000E+000  0.000E+000  0.000E+000  0.000E+000  0.000E+000  2.000E+002
+   E3_REZ  0.000E+000  0.000E+000  0.000E+000  3.000E+002  0.000E+000  0.000E+000
+   E4_REZ  0.000E+000  0.000E+000  3.000E+002  0.000E+000  0.000E+000  0.000E+000
+ --------------------------------------------------------------------------------
+
+ Element Data
+
+   Tag       Type                          Parameters
+ --------  ---------------  -----------------------------------------------------
+   E1        BeamColumn     I=N1 J=NEW-NODE Sec.=BEAM-SEC REZ=E1_REZ E_Gp=0 F_Gp=0
+                            GeoK=0 OutCode=0 FEFCase=None LFac=0.0 PhiY=0 
+   E2        BeamColumn     I=NEW-NODE J=N3 Sec.=BEAM-SEC REZ=E2_REZ E_Gp=0 F_Gp=0
+                            GeoK=0 OutCode=0 FEFCase=None LFac=0.0 PhiY=0 
+   E3        BeamColumn     I=N4 J=N2 Sec.=COL-SEC REZ=E3_REZ E_Gp=0 F_Gp=0
+                            GeoK=0 OutCode=0 FEFCase=None LFac=0.0 PhiY=0 
+   E4        BeamColumn     I=N2 J=N5 Sec.=COL-SEC REZ=E4_REZ E_Gp=0 F_Gp=0
+                            GeoK=0 OutCode=0 FEFCase=None LFac=0.0 PhiY=0 
+   J1        Joint          I=N2 J=NEW-NODE Mat.=PZ Ki=9.305E+008 E_Gp=0
+                            OutCode=0 LocalDir.=RZ
+ --------------------------------------------------------------------------------
+
+ Load Pattern Data
+
+   NodalLoad  PLOAD        
+   -------------------------------------
+   Node       FX          FY          FZ          MX          MY          MZ
+ ------- ------------------------------------------------------------------------
+   N1     0.000E+000 -1.200E+002  0.000E+000  0.000E+000  0.000E+000  0.000E+000
+   N3     0.000E+000  1.200E+002  0.000E+000  0.000E+000  0.000E+000  0.000E+000
+ --------------------------------------------------------------------------------
+
+ Starting Load Control Analysis...
+ Load Control Analysis has succeeded!
+
+ Total Analysis Methods Performed: 1
+ Analysis Time Elapsed: 0.705 Sec.
+
