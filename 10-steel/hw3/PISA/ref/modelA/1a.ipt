@@ -1,0 +1,66 @@
+PISA3D
+HW3_1
+kN
+mm
+ControlData    GeometricNL  1
+GUI_Analysis  LoadControl  PUSH-Y  PUSH-Y  1  200  ON
+Analysis  LoadControl  PUSH-Y  1  200
+GUI_GRID  XDIR  0  4000  8000
+GUI_GRID  YDIR  0  1800  3600
+GUI_GRID  ZDIR  0  4000
+
+
+
+
+Node  N1 0 1800 4000
+Node  N2 4000 1800 4000
+Node  N3 8000 1800 4000
+Node  N4 4000 0 4000
+Node  N5 4000 3600 4000
+DOF  N4 -1 -1 -1 0 0 0 
+
+DOF  N5 -1 -1 -1 0 0 0 
+
+LoadPattern  NodalLoad  PUSH-Y N1 0 -120 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH-Y N1 0 -120 0 0 0 0 
+LoadPattern  NodalLoad  PUSH-Y N3 0 120 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH-Y N3 0 120 0 0 0 0 
+Element  BeamColumn   E1 N1 N2 beam 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E2 N2 N3 beam 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E3 N2 N4 column 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E4 N2 N5 column 0 0 0  0 0 0  0  0   
+GUI_ElementLoad FEF DL  E1   UniformElementLoad GRAVITY 0.00267
+GUI_ElementLoad FEF DL  E2   UniformElementLoad GRAVITY 0.00267
+GUI_ElementLoad FEF DL  E3   UniformElementLoad GRAVITY 0.00479
+GUI_ElementLoad FEF DL  E4   UniformElementLoad GRAVITY 0.00479
+
+% MATERIAL DATA %
+Material  Bilinear steel-col 200 0.02 0.33 0.33 0.3 
+
+Material  Bilinear steel-PZ 200 0.02 0.572 0.572 0.3 
+
+Material  Bilinear steel-col-V 200 0.02 0.198 0.198 0.3 
+
+Material  Bilinear steel-beam 200 0.02 0.25 0.25 0.3 
+
+Material  Bilinear steel-beaM-V 200 0.02 0.15 0.15 0.3 
+
+
+% SECTION DATA %
+GUI_Section I_SHAPE_SECTION beam steel-beam steel-beam steel-beam steel-beam steel-beaM-V steel-beaM-V steel-beaM-V steel-beaM-V steel-beam 0 600 250 26 14 250 26 
+GUI_SECTION_PROPERTY_FACTOR beam 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR beam 1  0.501961  0  
+Section  BCSection03 beam steel-beam steel-beam steel-beam steel-beam steel-beaM-V steel-beaM-V steel-beaM-V steel-beaM-V steel-beam 0 20672 1.26352e+09 6.78336e+07 3.23058e+06 4.21175e+06 542669 8400 10833.3 
+
+GUI_Section I_SHAPE_SECTION column steel-col steel-col steel-col steel-col steel-col-V steel-col-V steel-col-V steel-col-V steel-col 0 400 400 32 20 400 32 
+GUI_SECTION_PROPERTY_FACTOR column 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR column 0  0.501961  0  
+Section  BCSection03 column steel-col steel-col steel-col steel-col steel-col-V steel-col-V steel-col-V steel-col-V steel-col 0 32320 9.3212e+08 3.41557e+08 9.16013e+06 4.6606e+06 1.70779e+06 8000 21333.3 
+
+GUI_LoadCase  DL  PUSH-Y  GUI_AREA_LOAD_DL  
+GUI_AREA_LOAD_ASSIGNED_TYPE  BY_BEAN_SPAN_LOAD
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+GUI_RESPONSE_HISTORY  BEAMCOLUMN_RESPONSE  [BEAMCOLUMN]-[E1]-[1]-[2]  E1  5  1  FALSE
+STOP
