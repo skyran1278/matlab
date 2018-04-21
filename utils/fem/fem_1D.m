@@ -17,7 +17,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 % @return {array} [force] force.
 % @return {array} [displacements] displacements.
 % @return {array} [stress] stress.
-% @see gauss_const, lagrange_interpolation, gauss_quadrature, solution
+% @see gauss_const, lagrange_interpolation, gauss_quadrature, solution, gauss_quadrature_curry
 %
 
     syms xi;
@@ -25,6 +25,8 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
     number_element_nodes = length(element_nodes);
 
     ngp = fix(number_element_nodes / 2) + 1;
+
+    gauss_quadrature = gauss_quadrature_curry(ngp);
 
     xc = linspace(-1, 1, number_element_nodes);
 
