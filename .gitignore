@@ -1,0 +1,17 @@
+# 10-steel/**/*.ipt_COPY
+# 10-steel/**/*.ipt_echo
+# 10-steel/**/*.Echo
+# 10-steel/**/*.ElemEnvelope
+# 10-steel/**/*.ElemRecord
+# 10-steel/**/*.Energy
+# 10-steel/**/*.ipt_COPY
+# 10-steel/**/*.ipt_echo
+# 10-steel/**/*.NodeDisRecord
+# 10-steel/**/*.NodeEnvelope
+# 10-steel/**/*.SectionX
+# 10-steel/**/*.SectionY
+# 10-steel/**/*.SectionZ
+# 10-steel/**/*.showElem1
+# 10-steel/**/*.showEngy
+# 10-steel/**/*.showNode1
+# 10-steel/**/*.VISA3D

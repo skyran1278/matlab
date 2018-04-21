@@ -5,24 +5,24 @@ mm
 ControlData    GeometricNL  1
 GUI_Analysis  LoadControl  PUSH  PLoad  1  100  ON
 Analysis  LoadControl  PLoad  1  100
-GUI_GRID  XDIR  1000  2000
+GUI_GRID  XDIR  0  4000  8000
 GUI_GRID  YDIR  0  1800  3600
 GUI_GRID  ZDIR  0  4000  8000
 
 
 
 
-Node  N1 1000 1800 0
-Node  N2 1000 1800 4000
-Node  N3 1000 1800 8000
-Node  N4 1000 0 4000
-Node  N5 1000 3600 4000
-Node  New-Node 1000 1800 4000
+Node  N1 0 1800 0
+Node  N2 4000 1800 0
+Node  N3 8000 1800 0
+Node  N4 4000 0 0
+Node  N5 4000 3600 0
+Node  New-Node 4000 1800 0
 DOF  N4 -1 -1 -1 0 0 0 
 
 DOF  N5 -1 -1 -1 0 0 0 
 
-DOF  New-Node N2  N2 N2 0 N2 N2 
+DOF  New-Node N2  N2 N2 N2 N2 0 
 
 LoadPattern  NodalLoad  PLoad N1 0 -120 0 0 0 0 
 GUI_LoadPattern  NodalLoad  PLoad N1 0 -120 0 0 0 0 
@@ -34,6 +34,10 @@ Element  BeamColumn   E3 N4 N2 Col-Sec E3_REZ  0 0  0 0 0  0  0
 Element  BeamColumn   E4 N2 N5 Col-Sec E4_REZ  0 0  0 0 0  0  0   
 Element  Joint  J1  N2  New-Node  PZ  9.30462e+08  RZ  0 0  
 GUI_Element  Joint  J1  N2  New-Node  PZ-Taiwan  0 0  
+GUI_ElementLoad FEF DL  E1   UniformElementLoad GRAVITY 0.00267
+GUI_ElementLoad FEF DL  E2   UniformElementLoad GRAVITY 0.00267
+GUI_ElementLoad FEF DL  E3   UniformElementLoad GRAVITY 0.00479
+GUI_ElementLoad FEF DL  E4   UniformElementLoad GRAVITY 0.00479
 
 % MATERIAL DATA %
 Material  Bilinear Steel-Col 200 0.02 0.33 0.33 0.3 
@@ -62,15 +66,14 @@ RigidEndZone  E2_REZ  0  0  0  0  200  0
 RigidEndZone  E1_REZ  0  0  0  0  0  200
 RigidEndZone  E3_REZ  0  0  0  300  0  0
 RigidEndZone  E4_REZ  0  0  300  0  0  0
-GUI_LoadCase  PLoad  
+GUI_LoadCase  PLoad  DL  
 GUI_AREA_LOAD_ASSIGNED_TYPE  BY_BEAN_SPAN_LOAD
 GUI_Output  OutFlag  1  1  0  2  2  1  1
 Output  OutFlag  1  1  0  2  2  1  1
 % RESPONSE HISTORY %
-GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N4]-[1]-[1]  N4  1  0  FALSE
-GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N2]-[2]-[1]  N2  5  0  FALSE
 GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N1]-[1]-[1]  N1  1  0  FALSE
-GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N3]-[1]-[1]  N3  1  0  FALSE
+GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[New-Node]-[1]-[1]  New-Node  5  0  FALSE
+GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N2]-[6]-[1]  N2  5  0  FALSE
 GUI_JOINT_ELEMENT_PROPERTIES  PZ-Taiwan  JOINT_ELEMENT  PZ  9.30462e+08  RZ  0  0  0
 GUI_JOINT_ELEMENT_PROPERTIES_DISPLAY_COLOR PZ-Taiwan 1  1  0  
 STOP
