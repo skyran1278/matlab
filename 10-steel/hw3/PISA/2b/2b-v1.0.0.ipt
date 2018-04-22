@@ -145,54 +145,55 @@ Node  N2 0 2000 0
 Node  N3 0 4000 0
 Node  N4 6000 2000 0
 Node  New-node 0 2000 0
-DOF  N1 -1 -1 -1 0 0 0
+DOF  N1 -1 -1 -1 0 0 0 
 
-DOF  N3 -1 -1 -1 0 0 0
+DOF  N3 -1 -1 -1 0 0 0 
 
-DOF  New-node N2  N2 N2 N2 N2 0
+DOF  New-node N2  N2 N2 N2 N2 0 
 
-LoadPattern  NodalLoad  PUSH N4 0 1 0 0 0 0
-GUI_LoadPattern  NodalLoad  PUSH N4 0 1 0 0 0 0
-Element  BeamColumn   E3 New-node N4 BEAM E3_REZ  0 0  0 0 0  0  0
-Element  BeamColumn   E1 N1 N2 COLUMN E1_REZ  0 0  0 0 0  0  0
-Element  BeamColumn   E2 N2 N3 COLUMN E2_REZ  0 0  0 0 0  0  0
-Element  Joint  J1  N2  New-node  PZ-MAT  1.79186e+09  RZ  0 0
-GUI_Element  Joint  J1  N2  New-node  J-pro  0 0
+LoadPattern  NodalLoad  PUSH N4 0 1 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH N4 0 1 0 0 0 0 
+Element  BeamColumn   E3 New-node N4 BEAM E3_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   E1 N1 N2 COLUMN E1_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   E2 N2 N3 COLUMN E2_REZ  0 0  0 0 0  0  0   
+Element  Joint  J1  N2  New-node  PZ-MAT  1.79186e+09  RZ  0 0  
+GUI_Element  Joint  J1  N2  New-node  J-pro  0 0  
 
 % MATERIAL DATA %
-Material  Bilinear Steel-col 200 0.02 0.41536 0.41536 0.3
+Material  Bilinear Steel-col 200 0.02 0.41536 0.41536 0.3 
 
-Material  Bilinear Steel-beam 200 0.02 0.41536 0.41536 0.3
+Material  Bilinear Steel-beam 200 0.02 0.41536 0.41536 0.3 
 
-Material  Bilinear Steel-beam_V 200 0.02 0.219 0.219 0.3
+Material  Bilinear Steel-beam_V 200 0.02 0.219 0.219 0.3 
 
-Material  Bilinear Steel-col_V 200 0.02 0.249 0.249 0.3
+Material  Bilinear Steel-col_V 200 0.02 0.249 0.249 0.3 
 
-Material  Bilinear PZ-MAT 128.21 0.02 0.41536 0.41536 0.3
+Material  Bilinear PZ-MAT 128.21 0.02 0.41536 0.41536 0.3 
 
-Material  Hardening beam-SH 200 0.415 0.415 0.005 5 0.005 5 1 24 2.3 0.3 10
+Material  Hardening beam-SH 200 0.415 0.415 0.005 5 0.005 5 1 24 2.3 0.3 10 
 
-Material  Hardening beam-SH_V 200 0.219 0.219 0.005 5 0.005 5 1 24 2.3 0.3 10
+Material  Hardening beam-SH_V 200 0.219 0.219 0.005 5 0.005 5 1 24 2.3 0.3 10 
 
-Material  Hardening column-SH 200 0.415 0.415 0.005 5 0.005 5 1 24 2.3 0.3 10
+Material  Hardening column-SH 200 0.415 0.415 0.005 5 0.005 5 1 24 2.3 0.3 10 
 
-Material  Hardening column-SH_V 200 0.249 0.249 0.005 5 0.005 5 1 24 2.3 0.3 10
+Material  Hardening column-SH_V 200 0.249 0.249 0.005 5 0.005 5 1 24 2.3 0.3 10 
+
 
 % SECTION DATA %
-GUI_Section I_SHAPE_SECTION BEAM beam-SH beam-SH beam-SH beam-SH beam-SH_V beam-SH_V beam-SH_V beam-SH_V beam-SH 0 600 400 30 20 400 30
-GUI_SECTION_PROPERTY_FACTOR BEAM 1 1 1 1 1.125 1 1 1
-GUI_SECTION_DISPLAY_COLOR BEAM 1  0  0
-Section  BCSection03 BEAM beam-SH beam-SH beam-SH beam-SH beam-SH_V beam-SH_V beam-SH_V beam-SH_V beam-SH 0 34800 2.21364e+09 3.2036e+08 8.2662e+06 8.30115e+06 1.6018e+06 12000 20000
+GUI_Section I_SHAPE_SECTION BEAM beam-SH beam-SH beam-SH beam-SH beam-SH_V beam-SH_V beam-SH_V beam-SH_V beam-SH 0 600 400 30 20 400 30 
+GUI_SECTION_PROPERTY_FACTOR BEAM 1 1 1 1 1.125 1 1 1 
+GUI_SECTION_DISPLAY_COLOR BEAM 1  0  0  
+Section  BCSection03 BEAM beam-SH beam-SH beam-SH beam-SH beam-SH_V beam-SH_V beam-SH_V beam-SH_V beam-SH 0 34800 2.21364e+09 3.2036e+08 8.2662e+06 8.30115e+06 1.6018e+06 12000 20000 
 
-GUI_Section BOX_SECTION COLUMN column-SH column-SH column-SH column-SH column-SH_V column-SH_V column-SH_V column-SH_V column-SH 0 550 550 30 30
-GUI_SECTION_PROPERTY_FACTOR COLUMN 1 1 1 1 1.125 1 1 1
-GUI_SECTION_DISPLAY_COLOR COLUMN 0  0.501961  0.752941
-Section  BCSection03 COLUMN column-SH column-SH column-SH column-SH column-SH_V column-SH_V column-SH_V column-SH_V column-SH 0 62400 2.82152e+09 2.82152e+09 4.21824e+09 1.15426e+07 1.02601e+07 33000 33000
+GUI_Section BOX_SECTION COLUMN column-SH column-SH column-SH column-SH column-SH_V column-SH_V column-SH_V column-SH_V column-SH 0 550 550 30 30 
+GUI_SECTION_PROPERTY_FACTOR COLUMN 1 1 1 1 1.125 1 1 1 
+GUI_SECTION_DISPLAY_COLOR COLUMN 0  0.501961  0.752941  
+Section  BCSection03 COLUMN column-SH column-SH column-SH column-SH column-SH_V column-SH_V column-SH_V column-SH_V column-SH 0 62400 2.82152e+09 2.82152e+09 4.21824e+09 1.15426e+07 1.02601e+07 33000 33000 
 
 RigidEndZone  E2_REZ  0  0  300  0  0  0
 RigidEndZone  E1_REZ  0  0  0  300  0  0
 RigidEndZone  E3_REZ  275  0  0  0  0  0
-GUI_LoadCase  PUSH
+GUI_LoadCase  PUSH  
 GUI_AREA_LOAD_ASSIGNED_TYPE  BY_BEAN_SPAN_LOAD
 GUI_Output  OutFlag  1  1  0  2  2  1  1
 Output  OutFlag  1  1  0  2  2  1  1
@@ -202,5 +203,5 @@ GUI_RESPONSE_HISTORY  ENERGY_GROUP_RESPONSE  [ENERGY_GROUP]-[All_Groups]-[3]  Al
 GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N4]-[1]-[1]  N4  5  0  FALSE
 GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N2]-[1]-[1]  N2  5  0  FALSE
 GUI_JOINT_ELEMENT_PROPERTIES  J-pro  JOINT_ELEMENT  PZ-MAT  1.79186e+09  RZ  0  0  0
-GUI_JOINT_ELEMENT_PROPERTIES_DISPLAY_COLOR J-pro 1  1  0
+GUI_JOINT_ELEMENT_PROPERTIES_DISPLAY_COLOR J-pro 1  1  0  
 STOP
