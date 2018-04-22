@@ -7,13 +7,13 @@ time_interval = 0.005;
 
 damping_ratio = 0.05;
 
-tn = 0.033;
+tn = 0.1;
 
 method = 'average';
 
 wn = (2 * pi) / tn;
 
-m = 10;
+m = 500;
 c = 2 * damping_ratio * wn * m;
 k = (wn ^ 2) * m;
 
