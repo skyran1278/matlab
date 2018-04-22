@@ -1,0 +1,206 @@
+PISA3D
+hw3_2a
+kN
+mm
+ControlData    GeometricNL  1
+GUI_Analysis  AbsDispControl  0.375-1  PUSH  1  22.5  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  22.5  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-2  PUSH  1  -45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-3  PUSH  1  45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-4  PUSH  1  -45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-5  PUSH  1  45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-6  PUSH  1  -45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-7  PUSH  1  45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-8  PUSH  1  -45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-9  PUSH  1  45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-10  PUSH  1  -45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-11  PUSH  1  45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.375-12  PUSH  1  -45  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -45  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-1  PUSH  1  52.5  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  52.5  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-2  PUSH  1  -60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-3  PUSH  1  60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-4  PUSH  1  -60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-5  PUSH  1  60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-6  PUSH  1  -60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-7  PUSH  1  60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-8  PUSH  1  -60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-9  PUSH  1  60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-10  PUSH  1  -60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-11  PUSH  1  60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.5-12  PUSH  1  -60  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -60  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-1  PUSH  1  75  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  75  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-2  PUSH  1  -90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-3  PUSH  1  90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-4  PUSH  1  -90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-5  PUSH  1  90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-6  PUSH  1  -90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-7  PUSH  1  90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-8  PUSH  1  -90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-9  PUSH  1  90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-10  PUSH  1  -90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-11  PUSH  1  90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  90  50  N4  UY
+GUI_Analysis  AbsDispControl  0.75-12  PUSH  1  -90  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -90  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-1  PUSH  1  105  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  105  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-2  PUSH  1  -120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-3  PUSH  1  120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-4  PUSH  1  -120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-5  PUSH  1  120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-6  PUSH  1  -120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-7  PUSH  1  120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.0-8  PUSH  1  -120  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -120  50  N4  UY
+GUI_Analysis  AbsDispControl  1.5-1  PUSH  1  150  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  150  50  N4  UY
+GUI_Analysis  AbsDispControl  1.5-2  PUSH  1  -180  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -180  50  N4  UY
+GUI_Analysis  AbsDispControl  1.5-3  PUSH  1  180  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  180  50  N4  UY
+GUI_Analysis  AbsDispControl  1.5-4  PUSH  1  -180  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -180  50  N4  UY
+GUI_Analysis  AbsDispControl  2.0-1  PUSH  1  210  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  210  50  N4  UY
+GUI_Analysis  AbsDispControl  2.0-2  PUSH  1  -240  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -240  50  N4  UY
+GUI_Analysis  AbsDispControl  2.0-3  PUSH  1  240  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  240  50  N4  UY
+GUI_Analysis  AbsDispControl  2.0-4  PUSH  1  -240  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -240  50  N4  UY
+GUI_Analysis  AbsDispControl  3.0-1  PUSH  1  300  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  300  50  N4  UY
+GUI_Analysis  AbsDispControl  3.0-2  PUSH  1  -360  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -360  50  N4  UY
+GUI_Analysis  AbsDispControl  3.0-3  PUSH  1  360  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  360  50  N4  UY
+GUI_Analysis  AbsDispControl  3.0-4  PUSH  1  -360  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -360  50  N4  UY
+GUI_Analysis  AbsDispControl  4.0-1  PUSH  1  420  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  420  50  N4  UY
+GUI_Analysis  AbsDispControl  4.0-2  PUSH  1  -480  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -480  50  N4  UY
+GUI_Analysis  AbsDispControl  4.0-3  PUSH  1  480  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  480  50  N4  UY
+GUI_Analysis  AbsDispControl  4.0-4  PUSH  1  -480  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -480  50  N4  UY
+GUI_Analysis  AbsDispControl  5.0-1  PUSH  1  540  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  540  50  N4  UY
+GUI_Analysis  AbsDispControl  5.0-2  PUSH  1  -600  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -600  50  N4  UY
+GUI_Analysis  AbsDispControl  5.0-3  PUSH  1  600  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  600  50  N4  UY
+GUI_Analysis  AbsDispControl  5.0-4  PUSH  1  -600  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  -600  50  N4  UY
+GUI_Analysis  AbsDispControl  5.0-5  PUSH  1  300  50  N4  UY  ON
+Analysis  AbsDispControl  PUSH  1  300  50  N4  UY
+GUI_GRID  XDIR  0  6000
+GUI_GRID  YDIR  0  2000  4000
+GUI_GRID  ZDIR  0  1000
+
+
+
+
+Node  N1 0 0 0
+Node  N2 0 2000 0
+Node  N3 0 4000 0
+Node  N4 6000 2000 0
+Node  New-node 0 2000 0
+DOF  N1 -1 -1 -1 0 0 0
+
+DOF  N3 -1 -1 -1 0 0 0
+
+DOF  New-node N2  N2 N2 N2 N2 0
+
+LoadPattern  NodalLoad  PUSH N4 0 1 0 0 0 0
+GUI_LoadPattern  NodalLoad  PUSH N4 0 1 0 0 0 0
+Element  BeamColumn   E3 New-node N4 BEAM E3_REZ  0 0  0 0 0  0  0
+Element  BeamColumn   E1 N1 N2 COLUMN E1_REZ  0 0  0 0 0  0  0
+Element  BeamColumn   E2 N2 N3 COLUMN E2_REZ  0 0  0 0 0  0  0
+Element  Joint  J1  N2  New-node  PZ-MAT  1.79186e+09  RZ  0 0
+GUI_Element  Joint  J1  N2  New-node  J-pro  0 0
+
+% MATERIAL DATA %
+Material  Bilinear Steel-col 200 0.02 0.41536 0.41536 0.3
+
+Material  Bilinear Steel-beam 200 0.02 0.41536 0.41536 0.3
+
+Material  Bilinear Steel-beam_V 200 0.02 0.219 0.219 0.3
+
+Material  Bilinear Steel-col_V 200 0.02 0.249 0.249 0.3
+
+Material  Bilinear PZ-MAT 128.21 0.02 0.41536 0.41536 0.3
+
+Material  Hardening beam-SH 200 0.415 0.415 0.005 5 0.005 5 1 24 2.3 0.3 10
+
+Material  Hardening beam-SH_V 200 0.219 0.219 0.005 5 0.005 5 1 24 2.3 0.3 10
+
+Material  Hardening column-SH 200 0.415 0.415 0.005 5 0.005 5 1 24 2.3 0.3 10
+
+Material  Hardening column-SH_V 200 0.249 0.249 0.005 5 0.005 5 1 24 2.3 0.3 10
+
+% SECTION DATA %
+GUI_Section I_SHAPE_SECTION BEAM beam-SH beam-SH beam-SH beam-SH beam-SH_V beam-SH_V beam-SH_V beam-SH_V beam-SH 0 600 400 30 20 400 30
+GUI_SECTION_PROPERTY_FACTOR BEAM 1 1 1 1 1.125 1 1 1
+GUI_SECTION_DISPLAY_COLOR BEAM 1  0  0
+Section  BCSection03 BEAM beam-SH beam-SH beam-SH beam-SH beam-SH_V beam-SH_V beam-SH_V beam-SH_V beam-SH 0 34800 2.21364e+09 3.2036e+08 8.2662e+06 8.30115e+06 1.6018e+06 12000 20000
+
+GUI_Section BOX_SECTION COLUMN column-SH column-SH column-SH column-SH column-SH_V column-SH_V column-SH_V column-SH_V column-SH 0 550 550 30 30
+GUI_SECTION_PROPERTY_FACTOR COLUMN 1 1 1 1 1.125 1 1 1
+GUI_SECTION_DISPLAY_COLOR COLUMN 0  0.501961  0.752941
+Section  BCSection03 COLUMN column-SH column-SH column-SH column-SH column-SH_V column-SH_V column-SH_V column-SH_V column-SH 0 62400 2.82152e+09 2.82152e+09 4.21824e+09 1.15426e+07 1.02601e+07 33000 33000
+
+RigidEndZone  E2_REZ  0  0  300  0  0  0
+RigidEndZone  E1_REZ  0  0  0  300  0  0
+RigidEndZone  E3_REZ  275  0  0  0  0  0
+GUI_LoadCase  PUSH
+GUI_AREA_LOAD_ASSIGNED_TYPE  BY_BEAN_SPAN_LOAD
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+GUI_RESPONSE_HISTORY  BEAMCOLUMN_RESPONSE  [BEAMCOLUMN]-[E3]-[1]-[2]  E3  5  2  FALSE
+GUI_RESPONSE_HISTORY  ENERGY_GROUP_RESPONSE  [ENERGY_GROUP]-[All_Groups]-[3]  All_Groups  2  FALSE
+GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N4]-[1]-[1]  N4  5  0  FALSE
+GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N2]-[1]-[1]  N2  5  0  FALSE
+GUI_JOINT_ELEMENT_PROPERTIES  J-pro  JOINT_ELEMENT  PZ-MAT  1.79186e+09  RZ  0  0  0
+GUI_JOINT_ELEMENT_PROPERTIES_DISPLAY_COLOR J-pro 1  1  0
+STOP
