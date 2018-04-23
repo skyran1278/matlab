@@ -16,3 +16,9 @@
 10-steel/**/*.showNode1
 10-steel/**/*.VISA3D
 10-steel/**/*.Element
+**/*.$ET
+**/*.ebk
+**/*.U
+**/*.V
+**/*.Y11
+**/*.Z11
