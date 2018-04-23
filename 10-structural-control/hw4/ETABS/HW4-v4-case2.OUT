@@ -1,0 +1,160 @@
+                                 E T A B S (R)                                  
+
+                                 Version 9.6.0.0                                
+
+                            Copyright (C) 1984-2009                             
+                         COMPUTERS AND STRUCTURES, INC.                         
+                              All rights reserved                               
+
+                 This copy of ETABS is for the exclusive use of                 
+
+                                  THE LICENSEE                                  
+
+           Unauthorized use is in violation of Federal copyright laws           
+
+               It is the responsibility of the user to verify all               
+                        results produced by this program                        
+
+                             23 Apr 2018  12:55:40                              
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               1
+
+ D I S P L A C E M E N T   D E G R E E S   O F   F R E E D O M
+
+         (A) = Active DOF, equilibrium equation
+         (-) = Restrained DOF, reaction computed
+         (+) = Constrained DOF
+         (>) = External substructure DOF
+         ( ) = Null DOF
+
+  JOINTS              UX  UY  UZ  RX  RY  RZ
+       1               A       A       A    
+       2               -   -   -   -   -   -
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               2
+
+ A S S E M B L E D   J O I N T   M A S S E S
+
+ IN GLOBAL COORDINATES
+
+   JOINT          UX          UY          UZ          RX          RY          RZ
+       1  500.000000  500.000000     .000000     .000000     .000000     .000000
+
+
+ T O T A L   A S S E M B L E D   J O I N T   M A S S E S
+
+ IN GLOBAL COORDINATES
+
+                  UX          UY          UZ          RX          RY          RZ
+   TOTAL  500.000000  500.000000     .000000     .000000     .000000     .000000
+
+
+ T O T A L   A C C E L E R A T E D   M A S S   A N D   L O C A T I O N
+
+ TOTAL MASS ACTIVATED BY ACCELERATION LOADS, IN GLOBAL COORDINATES
+
+                  UX          UY          UZ
+    MASS  500.000000     .000000     .000000
+   X-LOC     .000000     .000000     .000000
+   Y-LOC     .000000     .000000     .000000
+   Z-LOC    2.000000     .000000     .000000
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               3
+
+ M O D A L   P E R I O D S   A N D   F R E Q U E N C I E S
+
+    MODE      PERIOD   FREQUENCY   FREQUENCY  EIGENVALUE
+              (TIME)  (CYC/TIME)  (RAD/TIME)  (RAD/TIME)**2
+
+       1    1.000005    0.999995    6.283152   39.478000
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               4
+
+ M O D A L   P A R T I C I P A T I O N   F A C T O R S
+
+ FOR UNIT ACCELERATION LOADS IN GLOBAL COORDINATES
+
+    MODE      PERIOD          UX          UY          UZ
+       1    1.000005   22.360680     .000000     .000000
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               5
+
+ M O D A L   P A R T I C I P A T I N G   M A S S   R A T I O S
+
+    MODE      PERIOD    INDIVIDUAL MODE (PERCENT)     CUMULATIVE SUM (PERCENT)
+                             UX       UY       UZ         UX       UY       UZ
+
+       1    1.000005   100.0000   0.0000   0.0000   100.0000   0.0000   0.0000
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               6
+
+ M O D A L   L O A D   P A R T I C I P A T I O N   R A T I O S
+
+ LOAD, ACC, OR LINK/DEF        STATIC    DYNAMIC                       EFFECTIVE
+        (TYPE)      (NAME)   (PERCENT)  (PERCENT)                         PERIOD
+
+         LOAD    DEAD          0.0000     0.0000                      -INFINITY-
+         LOAD    LIVE          0.0000     0.0000                      -INFINITY-
+         LOAD    TRIBUTAR      0.0000     0.0000                      -INFINITY-
+          ACC          UX    100.0000   100.0000                        1.000005
+          ACC          UY      0.0000     0.0000                      -INFINITY-
+          ACC          UZ      0.0000     0.0000                      -INFINITY-
+          ACC          RX      0.0000     0.0000                      -INFINITY-
+          ACC          RY    150.0000   100.0000                        0.816501
+          ACC          RZ      0.0000     0.0000                      -INFINITY-
+
+ (*) NOTE: DYNAMIC LOAD PARTICIPATION RATIO EXCLUDES LOAD APPLIED
+           TO NON-MASS DEGREES OF FREEDOM
+ Program ETABS Version 9.6.0.0                             File:HW4-v4-case2.OUT
+                                                                            Page
+                                                                               7
+
+ G L O B A L   F O R C E   B A L A N C E
+
+ TOTAL FORCE AND MOMENT AT THE ORIGIN, IN GLOBAL COORDINATES
+
+ LOADDEAD     ------------------    
+
+                  FX          FY          FZ          MX          MY          MZ
+ APPLIED     .000000     .000000     .000000     .000000     .000000     .000000
+ INERTIA     .000000     .000000     .000000     .000000     .000000     .000000
+   LINKS     .000000     .000000     .000000     .000000     .000000     .000000
+ REACTNS     .000000     .000000     .000000     .000000     .000000     .000000
+
+   TOTAL     .000000     .000000     .000000     .000000     .000000     .000000
+
+ LOADLIVE     ------------------    
+
+                  FX          FY          FZ          MX          MY          MZ
+ APPLIED     .000000     .000000     .000000     .000000     .000000     .000000
+ INERTIA     .000000     .000000     .000000     .000000     .000000     .000000
+   LINKS     .000000     .000000     .000000     .000000     .000000     .000000
+ REACTNS     .000000     .000000     .000000     .000000     .000000     .000000
+
+   TOTAL     .000000     .000000     .000000     .000000     .000000     .000000
+
+ LOADTRIBUTAR ------------------    
+
+                  FX          FY          FZ          MX          MY          MZ
+ APPLIED     .000000     .000000     .000000     .000000     .000000     .000000
+ INERTIA     .000000     .000000     .000000     .000000     .000000     .000000
+   LINKS     .000000     .000000     .000000     .000000     .000000     .000000
+ REACTNS     .000000     .000000     .000000     .000000     .000000     .000000
+
+   TOTAL     .000000     .000000     .000000     .000000     .000000     .000000
+
+ MODE       1 ------------------    
+
+                  FX          FY          FZ          MX          MY          MZ
+ APPLIED     .000000     .000000     .000000     .000000     .000000     .000000
+ INERTIA  882.754916     .000000     .000000     .000000    1765.510     .000000
+   LINKS     .000000     .000000     .000000     .000000     .000000     .000000
+ REACTNS -882.754916     .000000     .000000     .000000   -1765.510     .000000
+
+   TOTAL   -1.14E-13     .000000     .000000     .000000   -2.27E-13     .000000

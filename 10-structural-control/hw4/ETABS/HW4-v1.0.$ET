@@ -1,4 +1,4 @@
-$ File D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.$ET saved 4/23/18 9:12:13
+$ File D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.$ET saved 4/23/18 11:44:42
  
 $ PROGRAM INFORMATION
   PROGRAM  "ETABS"  VERSION "9.7.3"  
@@ -87,7 +87,7 @@ $ WALL/SLAB/DECK PROPERTIES
 
 $ LINK PROPERTIES
   LINKPROP  "K"  TYPE "LINEAR"
-  LINKPROP  "K"  DOF "U1"  KE 1973921  CE 3142
+  LINKPROP  "K"  DOF "U2"  KE 1973921
   LINKPROP  "M"  TYPE "LINEAR"  MASS 500  WEIGHT 4900
   LINKPROP  "M"  DOF "U1"
   LINKPROP  "NLPR1"  TYPE "DAMPER"
@@ -101,15 +101,15 @@ $ POINT COORDINATES
   POINT "1"  0 0 
 
 $ LINE CONNECTIVITIES
-  LINE  "C2"  COLUMN  "1"  "1"  1
+  LINE  "L2"  LINE  "1"  "1"  1
 
 $ POINT ASSIGNS
   POINTASSIGN  "1"  "STORY1"  RESTRAINT "UX UY UZ RX RY RZ"  
   POINTASSIGN  "1"  "STORY2"  MASSUXUY 500  
 
 $ LINE ASSIGNS
-  LINEASSIGN  "C2"  "STORY2"  SECTION "W44X335"  ANG  0  MINNUMSTA 3  MESH "POINTSANDLINES"  
-  LINEASSIGN  "C2"  "STORY2"  LINKPROP "NLPR1"  
+  LINEASSIGN  "L2"  "STORY2"  SECTION "NONE"  ANG  0  MINNUMSTA 3  MESH "POINTSANDLINES"  
+  LINEASSIGN  "L2"  "STORY2"  LINKPROP "K"  
 
 $ STATIC LOADS
   LOADCASE "DEAD"  TYPE  "DEAD"  SELFWEIGHT  1
@@ -119,7 +119,7 @@ $ POINT OBJECT LOADS
   POINTLOAD  "1"  "STORY2"  TYPE "FORCE"  LC "DEAD"    FZ -4900
 
 $ ANALYSIS OPTIONS
-  ACTIVEDOF "UX"  
+  ACTIVEDOF "UX UZ RY"  
   DYNAMICS  MODES 25  MODETYPE "EIGEN"  TOL 0.0000001
   MASSOPTIONS  GRAVITY 9.80665  SOURCE "LOADS"  LATERALONLY "YES"    STORYLEVELONLY "YES"  
   MASSOPTIONS  LOAD "DEAD"  FACTOR 1
@@ -228,6 +228,10 @@ ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\E
 ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 09:09:56
 ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 09:10:56
 ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 09:12:13
+ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 11:29:47
+ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 11:30:16
+ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 11:34:48
+ETABS Nonlinear 9.7.3 File saved as D:\GitHub\matlab\10-structural-control\hw4\ETABS\HW4-v1.0.EDB at 2018/4/23 上午 11:44:42
   ENDCOMMENTS  
 
   END
