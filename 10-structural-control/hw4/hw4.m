@@ -1,12 +1,12 @@
 clc; clear; close all;
 
-% plot_relative_newmark_beta('TCU052', 1);
-% plot_relative_etabs('TCU052', 1);
+plot_relative_newmark_beta('TCU052', 1);
+plot_relative_etabs('TCU052', 1);
 plot_absolute_newmark_beta('TCU052', 1);
-% plot_absolute_etabs('TCU052', 1);
-% plot_relative_newmark_beta('TCU072', 1);
-% plot_relative_etabs('TCU072', 1);
-plot_absolute_newmark_beta('TCU072', 5);
+plot_absolute_etabs('TCU052', 1);
+plot_relative_newmark_beta('TCU072', 1);
+plot_relative_etabs('TCU072', 1);
+plot_absolute_newmark_beta('TCU072', 1);
 plot_absolute_etabs('TCU072', 1);
 fclose('all');
 % ag = filename_to_array('TCU072', 4, 4, 11);
@@ -94,9 +94,9 @@ function [] = plot_relative_etabs(earthquake_name, tn)
     filename = [num2str(tn) '_' earthquake_name '_energy'];
 
     time = filename_to_array(filename, 5, 1, 12);
-    potential_energy = filename_to_array(filename, 5, 2, 12);
-    kinetic_energy = filename_to_array(filename, 5, 3, 12);
-    modal_damping_energy = filename_to_array(filename, 5, 4, 12);
+    potential_energy = filename_to_array(filename, 5, 3, 12);
+    kinetic_energy = filename_to_array(filename, 5, 4, 12);
+    modal_damping_energy = filename_to_array(filename, 5, 2, 12);
     input_energy = filename_to_array(filename, 5, 5, 12);
 
     figure;
@@ -115,9 +115,9 @@ function [] = plot_absolute_etabs(earthquake_name, tn)
     filename_abs_v = [num2str(tn) '_' earthquake_name '_abs_v'];
 
     time = filename_to_array(filename, 5, 1, 12);
-    potential_energy = filename_to_array(filename, 5, 2, 12);
-    kinetic_energy = filename_to_array(filename, 5, 3, 12);
-    modal_damping_energy = filename_to_array(filename, 5, 4, 12);
+    potential_energy = filename_to_array(filename, 5, 3, 12);
+    kinetic_energy = filename_to_array(filename, 5, 4, 12);
+    modal_damping_energy = filename_to_array(filename, 5, 2, 12);
     input_energy = filename_to_array(filename, 5, 5, 12);
 
     abs_v = filename_to_array(filename_abs_v, 2, 2, 9);
