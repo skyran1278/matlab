@@ -30,16 +30,17 @@ function [] = plot_relative_difference(earthquake_name, tn)
     modal_damping_energy_etabs = filename_to_array(filename, 5, 2, 12);
     input_energy_etabs = filename_to_array(filename, 5, 5, 12);
 
-    kinetic_energy_diff = (kinetic_energy - kinetic_energy_etabs(2 : end)) / kinetic_energy_etabs(2 : end);
-    potential_energy_diff = (potential_energy - potential_energy_etabs(2 : end)) / potential_energy_etabs(2 : end);
-    modal_damping_energy_diff = (modal_damping_energy - modal_damping_energy_etabs(2 : end)) / modal_damping_energy_etabs(2 : end);
-    input_energy_diff = (input_energy - input_energy_etabs(2 : end)) / input_energy_etabs(2 : end);
+    kinetic_energy_diff = (kinetic_energy - kinetic_energy_etabs(2 : end));
+    potential_energy_diff = (potential_energy - potential_energy_etabs(2 : end));
+    modal_damping_energy_diff = (modal_damping_energy - modal_damping_energy_etabs(2 : end));
+    input_energy_diff = (input_energy - input_energy_etabs(2 : end));
 
     figure;
     plot(time, kinetic_energy_diff, time, potential_energy_diff, time, modal_damping_energy_diff, time, input_energy_diff, '--');
     title([earthquake_name ', T = ' num2str(tn) ', relative energy difference']);
-    legend({'kinetic energy', 'potential energy', 'modal damping energy', 'input energy'}, 'Location', 'southeast');
+    legend({'kinetic energy', 'potential energy', 'modal damping energy', 'input energy'}, 'Location', 'northeast');
     xlabel('Time (s)');
-    ylabel('Energy ((newmark beta method - ETABS) / ETABS) %');
+    ylabel('Energy (newmark beta method - ETABS) (N-m^2/s^2)');
+    axis([0 90 -40 40]);
 
 end
