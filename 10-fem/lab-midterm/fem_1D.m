@@ -1,8 +1,10 @@
 function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements)
 %
 % fem for 1D.
+% 我的 stress 應該有錯，需要想一下該怎麼弄比較漂亮
+% 我覺得 stress 很髒
 %
-% @since 3.0.3
+% @since 4.0.0
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -41,7 +43,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
     stiffness = zeros(number_nodes, number_nodes);
 
-    stress = zeros(number_nodes, 1);
+    stress = zeros(number_elements * number_element_nodes, 2);
 
     % computation of the system stiffness matrix
     for e = 1 : number_elements
@@ -72,6 +74,8 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
 
     % stress
+    index_stress = 0;
+
     for e = 1 : number_elements
 
         % elementDof: element degrees of freedom (Dof)
@@ -85,7 +89,11 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
         for index_xc = 1 : number_element_nodes
 
-            stress(elementDof(index_xc)) = E(e) * Be(xc(index_xc)) * displacements(elementDof);
+            index_stress = index_stress + 1;
+
+            stress(index_stress, 1) = xe(index_xc);
+
+            stress(index_stress, 2) = E(e) * Be(xc(index_xc)) * displacements(elementDof);
 
         end
 

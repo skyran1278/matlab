@@ -62,7 +62,8 @@ ylabel('displacement (m)');
 figure;
 plot(exact_node_coordinates, exact_stress);
 hold on;
-stairs(node_coordinates, stress, 'ro:');
+% stairs(node_coordinates, stress, 'ro:');
+plot(stress(:, 1), stress(:, 2), 'ro:');
 
 legend('exact solution', 'FEM', 'Location', 'northeast');
 title('stress');

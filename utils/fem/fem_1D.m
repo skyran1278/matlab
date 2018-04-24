@@ -1,8 +1,12 @@
-function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements)
+function [stiffness, force, displacements, coordinate_and_stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements)
 %
 % fem for 1D.
 %
-% @since 3.0.3
+% TODO:
+% 我覺得 stress 做出來的資料只能畫圖，不能用來幹甚麼，很難用很髒。
+% 有點想把 stress 抓出去，不要在這裡做。
+%
+% @since 4.0.1
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -17,7 +21,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 % @return {array} [stiffness] stiffness.
 % @return {array} [force] force.
 % @return {array} [displacements] displacements.
-% @return {array} [stress] stress.
+% @return {array} [coordinate_and_stress] coordinate and stress, to plot.
 % @see lagrange_interpolation, gauss_quadrature, solution, gauss_quadrature_curry
 %
 
@@ -41,7 +45,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
     stiffness = zeros(number_nodes, number_nodes);
 
-    stress = zeros(number_nodes, 1);
+    coordinate_and_stress = zeros(number_elements * number_element_nodes, 2);
 
     % computation of the system stiffness matrix
     for e = 1 : number_elements
@@ -72,6 +76,8 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
 
     % stress
+    index_stress = 0;
+
     for e = 1 : number_elements
 
         % elementDof: element degrees of freedom (Dof)
@@ -85,7 +91,15 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 
         for index_xc = 1 : number_element_nodes
 
-            stress(elementDof(index_xc)) = E(e) * Be(xc(index_xc)) * displacements(elementDof);
+            index_stress = index_stress + 1;
+
+            % x 座標
+            coordinate_and_stress(index_stress, 1) = xe(index_xc);
+
+            % y 座標
+            % 我覺得 stress 做出來的資料只能畫圖，不能用來幹甚麼，很難用
+            % 有點想把 stress 抓出去，不要在這裡做。
+            coordinate_and_stress(index_stress, 2) = E(e) * Be(xc(index_xc)) * displacements(elementDof);
 
         end
 

@@ -1,6 +1,6 @@
 clc; clear; close all;
 
-syms x;
+syms x A(x) b(x);
 
 % E: modulus of elasticity (N/m^2)
 % A: area of cross section (m^2)
@@ -29,8 +29,18 @@ node_coordinates = [0 0.5 1 1.5 2];
 % prescribed dofs
 prescribed_dof = 5;
 
-[stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof);
+% settlement
+displacements = [0; 0; 0; 0; 0];
 
+[stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);
+
+% output displacements/reactions
+output_displacements_reactions(displacements, stiffness, number_nodes, prescribed_dof, force);
+
+% output element forces
+output_element_forces(E, A, L, number_elements, element_nodes, node_coordinates, displacements);
+
+% exact
 E = 2e7;
 A = 1 + x;
 L = 2;
@@ -53,15 +63,10 @@ ylabel('displacement (m)');
 figure;
 plot(exact_node_coordinates, exact_stress);
 hold on;
-stairs(node_coordinates, stress, 'ro:');
+% stairs(node_coordinates, stress, 'ro:');
+plot(stress(:, 1), stress(:, 2), 'ro:');
 
 legend('exact solution', 'FEM', 'Location', 'northeast');
 title('stress');
 xlabel('x (m)');
 ylabel('stress (N/m^2)');
-
-% output displacements/reactions
-output_displacements_reactions(displacements, stiffness, number_nodes, prescribed_dof, force);
-
-% output element forces
-% output_element_forces(E, A, L, number_elements, element_nodes, displacements);
