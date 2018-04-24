@@ -1,5 +1,17 @@
 function [] = output_element_forces(E, A, L, number_elements, element_nodes, node_coordinates, displacements)
-
+%
+% output element forces.
+%
+% @since 1.0.0
+% @param {array} [E] modulus of elasticity (N/m^2).
+% @param {symfun} [A] area of cross section (m^2).
+% @param {array} [L] length of bar (m).
+% @param {number} [number_elements] number of elements.
+% @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
+% @param {array} [node_coordinates] 節點位置.
+% @param {array} [displacements] displacements.
+% @see lagrange_interpolation, gauss_quadrature, gauss_quadrature_curry
+%
 
     syms xi;
 

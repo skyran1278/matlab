@@ -2,7 +2,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 %
 % fem for 1D.
 %
-% @since 3.0.2
+% @since 3.0.3
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -18,7 +18,7 @@ function [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, n
 % @return {array} [force] force.
 % @return {array} [displacements] displacements.
 % @return {array} [stress] stress.
-% @see gauss_const, lagrange_interpolation, gauss_quadrature, solution, gauss_quadrature_curry
+% @see lagrange_interpolation, gauss_quadrature, solution, gauss_quadrature_curry
 %
 
     syms xi;
