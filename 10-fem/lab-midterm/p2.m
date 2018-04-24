@@ -8,7 +8,7 @@ syms x A(x) b(x);
 E = [2e7 2e7];
 L = [1 1];
 
-force = [20; 0; 0; 0; 0];
+force = [20; 0; 0; 0; 0; 0; 0];
 
 A0 = 1;
 A(x) = A0 * (1 + x);
@@ -18,18 +18,18 @@ b(x) = 24 * A;
 number_elements = 2;
 
 % number_nodes: number of nodes
-number_nodes = 5;
+number_nodes = 7;
 
 % generation of coordinates and connectivities
-element_nodes = [1 2 3; 3 4 5];
-node_coordinates = [0 0.5 1 1.5 2];
+element_nodes = [1 2 3 4; 4 5 6 7];
+node_coordinates = [0 1/3 2/3 1 4/3 5/3 2];
 
 % boundary conditions and solution
 % prescribed dofs
-prescribed_dof = 5;
+prescribed_dof = 7;
 
 % settlement
-displacements = [0; 0; 0; 0; 0];
+displacements = [0; 0; 0; 0; 0; 0; 0];
 
 [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);
 
