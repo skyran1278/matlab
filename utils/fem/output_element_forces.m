@@ -2,9 +2,9 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
 %
 % output element forces.
 %
-% @since 1.1.2
+% @since 2.0.0
 % @param {array} [E] modulus of elasticity (N/m^2).
-% @param {symfun|array} [A] area of cross section (m^2).
+% @param {array of symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
@@ -55,19 +55,15 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
         % x 與 xi 的關係
         x = Ne * xe;
 
+        % 相容於不連續斷面
+        Ae = A(x);
+
         % 計算 Jacobian 相容於 xe 不等分
         J = diff_Ne * xe;
 
         Be = 1 / J * diff_Ne;
 
-        % 判斷 A 是否為數值矩陣，為了相容於不連續斷面所需做的犧牲
-        % ismatrix 不行，有多項的就會失敗，感覺 matlab 底層是以矩陣實現的
-        % 所以 ismatrix 會有問題，改用 isnumeric
-        if isnumeric(A)
-            Ke(xi) = Be.' * E(e) * A(e) * Be;
-        else
-            Ke(xi) = Be.' * E(e) * A(x) * Be;
-        end
+        Ke(xi) = Be.' * E(e) * Ae(e) * Be;
 
         % element K
         k = simplify(J * gauss_quadrature(Ke, ngp));

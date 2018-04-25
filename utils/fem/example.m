@@ -11,15 +11,13 @@ L = [1 1];
 force = [20; 0; 0; 0; 0];
 
 % A: area of cross section (m^2)
-% A 可以是矩陣也可以是 x 的 function
 % A = [4e-4 2e-4];
-syms A(x);
 A0 = 1;
-A(x) = A0 * (1 + x);
+A(x) = [A0 * (1 + x), A0 * (1 + x)];
 
 % uniform_load
 % no_uniform_load = b(x) = 0
-b(x) = 24 * A;
+b(x) = [24 * A, 24 * A];
 
 % number_elements: number of elements
 number_elements = 2;

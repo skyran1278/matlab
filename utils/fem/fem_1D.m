@@ -2,11 +2,11 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 %
 % fem for 1D.
 %
-% @since 5.0.7
+% @since 6.0.0
 % @param {array} [E] modulus of elasticity (N/m^2).
-% @param {symfun|array} [A] area of cross section (m^2).
+% @param {array of symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
-% @param {symfun} [b] internal force.
+% @param {array of symfun} [b] internal force.
 % @param {array} [force] boundary conditions.
 % @param {number} [number_elements] number of elements.
 % @param {number} [number_nodes] number of nodes.
@@ -64,21 +64,19 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
         % x 與 xi 的關係
         x = Ne * xe;
 
+        % 相容於不連續斷面
+        be = b(x);
+
+        Ae = A(x);
+
         % 計算 Jacobian 相容於 xe 不等分
         J = diff_Ne * xe;
 
         Be = 1 / J * diff_Ne;
 
-        fe(xi) = Ne.' * b(x);
+        fe(xi) = Ne.' * be(e);
 
-        % 判斷 A 是否為數值矩陣，為了相容於不連續斷面所需做的犧牲
-        % ismatrix 不行，有多項的就會失敗，感覺 matlab 底層是以矩陣實現的
-        % 所以 ismatrix 會有問題，改用 isnumeric
-        if isnumeric(A)
-            Ke(xi) = Be.' * E(e) * A(e) * Be;
-        else
-            Ke(xi) = Be.' * E(e) * A(x) * Be;
-        end
+        Ke(xi) = Be.' * E(e) * Ae(e) * Be;
 
         stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + simplify(J * gauss_quadrature(Ke, ngp));
 

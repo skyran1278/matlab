@@ -15,8 +15,8 @@ classdef test_fem_1D < matlab.unittest.TestCase
             force = [20; 0; 0];
 
             A0 = 1;
-            A(x) = A0 * (1 + x);
-            b(x) = 24 * A;
+            A(x) = [A0 * (1 + x), A0 * (1 + x)];
+            b(x) = [24 * A, 24 * A];
 
             % number_elements: number of elements
             number_elements = 2;
@@ -64,8 +64,8 @@ classdef test_fem_1D < matlab.unittest.TestCase
             force = [20; 0; 0; 0; 0];
 
             A0 = 1;
-            A(x) = A0 * (1 + x);
-            b(x) = 24 * A;
+            A(x) = [A0 * (1 + x), A0 * (1 + x)];
+            b(x) = [24 * A, A0 * (1 + x)];
 
             % number_elements: number of elements
             number_elements = 2;
@@ -120,8 +120,8 @@ classdef test_fem_1D < matlab.unittest.TestCase
             force = [0; 30000; 0; 0; 0];
 
             A0 = 3e-4;
-            A(x) = A0;
-            b(x) = 0;
+            A(x) = [A0 A0 A0 A0 A0];
+            b(x) = [0 0 0 0 0];
 
             % number_elements: number of elements
             number_elements = 4;
@@ -173,8 +173,8 @@ classdef test_fem_1D < matlab.unittest.TestCase
             force = [0; -10000; 0];
 
             A0 = 4e-4;
-            A(x) = A0;
-            b(x) = 1;
+            A(x) = [A0 A0];
+            b(x) = [0 0];
 
             % number_elements: number of elements
             number_elements = 2;
@@ -201,9 +201,9 @@ classdef test_fem_1D < matlab.unittest.TestCase
             exp_stiffness = [
                 42000000, -42000000, 0; -42000000, 84000000, -42000000; 0, -42000000, 42000000
             ];
-            exp_force = [1; -9998; 1];
-            exp_displacements = [0; 0.0123809761904762; 0.0250000000000000];
-            exp_stress = [1300002500.00000; 1300002500.00000; 1324997500.00000; 1324997500.00000];
+            exp_force = [0; -10000; 0];
+            exp_displacements = [0; 0.0123809523809524; 0.0250000000000000];
+            exp_stress = [1300000000.00000; 1300000000.00000; 1325000000.00000; 1325000000.00000];
 
             testCase.verifyEqual(act_displacements, exp_displacements, 'RelTol', 1e-10);
             testCase.verifyEqual(act_stiffness, exp_stiffness, 'RelTol', 1e-10);
@@ -214,7 +214,7 @@ classdef test_fem_1D < matlab.unittest.TestCase
 
         function discontinuous_area(testCase)
 
-            syms x b(x);
+            syms x A(x) b(x);
 
             % E: modulus of elasticity (N/m^2)
             % L: length of bar (m)
@@ -225,11 +225,11 @@ classdef test_fem_1D < matlab.unittest.TestCase
             force = [0; 0; -20000];
 
             % A: area of cross section (m^2)
-            A = [4e-4 2e-4];
+            A(x) = [4e-4 2e-4];
 
             % uniform_load
             % no_uniform_load = b(x) = 0
-            b(x) = 0;
+            b(x) = [0 0];
 
             % number_elements: number of elements
             number_elements = 2;
