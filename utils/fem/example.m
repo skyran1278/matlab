@@ -31,7 +31,7 @@ prescribed_dof = 5;
 % settlement
 displacements = [0; 0; 0; 0; 0];
 
-[stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);
+[stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);
 
 % output displacements/reactions
 output_displacements_reactions(displacements, stiffness, number_nodes, prescribed_dof, force);
@@ -39,6 +39,7 @@ output_displacements_reactions(displacements, stiffness, number_nodes, prescribe
 % output element forces
 output_element_forces(E, A, L, number_elements, element_nodes, node_coordinates, displacements);
 
+% output stress
 [stress_coordinate, stress] = output_stress_coordinate_and_stress(E, number_elements, element_nodes, node_coordinates, displacements);
 
 % exact
@@ -62,10 +63,7 @@ ylabel('displacement (m)');
 
 % stress
 figure;
-plot(exact_node_coordinates, exact_stress);
-hold on;
-% stairs(node_coordinates, stress, 'ro:');
-plot(stress(:, 1), stress(:, 2), 'ro:');
+plot(exact_node_coordinates, exact_stress, stress_coordinate, stress, 'ro:');
 
 legend('exact solution', 'FEM', 'Location', 'northeast');
 title('stress');

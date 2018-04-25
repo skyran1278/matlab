@@ -2,7 +2,6 @@ function [stress_coordinate, stress] = output_stress_coordinate_and_stress(E, nu
 %
 % output stress coordinate and stress to plot.
 %
-%
 % @since 1.0.0
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {number} [number_elements] number of elements.
