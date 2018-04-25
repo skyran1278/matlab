@@ -39,6 +39,8 @@ output_displacements_reactions(displacements, stiffness, number_nodes, prescribe
 % output element forces
 output_element_forces(E, A, L, number_elements, element_nodes, node_coordinates, displacements);
 
+[stress_coordinate, stress] = output_stress_coordinate_and_stress(E, number_elements, element_nodes, node_coordinates, displacements);
+
 % exact
 E = 2e7;
 A = 1 + x;
