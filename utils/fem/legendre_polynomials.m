@@ -1,8 +1,9 @@
 function p_k = legendre_polynomials(k, x)
 %
 % Legendre polynomials recursion
+% 遞歸
 %
-% @since 2.0.0
+% @since 2.0.1
 % @param {integer} [k] 需要求第幾個 legendre polynomials.
 % @param {sym} [x] 變數名稱.
 % @return {symfun} [p_k] function of x - Legendre polynomials eqution.

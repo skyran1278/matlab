@@ -2,7 +2,7 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 %
 % fem for 1D.
 %
-% @since 5.0.2
+% @since 5.0.5
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -28,13 +28,17 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
     % ngp 要多少 ngp >= (p + 1) / 2
     ngp = ceil(number_element_nodes / 2);
 
-    % curry 加速用
+    % curry 回傳 gauss_quadrature 加速用
     gauss_quadrature = gauss_quadrature_curry(ngp);
 
-    % xi 座標的點
+    % 這裡蠻重要的觀念是 xc 不是 abscissa
+    % abscissa 是由 ngp 得來的，只用來計算高斯的精度
+    % xc 是從 物理的 element 裡有幾個點，不管有沒有均分 (物理座標系)
+    % xc 都是從 -1 ~ 1 的 均分 (xi 座標系)
+    % xc 是用來得到 shape function (xi 座標系)
     xc = linspace(-1, 1, number_element_nodes);
 
-    % shape function
+    % shape function (xi 座標系)
     Ne = lagrange_interpolation(xc, xi);
 
     diff_Ne = diff(Ne);

@@ -4,7 +4,7 @@ function f = gauss_quadrature_curry(ngp)
 % 加速用，省略 gauss_const 的過程，速度大幅提升。
 % 我看到了閉包.
 %
-% @since 1.0.0
+% @since 1.0.1
 % @param {number} [ngp] integration points，ngp >= (p + 1) / 2.
 % @return {function} [f] 回傳 gauss_quadrature.
 % @see gauss_const, gauss_quadrature
@@ -12,6 +12,7 @@ function f = gauss_quadrature_curry(ngp)
 
     [abscissa, weight] = gauss_const(ngp);
 
+    % 回傳 function gauss_quadrature
     f = @gauss_quadrature;
 
     function I = gauss_quadrature(f, ngp, a, b)

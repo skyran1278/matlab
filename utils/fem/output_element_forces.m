@@ -2,7 +2,7 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
 %
 % output element forces.
 %
-% @since 1.0.0
+% @since 1.1.0
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -15,14 +15,23 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
 
     syms xi;
 
+    % 一個 element 有幾個 nodes
     number_element_nodes = size(element_nodes, 2);
 
-    ngp = fix(number_element_nodes / 2) + 1;
+    % ngp 要多少 ngp >= (p + 1) / 2
+    ngp = ceil(number_element_nodes / 2);
 
+    % curry 回傳 gauss_quadrature 加速用
     gauss_quadrature = gauss_quadrature_curry(ngp);
 
+    % 這裡蠻重要的觀念是 xc 不是 abscissa
+    % abscissa 是由 ngp 得來的，只用來計算高斯的精度
+    % xc 是從 物理的 element 裡有幾個點，不管有沒有均分 (物理座標系)
+    % xc 都是從 -1 ~ 1 的 均分 (xi 座標系)
+    % xc 是用來得到 shape function (xi 座標系)
     xc = linspace(-1, 1, number_element_nodes);
 
+    % shape function (xi 座標系)
     Ne = lagrange_interpolation(xc, xi);
 
     diff_Ne = diff(Ne);
@@ -34,17 +43,24 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
 
     for e = 1 : number_elements
 
+        % elementDof: element degrees of freedom (Dof)
         elementDof = element_nodes(e, :);
 
+        % 這個 element node 的座標
         xe = node_coordinates(elementDof).';
 
+        % x 與 xi 的關係
+        x = Ne * xe;
+
+        % 計算 Jacobian 相容於 xe 不等分
         J = diff_Ne * xe;
 
         Be = 1 / J * diff_Ne;
 
-        Ke(xi) = Be.' * E(e) * A(Ne * xe) * Be;
+        Ke(xi) = Be.' * E(e) * A(x) * Be;
 
-        k = J * gauss_quadrature(Ke, ngp);
+        % element K
+        k = simplify(J * gauss_quadrature(Ke, ngp));
 
         node_I = element_nodes(e, 1);
 
