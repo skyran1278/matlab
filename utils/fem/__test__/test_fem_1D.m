@@ -212,5 +212,60 @@ classdef test_fem_1D < matlab.unittest.TestCase
 
         end
 
+        function discontinuous_area(testCase)
+
+            syms x b(x);
+
+            % E: modulus of elasticity (N/m^2)
+            % L: length of bar (m)
+            E = [200e9 70e9];
+            L = [1 1];
+
+            % external force
+            force = [0; 0; -20000];
+
+            % A: area of cross section (m^2)
+            A = [4e-4 2e-4];
+
+            % uniform_load
+            % no_uniform_load = b(x) = 0
+            b(x) = 0;
+
+            % number_elements: number of elements
+            number_elements = 2;
+
+            % number_nodes: number of nodes
+            number_nodes = 3;
+
+            % generation of coordinates and connectivities
+            % muti_element_nodes
+            element_nodes = [1 2; 2 3];
+            node_coordinates = [0 1 2];
+
+            % boundary conditions and solution
+            % prescribed dofs
+            prescribed_dof = 1;
+
+            % initial displacements
+            % initial_settlement
+            displacements = [0; 0; 0];
+
+            [act_stiffness, act_force, act_displacements] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);
+
+            % output stress
+            [~, act_stress] = output_stress_coordinate_and_stress(E, number_elements, element_nodes, node_coordinates, act_displacements);
+
+            exp_stiffness = [80000000, -80000000, 0; -80000000, 94000000, -14000000; 0, -14000000, 14000000];
+            exp_force = [0; 0; -20000];
+            exp_displacements = [0; -0.000250000000000000; -0.00167857142857143];
+            exp_stress = [-50000000; -50000000; -100000000; -100000000];
+
+            testCase.verifyEqual(act_displacements, exp_displacements, 'RelTol', 1e-10);
+            testCase.verifyEqual(act_stiffness, exp_stiffness, 'RelTol', 1e-10);
+            testCase.verifyEqual(act_force, exp_force, 'RelTol', 1e-10);
+            testCase.verifyEqual(act_stress, exp_stress, 'RelTol', 1e-10);
+
+        end
+
     end
 end

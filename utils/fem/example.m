@@ -11,6 +11,9 @@ L = [1 1];
 force = [20; 0; 0; 0; 0];
 
 % A: area of cross section (m^2)
+% A 可以是矩陣也可以是 x 的 function
+% A = [4e-4 2e-4];
+syms A(x);
 A0 = 1;
 A(x) = A0 * (1 + x);
 

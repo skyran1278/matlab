@@ -2,7 +2,7 @@ function [abscissa, weight] = gauss_const(ngp)
 %
 % return gauss const.
 %
-% @since 1.0.1
+% @since 1.0.2
 % @param {number} [ngp] integration points.
 % @return {array} [abscissa] location.
 % @return {array} [weight] weights.
@@ -10,7 +10,7 @@ function [abscissa, weight] = gauss_const(ngp)
 %
 
     % cal gauss_quadrature const
-    syms x;
+    syms x p(x);
 
     % return xi use legendre_polynomials
     abscissa = solve(legendre_polynomials(ngp, x) == 0);

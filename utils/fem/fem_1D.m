@@ -2,9 +2,9 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 %
 % fem for 1D.
 %
-% @since 5.0.5
+% @since 5.0.7
 % @param {array} [E] modulus of elasticity (N/m^2).
-% @param {symfun} [A] area of cross section (m^2).
+% @param {symfun|array} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
 % @param {symfun} [b] internal force.
 % @param {array} [force] boundary conditions.
@@ -26,7 +26,10 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
     number_element_nodes = size(element_nodes, 2);
 
     % ngp 要多少 ngp >= (p + 1) / 2
-    ngp = ceil(number_element_nodes / 2);
+    % 由於 E A 都有可能是 xi 的函數，造成 p 變大
+    % 而我們目前遇到的都是一次的函數
+    % 所以可以直接加 1 進行比較保險的計算
+    ngp = ceil(number_element_nodes / 2) + 1;
 
     % curry 回傳 gauss_quadrature 加速用
     gauss_quadrature = gauss_quadrature_curry(ngp);
@@ -68,7 +71,14 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 
         fe(xi) = Ne.' * b(x);
 
-        Ke(xi) = Be.' * E(e) * A(x) * Be;
+        % 判斷 A 是否為數值矩陣，為了相容於不連續斷面所需做的犧牲
+        % ismatrix 不行，有多項的就會失敗，感覺 matlab 底層是以矩陣實現的
+        % 所以 ismatrix 會有問題，改用 isnumeric
+        if isnumeric(A)
+            Ke(xi) = Be.' * E(e) * A(e) * Be;
+        else
+            Ke(xi) = Be.' * E(e) * A(x) * Be;
+        end
 
         stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + simplify(J * gauss_quadrature(Ke, ngp));
 
