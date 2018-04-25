@@ -1,8 +1,8 @@
-function [] = output_element_forces(E, A, L, number_elements, element_nodes, node_coordinates, displacements)
+function [] = output_element_forces(E, A, L, number_elements, element_nodes, node_coordinates, displacements, ngp)
 %
 % output element forces.
 %
-% @since 2.0.0
+% @since 3.0.0
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {array of symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -10,6 +10,7 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [displacements] displacements.
+% @param {number} [ngp] integration points，ngp >= (p + 1) / 2.
 % @see lagrange_interpolation, gauss_quadrature, gauss_quadrature_curry
 %
 
@@ -22,7 +23,10 @@ function [] = output_element_forces(E, A, L, number_elements, element_nodes, nod
     % 由於 E A 都有可能是 xi 的函數，造成 p 變大
     % 而我們目前遇到的都是一次的函數
     % 所以可以直接加 1 進行比較保險的計算
-    ngp = ceil(number_element_nodes / 2) + 1;
+    % 也可以使用者自己指定 ngp
+    if nargin == nargin('output_element_forces') - 1
+        ngp = ceil(number_element_nodes / 2) + 1;
+    end
 
     % curry 回傳 gauss_quadrature 加速用
     gauss_quadrature = gauss_quadrature_curry(ngp);

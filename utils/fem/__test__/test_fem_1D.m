@@ -267,5 +267,61 @@ classdef test_fem_1D < matlab.unittest.TestCase
 
         end
 
+        function discontinuous_b(testCase)
+
+            syms x A(x) b(x);
+
+            % E: modulus of elasticity (N/m^2)
+            % L: length of bar (m)
+            E = [1000 1000 1000 1000];
+            L = [2.5 2.5 2.5 2.5];
+
+            % external force
+            force = [0; 0; 0; 0; 25];
+            % force = [0; 0; 0; 0; 0; 0; 0; 0; 25];
+
+            % A: area of cross section (m^2)
+            % A = [4e-4 2e-4];
+            A(x) = [1 1 1 1];
+
+            % uniform_load
+            % no_uniform_load = b(x) = 0
+            b(x) = [10 * sin(pi / 10 * x), 10 * sin(pi / 10 * x), 0, 0];
+
+            % number_elements: number of elements
+            number_elements = 4;
+
+            % number_nodes: number of nodes
+            number_nodes = 5;
+            % number_nodes = 9;
+
+            % generation of coordinates and connectivities
+            % muti_element_nodes
+            element_nodes = [1 2; 2 3; 3 4; 4 5];
+            % element_nodes = [1 2 3; 3 4 5; 5 6 7; 7 8 9];
+            node_coordinates = [0 2.5 5 7.5 10];
+            % node_coordinates = [0 1.25 2.5 3.75 5 6.25 7.5 8.75 10];
+
+            % boundary conditions and solution
+            % prescribed dofs
+            prescribed_dof = 1;
+
+            % initial displacements
+            % initial_settlement
+            displacements = [0; 0; 0; 0; 0];
+            % displacements = [0; 0; 0; 0; 0; 0; 0; 0; 0];
+
+            [~, act_force, ~] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements, 3);
+
+            % output stress
+            % [~, act_stress] = output_stress_coordinate_and_stress(E, number_elements, element_nodes, node_coordinates, act_displacements);
+
+            exp_force = [3.17305117449621; 16.7874333022205; 11.8705079267170; 0; 25];
+            % exp_force = [0.0329103472280537; 6.28023971724738; 6.06640355934496; 15.1618399003328; 4.28959509422703; 0; 0; 0; 25];
+
+            testCase.verifyEqual(act_force, exp_force, 'RelTol', 1e-10);
+
+        end
+
     end
 end

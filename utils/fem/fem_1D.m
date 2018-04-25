@@ -1,8 +1,8 @@
-function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements)
+function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements, ngp)
 %
 % fem for 1D.
 %
-% @since 6.0.0
+% @since 7.0.0
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {array of symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -14,6 +14,7 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 % @param {array} [node_coordinates] 竊翴竚.
 % @param {array} [prescribed_dof] essential boundary conditions.
 % @param {array} [displacements] initial displacements.
+% @param {number} [ngp] integration pointsngp >= (p + 1) / 2.
 % @return {array} [stiffness] stiffness.
 % @return {array} [force] force.
 % @return {array} [displacements] displacements.
@@ -27,9 +28,12 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 
     % ngp 璶ぶ ngp >= (p + 1) / 2
     % パ E A 常Τ琌 xi ㄧ计硑Θ p 跑
-    % τиヘ玡笿常琌Ωㄧ计
+    % τиヘ玡笿碭常琌Ωㄧ计
     % ┮钡 1 秈︽ゑ耕玂繧璸衡
-    ngp = ceil(number_element_nodes / 2) + 1;
+    % ㄏノ﹚ ngp
+    if nargin == nargin('fem_1D') - 1
+        ngp = ceil(number_element_nodes / 2) + 1;
+    end
 
     % curry 肚 gauss_quadrature 硉ノ
     gauss_quadrature = gauss_quadrature_curry(ngp);
