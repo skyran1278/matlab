@@ -2,7 +2,7 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 %
 % fem for 1D.
 %
-% @since 5.0.1
+% @since 5.0.2
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -22,14 +22,19 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 
     syms xi;
 
+    % 一個 element 有幾個 nodes
     number_element_nodes = size(element_nodes, 2);
 
-    ngp = fix(number_element_nodes / 2) + 1;
+    % ngp 要多少 ngp >= (p + 1) / 2
+    ngp = ceil(number_element_nodes / 2);
 
+    % curry 加速用
     gauss_quadrature = gauss_quadrature_curry(ngp);
 
+    % xi 座標的點
     xc = linspace(-1, 1, number_element_nodes);
 
+    % shape function
     Ne = lagrange_interpolation(xc, xi);
 
     diff_Ne = diff(Ne);
@@ -46,10 +51,13 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
         % elementDof: element degrees of freedom (Dof)
         elementDof = element_nodes(e, :);
 
+        % 這個 element node 的座標
         xe = node_coordinates(elementDof).';
 
+        % x 與 xi 的關係
         x = Ne * xe;
 
+        % 計算 Jacobian 相容於 xe 不等分
         J = diff_Ne * xe;
 
         Be = 1 / J * diff_Ne;
@@ -64,8 +72,8 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 
     end
 
-
     % solution
+    % 幾個自由度
     G_dof = number_nodes;
     displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
 

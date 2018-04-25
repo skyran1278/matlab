@@ -3,15 +3,19 @@ clc; clear; close all;
 syms x A(x) b(x);
 
 % E: modulus of elasticity (N/m^2)
-% A: area of cross section (m^2)
 % L: length of bar (m)
 E = [2e7 2e7];
 L = [1 1];
 
+% external force
 force = [20; 0; 0; 0; 0];
 
+% A: area of cross section (m^2)
 A0 = 1;
 A(x) = A0 * (1 + x);
+
+% uniform_load
+% no_uniform_load = b(x) = 0
 b(x) = 24 * A;
 
 % number_elements: number of elements
@@ -21,6 +25,7 @@ number_elements = 2;
 number_nodes = 5;
 
 % generation of coordinates and connectivities
+% muti_element_nodes
 element_nodes = [1 2 3; 3 4 5];
 node_coordinates = [0 0.5 1 1.5 2];
 
@@ -28,7 +33,8 @@ node_coordinates = [0 0.5 1 1.5 2];
 % prescribed dofs
 prescribed_dof = 5;
 
-% settlement
+% initial displacements
+% initial_settlement
 displacements = [0; 0; 0; 0; 0];
 
 [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);

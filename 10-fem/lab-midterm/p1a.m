@@ -12,7 +12,7 @@ force = [0; 30000; 0; 0; 0];
 
 A0 = 3e-4;
 A(x) = A0;
-b(x) = 1;
+b(x) = 0;
 
 % number_elements: number of elements
 number_elements = 4;
@@ -29,7 +29,7 @@ node_coordinates = [0 3 6 6 6];
 prescribed_dof = [1; 3; 4; 5];
 
 % settlement
-displacements = [0; 0; 0; 0; 0;];
+displacements = [0; 0; 0; 0; 0];
 
 [stiffness, force, displacements, stress] = fem_1D(E, A, L, b, force, number_elements, number_nodes, element_nodes, node_coordinates, prescribed_dof, displacements);
 

@@ -2,7 +2,7 @@ function [node_coordinates, displacements, stress] = exact_solution(E, A, L, b, 
 %
 % exact solution.
 %
-% @since 1.0.0
+% @since 1.0.1
 % @param {number} [E] modulus of elasticity (N/m^2).
 % @param {sym} [A] area of cross section (m^2).
 % @param {number} [L] length of bar (m).
@@ -15,13 +15,6 @@ function [node_coordinates, displacements, stress] = exact_solution(E, A, L, b, 
 %
 
     syms x u(x);
-
-    % A0 = 12.5e-4; % m2
-    % L = 0.5; % m
-    % E = 70e9; % pa = N / m2
-    % P = -5000; % N
-    % A(x) = A0 * (1 + (x / L));
-    % b = 0;
 
     diff_u(x) = diff(u, x);
 
