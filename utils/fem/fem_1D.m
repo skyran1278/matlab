@@ -2,7 +2,7 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 %
 % fem for 1D.
 %
-% @since 7.0.0
+% @since 7.0.1
 % @param {array} [E] modulus of elasticity (N/m^2).
 % @param {array of symfun} [A] area of cross section (m^2).
 % @param {array} [L] length of bar (m).
@@ -82,9 +82,9 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
 
         Ke(xi) = Be.' * E(e) * Ae(e) * Be;
 
-        stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + simplify(J * gauss_quadrature(Ke, ngp));
+        stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + simplify(gauss_quadrature(J * Ke, ngp));
 
-        force(elementDof) = force(elementDof) + simplify(J * gauss_quadrature(fe, ngp));
+        force(elementDof) = force(elementDof) + simplify(gauss_quadrature(J * fe, ngp));
 
     end
 
