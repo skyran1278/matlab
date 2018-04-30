@@ -8,6 +8,7 @@ E = [2e7 2e7];
 L = [1 1];
 
 % external force
+% N
 force = [20; 0; 0; 0; 0];
 
 % A: area of cross section (m^2)
@@ -17,6 +18,7 @@ A(x) = [A0 * (1 + x), A0 * (1 + x)];
 
 % uniform_load
 % no_uniform_load = b(x) = 0
+% N
 b(x) = [24 * A, 24 * A];
 
 % number_elements: number of elements
