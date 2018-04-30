@@ -7,8 +7,8 @@ function [node_coordinates, displacements, stress] = exact_solution(E, A, L, b, 
 % @param {sym} [A] area of cross section (m^2).
 % @param {number} [L] length of bar (m).
 % @param {sym} [b] internal force.
-% @param {array} [cond_stress] boundary conditions [location value].
-% @param {array} [cond_u] boundary conditions [location value].
+% @param {array} [cond_stress] natural boundary conditions [location value].
+% @param {array} [cond_u] essential boundary conditions [location value].
 % @return {array} [node_coordinates] node coordinates.
 % @return {array} [displacements] displacements.
 % @return {array} [stress] stress.
