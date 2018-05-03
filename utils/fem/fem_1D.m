@@ -76,7 +76,7 @@ function [stiffness, force, displacements] = fem_1D(E, A, L, b, force, number_el
         % 計算 Jacobian 相容於 xe 不等分
         J = diff_Ne * xe;
 
-        Be = 1 / J * diff_Ne;
+        Be = diff_Ne / J;
 
         fe(xi) = Ne.' * be(e);
 
