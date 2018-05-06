@@ -1,5 +1,5 @@
 clc; clear; close all;
-1.1*196.3896/sin(angle_to_radian(45))
+
 rx = 13.7; % cm
 
 ry = rx; % cm
