@@ -2,7 +2,7 @@ function data = filename_to_array(filename, total_col, array_col, headlines)
 %
 % 適用於被動控制給的 file_input.
 %
-% @since 3.0.0
+% @since 3.1.0
 % @param {string} [filename] 檔案名稱.
 % @param {number} [total_col] 總共有幾欄.
 % @param {number} [array_col] 要回傳第幾欄.
@@ -10,6 +10,10 @@ function data = filename_to_array(filename, total_col, array_col, headlines)
 % @return {array} [data] 加速度歷時資料.
 % @see ignore_headlines
 %
+
+    if nargin == 3
+        headlines = 0;
+    end
 
     fileID = fopen((filename + ".txt"), 'r');
 
