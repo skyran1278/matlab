@@ -45,7 +45,8 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nu
         k = A * thickness * B.' * D * B;
 
         if det(k) ~= 0
-            error('det(k) <> 0')
+            fprintf('det(k) <> 0: element %d\n', e);
+            % error('det(k) <> 0: element %d', e)
         end
 
         % stiffness matrix

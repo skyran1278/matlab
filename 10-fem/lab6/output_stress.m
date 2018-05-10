@@ -1,20 +1,16 @@
-function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, number_nodes, node_coordinates, D, thickness)
+function [] = output_stress(number_elements, element_nodes, node_coordinates, D, thickness, displacements)
 %
-% For the T3 element, the element stiffness matrix is Ke = tAeBeDeBe.
-% compute stiffness matrix for T3 elements
+% output stress.
 %
 % @since 1.0.0
-% @param {number} [G_dof] global number of degrees of freedom.
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
-% @param {number} [number_nodes] number of nodes.
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [D] 2D matrix D.
 % @param {number} [thickness] 厚度.
-% @return {array} [stiffness] stiffness.
+% @param {number} [thickness] 厚度.
+% @param {array} [displacements] displacements.
 %
-
-    stiffness = zeros(G_dof);
 
     % 一個 element 有幾個 nodes
     num_node_per_element = size(element_nodes, 2);
@@ -48,9 +44,14 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nu
             error('det(k) <> 0')
         end
 
-        % stiffness matrix
-        stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
+        stress = D * B * displacements(element_dof, 1);
+
+        fprintf('\nStress in element %d\n', e);
+        fprintf('Sigma_xx : %f\n', stress(1));
+        fprintf('Sigma_yy : %f\n', stress(2));
+        fprintf('Sigma_xy : %f\n', stress(3));
 
     end
+
 
 end

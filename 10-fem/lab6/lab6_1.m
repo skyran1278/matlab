@@ -10,9 +10,6 @@ E = 30e6;
 poisson = 0.3;
 thickness = 1;
 
-% 2D matrix D
-D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
-
 % preprocessing
 % number_elements: number of elements
 number_elements = 2;
@@ -32,7 +29,7 @@ G_dof = 2 * number_nodes;
 
 % boundary conditions and solution
 % prescribed dofs
-prescribed_dof = [1 2 3 4]';
+prescribed_dof = [1 2 3 4].';
 
 % initial displacements
 % initial_settlement
@@ -43,11 +40,21 @@ force = zeros(G_dof, 1);
 force(5) = 5000;
 force(7) = 5000;
 
+% deform ©ñ¤j«Y¼Æ
+magnification_factor = 1e3;
+
+% 2D matrix D
+D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
+
 % calculation of the system stiffness matrix
 stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, number_nodes, node_coordinates, D, thickness);
 
 % solution
 displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
 
+drawing_deform(node_coordinates, element_nodes, displacements, magnification_factor);
+
 % output displacements
 output_displacements(displacements, number_nodes, G_dof);
+
+output_stress(number_elements, element_nodes, node_coordinates, D, thickness, displacements)
