@@ -2,7 +2,7 @@ function displacements = solution(G_dof, prescribed_dof, stiffness, force, displ
 %
 % displacements = inv(stiffness) / force.
 %
-% @since 1.0.2
+% @since 1.1.0
 % @param {number} [G_dof] total number of degrees of freedom.
 % @param {array} [prescribed_dof] 有束制的節點.
 % @param {array} [stiffness] stiffness.
@@ -10,7 +10,9 @@ function displacements = solution(G_dof, prescribed_dof, stiffness, force, displ
 % @param {array} [displacements] initial displacements.
 % @return {array} [displacements] displacements.
 %
-
+    if nargin == 4
+        displacements = zeros(G_dof, 1);
+    end
     % function to find solution in terms of global displacements
     active_dof = setdiff((1 : G_dof)', prescribed_dof);
 
