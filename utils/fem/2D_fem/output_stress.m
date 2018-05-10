@@ -1,16 +1,13 @@
-function [] = output_stress(number_elements, element_nodes, node_coordinates, D, thickness, displacements, form)
+function [] = output_stress(number_elements, element_nodes, node_coordinates, D, displacements)
 %
 % output stress.
 %
-% @since 1.0.0
+% @since 1.0.2
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [D] 2D matrix D.
-% @param {number} [thickness] 厚度.
-% @param {number} [thickness] 厚度.
 % @param {array} [displacements] displacements.
-% @param {number} [form] 不同的 stress 形式.
 %
 
     % 一個 element 有幾個 nodes
@@ -20,12 +17,11 @@ function [] = output_stress(number_elements, element_nodes, node_coordinates, D,
     num_e_dof = 2 * num_node_per_element;
     element_dof = zeros(1, num_e_dof);
 
-    if nargin == 6 || form == 1
-        fprintf('Stress\n');
-        fprintf('Node           sigma_xx           sigma_yy           tau_xy\n');
-    end
+    fprintf('Stress\n');
+    fprintf('Node           sigma_xx           sigma_yy           tau_xy\n');
 
     for e = 1 : number_elements
+
         for index = 1 : num_node_per_element
             % x
             element_dof(2 * index - 1) = 2 * element_nodes(e, index) - 1;
@@ -44,26 +40,9 @@ function [] = output_stress(number_elements, element_nodes, node_coordinates, D,
         A = 1 / 2 * det([1 x1 y1; 1 x2 y2; 1 x3 y3]);
         B = 1 / (2 * A) .* [y2 - y3, 0, y3 - y1, 0 y1 - y2, 0; 0, x3 - x2, 0, x1 - x3, 0, x2 - x1; x3 - x2, y2 - y3, x1 - x3, y3 - y1, x2 - x1, y1 - y2];
 
-        k = A * thickness * B.' * D * B;
-
-        if det(k) ~= 0
-            % error('det(k) <> 0: element %d', e)
-        end
-
         stress = D * B * displacements(element_dof, 1);
 
-        if nargin == 6 || form == 1
-
-            fprintf('%4d%20.4e%20.4e%20.4e\n', [e stress']);
-
-        elseif form == 2
-
-            fprintf('\nStress in element %d\n', e);
-            fprintf('Sigma_xx : %f\n', stress(1));
-            fprintf('Sigma_yy : %f\n', stress(2));
-            fprintf('Sigma_xy : %f\n', stress(3));
-
-        end
+        fprintf('%4d%20.4e%20.4e%20.4e\n', [e; stress]);
 
     end
 

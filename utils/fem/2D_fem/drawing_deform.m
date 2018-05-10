@@ -2,7 +2,7 @@ function [] = drawing_deform(node_coordinates, element_nodes, displacements, mag
 %
 % drawing deform shape.
 %
-% @since 1.0.0
+% @since 1.1.0
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {type} [displacements] description.
@@ -15,10 +15,12 @@ function [] = drawing_deform(node_coordinates, element_nodes, displacements, mag
 
     figure;
 
-    drawing_mesh(node_coordinates, element_nodes, 'k-o');
+    undeformed_mesh = drawing_mesh(node_coordinates, element_nodes, 'k-o');
 
     hold on;
 
-    drawing_mesh(node_coordinates + displacement_reshape, element_nodes, 'r:');
+    deformed_mesh = drawing_mesh(node_coordinates + displacement_reshape, element_nodes, 'r:');
+
+    legend([undeformed_mesh, deformed_mesh], 'undeformed', 'deformed', 'Location', 'northeast');
 
 end

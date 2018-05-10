@@ -1,11 +1,12 @@
-function [] = drawing_mesh(node_coordinates, element_nodes, format)
+function mesh_plot = drawing_mesh(node_coordinates, element_nodes, format)
 %
-% Since it is rather easier to make unintentional mistakes while typin  the coordinates and connectivities in 2D, it would be better to dra  the mesh so you can visualize it. We have written an extensibl  function drawingMesh.m that is useful to visualize your mesh in MATLAB.
+% Since it is rather easier to make unintentional mistakes while typin  the coordinates and connectivities in 2D, it would be better to draw the mesh so you can visualize it. We have written an extensibl  function drawingMesh.m that is useful to visualize your mesh in MATLAB.
 %
-% @since 1.0.0
+% @since 1.1.0
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {string} [format] plot format.
+% @return {object} [mesh_plot] plot 的 object, 可用於 legend.
 %
 
     % close nodes around area
@@ -18,7 +19,7 @@ function [] = drawing_mesh(node_coordinates, element_nodes, format)
 
         x = node_coordinates(element_nodes(e, seg_1), 1);
         y = node_coordinates(element_nodes(e, seg_1), 2);
-        plot(x, y, format);
+        mesh_plot = plot(x, y, format);
 
         hold on;
 

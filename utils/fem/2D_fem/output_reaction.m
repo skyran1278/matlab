@@ -15,6 +15,7 @@ function [] = output_reaction(displacements, stiffness, prescribed_dof, force)
 
     disp('Reactions');
     fprintf('node        reactions\n');
+
     for index = 1 : size(prescribed_dof, 1)
         fprintf('%2.0f:%20.4e\n', prescribed_dof(index), reactions(index));
     end
