@@ -50,6 +50,7 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nu
 
         % stiffness matrix
         stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
+
     end
 
 end

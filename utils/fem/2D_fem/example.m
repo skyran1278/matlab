@@ -32,7 +32,7 @@ G_dof = 2 * number_nodes;
 
 % boundary conditions and solution
 % prescribed dofs
-prescribed_dof = [1 2 3 4]';
+prescribed_dof = [1 2 3 4].';
 
 % initial displacements
 % initial_settlement
@@ -48,6 +48,8 @@ stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, number_node
 
 % solution
 displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
+
+drawing_deform(node_coordinates, element_nodes, displacements);
 
 % output displacements
 output_displacements(displacements, number_nodes, G_dof);
