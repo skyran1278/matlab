@@ -2,7 +2,7 @@ function [] = drawing_deform(node_coordinates, element_nodes, displacements, mag
 %
 % drawing deform shape.
 %
-% @since 1.1.0
+% @since 1.2.0
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {type} [displacements] description.
@@ -10,6 +10,10 @@ function [] = drawing_deform(node_coordinates, element_nodes, displacements, mag
 % @param {number} [magnification_factor] 放大係數.
 % @see drawing_mesh
 %
+
+    if nargin == 3
+        magnification_factor = max(max(node_coordinates) - min(node_coordinates)) / max(abs(displacements)) * 0.1;
+    end
 
     displacement_reshape = reshape(displacements, 2, []).' * magnification_factor;
 
