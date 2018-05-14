@@ -1,0 +1,41 @@
+PISA3D
+2-a
+kN
+mm
+ControlData    GeometricNL  1
+GUI_GRID  XDIR  0  6000
+GUI_GRID  YDIR  0  2000  4000
+GUI_GRID  ZDIR  0  6000
+
+
+
+
+Node  N1 0 0 0
+Node  N2 0 2000 0
+Node  N3 0 4000 0
+Node  N4 6000 2000 0
+DOF  N1 -1 -1 -1 0 0 0
+
+DOF  N3 -1 -1 -1 0 0 0
+
+Element  BeamColumn   E3 N2 N4 Undefined!  0 0 0  0 0 0  0  0
+Element  BeamColumn   E1 N1 N2 Undefined!  0 0 0  0 0 0  0  0
+Element  BeamColumn   E2 N2 N3 Undefined!  0 0 0  0 0 0  0  0
+
+% MATERIAL DATA %
+Material  Bilinear Steel-col 200 0.02 0.41536 0.41536 0.3
+
+Material  Bilinear Steel-beam 200 0.02 0.41536 0.41536 0.3
+
+Material  Bilinear Steel-beam_V 200 0.02 0.219 0.219 0.3
+
+Material  Bilinear Steel-col_V 200 0.02 0.249 0.249 0.3
+
+Material  Bilinear PZ-MAT 128.21 0.02 0.41536 0.41536 0.3
+
+
+% SECTION DATA %
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+STOP

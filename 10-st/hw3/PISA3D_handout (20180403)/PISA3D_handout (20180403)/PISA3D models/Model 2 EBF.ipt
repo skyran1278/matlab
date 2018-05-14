@@ -1,0 +1,92 @@
+PISA3D
+DEMO-2
+kN
+mm
+ControlData    GeometricNL  1
+GUI_Analysis  AbsDispControl  PUSH-X-1-0.025  PUSH_X  1  200  200  N4  UX  ON
+Analysis  AbsDispControl  PUSH_X  1  200  200  N4  UX
+GUI_Analysis  AbsDispControl  PUSH-X-2-0.025  PUSH_X  1  -400  400  N4  UX  ON
+Analysis  AbsDispControl  PUSH_X  1  -400  400  N4  UX
+GUI_GRID  XDIR  0  4000  5400  9400
+GUI_GRID  YDIR  0  4000  8000
+GUI_GRID  ZDIR  0  1000
+
+
+
+
+Node  N1 0 0 0
+Node  N2 0 8000 0
+Node  N3 9400 0 0
+Node  N4 9400 8000 0
+Node  N5 4000 8000 0
+Node  N6 5400 8000 0
+Node  N7 9400 4000 0
+Node  N8 0 4000 0
+Node  N9 4000 4000 0
+Node  N10 5400 4000 0
+DOF  N1 -1 -1 -1 0 0 0 
+
+DOF  N3 -1 -1 -1 0 0 0 
+
+LoadPattern  NodalLoad  PUSH_X N2 100 0 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH_X N2 100 0 0 0 0 0 
+LoadPattern  NodalLoad  PUSH_X N4 100 0 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH_X N4 100 0 0 0 0 0 
+LoadPattern  NodalLoad  PUSH_X N7 50 0 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH_X N7 50 0 0 0 0 0 
+LoadPattern  NodalLoad  PUSH_X N8 50 0 0 0 0 0 
+GUI_LoadPattern  NodalLoad  PUSH_X N8 50 0 0 0 0 0 
+Element  BeamColumn   E3 N2 N5 UB 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E4 N5 N6 UB 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E5 N6 N4 UB 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E10 N8 N9 LB 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E11 N9 N10 LB 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E12 N10 N7 LB 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E6 N3 N7 COL 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E7 N7 N4 COL 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E8 N1 N8 COL 0 0 0  0 0 0  0  0   
+Element  BeamColumn   E9 N8 N2 COL 0 0 0  0 0 0  0  0   
+Element  Truss   E13 N8 N5 steel 12400  0 0  0 0 0  0  
+GUI_Element  Truss   E13 N8 N5 Brace  0 0  0 0 0  0  
+Element  Truss   E14 N7 N6 steel 12400  0 0  0 0 0  0  
+GUI_Element  Truss   E14 N7 N6 Brace  0 0  0 0 0  0  
+Element  Truss   E15 N1 N9 steel 12400  0 0  0 0 0  0  
+GUI_Element  Truss   E15 N1 N9 Brace  0 0  0 0 0  0  
+Element  Truss   E16 N3 N10 steel 12400  0 0  0 0 0  0  
+GUI_Element  Truss   E16 N3 N10 Brace  0 0  0 0 0  0  
+
+% MATERIAL DATA %
+Material  Bilinear steel 200 0.02 0.344 0.344 0.3 
+
+Material  Bilinear steel_v 200 0.02 0.206 0.206 0.3 
+
+
+% SECTION DATA %
+GUI_Section I_SHAPE_SECTION UB steel steel steel steel steel_v steel_v steel_v steel_v steel 0 500 300 25 11 300 25 
+GUI_SECTION_PROPERTY_FACTOR UB 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR UB 1  0  1  
+Section  BCSection03 UB steel steel steel steel steel_v steel_v steel_v steel_v steel 0 19950 9.30406e+08 1.1255e+08 3.15751e+06 3.72162e+06 750333 5500 12500 
+
+GUI_Section I_SHAPE_SECTION LB steel steel steel steel steel_v steel_v steel_v steel_v steel 0 500 300 33 16 300 33 
+GUI_SECTION_PROPERTY_FACTOR LB 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR LB 0  0.501961  1  
+Section  BCSection03 LB steel steel steel steel steel_v steel_v steel_v steel_v steel 0 26744 1.19033e+09 1.48648e+08 7.26811e+06 4.76133e+06 990988 8000 16500 
+
+GUI_Section I_SHAPE_SECTION COL steel steel steel steel steel_v steel_v steel_v steel_v steel 0 350 350 32 15 350 32 
+GUI_SECTION_PROPERTY_FACTOR COL 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR COL 0.501961  1  0.501961  
+Section  BCSection03 COL steel steel steel steel steel_v steel_v steel_v steel_v steel 0 26690 5.97448e+08 2.28747e+08 7.51659e+06 3.41399e+06 1.30713e+06 5250 18666.7 
+
+GUI_Section BOX_SECTION Brace steel steel steel steel steel steel steel steel steel 0 320 320 10 10 
+GUI_SECTION_PROPERTY_FACTOR Brace 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR Brace 1  0.501961  0.25098  
+Section  BCSection03 Brace steel steel steel steel steel steel steel steel steel 0 12400 1.98813e+08 1.98813e+08 2.9791e+08 1.24258e+06 1.24258e+06 6400 6400 
+
+GUI_LoadCase  PUSH_X  
+GUI_AREA_LOAD_ASSIGNED_TYPE  BY_BEAN_SPAN_LOAD
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+GUI_RESPONSE_HISTORY  BEAMCOLUMN_RESPONSE  [BEAMCOLUMN]-[E4]-[1]-[2]  E4  0  2  FALSE
+GUI_RESPONSE_HISTORY  NODE_RESPONSE  [NODE]-[N4]-[1]-[1]  N4  0  0  FALSE
+STOP
