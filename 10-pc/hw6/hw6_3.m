@@ -19,6 +19,7 @@ m = [1.21129 1.20846 0.96506].' * 1e3;
 
 % omega = sqrt(eig_k(1, 1) / m);
 period = 0.3290;
+omega = 2 * pi / period;
 
 modeshape = [0.2683 0.5520 0.7489].';
 
@@ -26,7 +27,7 @@ modeshape_normailzed = modeshape(:, 1) / modeshape(3, 1);
 
 xi_d = 0.15;
 
-cos_theta = 4 / 5;
+cos_theta = [(2.25 / 3) / sqrt((2.25 / 3) ^ 2 + 1.5 ^ 2), (2.25 / 3) / sqrt((2.25 / 3) ^ 2 + 1.25 ^ 2), (2.25 / 3) / sqrt((2.25 / 3) ^ 2 + 1.25 ^ 2)].';
 
 next_reduce_prev = [
     1, 0, 0;
@@ -37,7 +38,7 @@ next_reduce_prev = [
 relative_modeshape = next_reduce_prev * modeshape_normailzed;
 
 % TODO: 除以 1000 的意義不太清楚
-c_linear = 4 * pi * xi_d * sum(m .* modeshape_normailzed .^ 2) / (period * (cos_theta ^ 2) * sum(relative_modeshape .^ 2)) / 1000
+c_linear = 4 * pi * xi_d * sum(m .* modeshape_normailzed .^ 2) / (period * sum((cos_theta .^ 2) .* (relative_modeshape .^ 2))) / 1000
 
 story_drift = 0.01;
 
@@ -46,16 +47,16 @@ h = 3;
 u0 = story_drift * h * cos_theta;
 
 % linear
-FD_linear = c_linear * u0 * omega
+% FD_linear = c_linear * u0 * omega
 
 % =========================
 % nonlinear
-alpha_ = 0.7;
+alpha_ = 0.3;
 
 A = story_drift * h / max(relative_modeshape);
 
 lamda = 2 ^ (2 + alpha_) * gamma(1 + alpha_ / 2) ^ 2 / gamma(2 + alpha_);
 
-c_nonlinear = 2 * pi * xi_d * A ^ (1 - alpha_) * omega ^ (2 - alpha_) * sum((m .* modeshape_normailzed .^ 2)) / (lamda * sum(relative_modeshape .^ (1 + alpha_) * cos_theta ^ (1 + alpha_))) / 1000
+c_nonlinear = 2 * pi * xi_d * A ^ (1 - alpha_) * omega ^ (2 - alpha_) * sum((m .* modeshape_normailzed .^ 2)) / (lamda * sum(relative_modeshape .^ (1 + alpha_) .* cos_theta .^ (1 + alpha_))) / 1000
 
-FD_nonlinear = c_nonlinear * (omega * u0) ^ alpha_
+% FD_nonlinear = c_nonlinear * (omega * u0) ^ alpha_
