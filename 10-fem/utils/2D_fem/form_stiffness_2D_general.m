@@ -1,7 +1,7 @@
-function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, node_coordinates, D, thickness)
+function stiffness = form_stiffness_2D_general(G_dof, number_elements, element_nodes, node_coordinates, D, thickness)
 %
 % compute stiffness matrix.
-% for plane stress rectangular elements.
+% for plane stress Q4 elements.
 %
 % @since 1.0.0
 % @param {number} [G_dof] global number of degrees of freedom.
@@ -37,14 +37,6 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
             element_dof(2 * index) = 2 * element_nodes(e, index);
         end
 
-        %
-        % THIS IS A HACK: we assume node 1 and node 2 align
-        % with x-axis and node 2 and node3 align with y-axis
-        %
-        a = 0.5 * abs(node_coordinates(element_nodes(e, 2), 1) - node_coordinates(element_nodes(e, 1), 1));
-
-        b = 0.5 * abs(node_coordinates(element_nodes(e, 3), 2) - node_coordinates(element_nodes(e, 2), 2));
-
         for index = 1 : ngp
 
             xi = location(index, 1);
@@ -52,8 +44,7 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
 
             [~, diff_shape] = shape_function_Q4(xi, eta);
 
-            diff_shape_XY(1, :) = 1 / a * diff_shape(1, :);
-            diff_shape_XY(2, :) = 1 / b * diff_shape(2, :);
+            [jacobian_matrix, ~, diff_shape_XY] = cal_jacobian(node_coordinates(element_nodes(e, :), :), diff_shape);
 
             B = zeros(3, num_e_dof);
 
@@ -62,15 +53,15 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
             B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
             B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
 
-            k = k + weight(index) * (thickness * a * b * B.' * D * B);
+            k = k + det(jacobian_matrix) * weight(index) * (thickness * B.' * D * B);
 
             % FIXME: 這裡四捨五入的問題，造成答案不一樣。
-            stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + weight(index) * (thickness * a * b * B.' * D * B);
+            stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + det(jacobian_matrix) * weight(index) * (thickness * B.' * D * B);
 
         end
 
         if det(k) ~= 0
-            warning('det(k) <> 0: element %d\n', e);
+            warning('det(k) <> 0: element %d, det(k) = %e\n', e, det(k));
         end
 
         % stiffness matrix
