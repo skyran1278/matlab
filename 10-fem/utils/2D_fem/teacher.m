@@ -70,12 +70,12 @@ function stiffness=formStiffnessRec(GDof,numberElements,...
         a = 0.5*abs(nodeCoordinates(elementNodes(e,2),1) -nodeCoordinates(elementNodes(e,1),1));
         b = 0.5*abs(nodeCoordinates(elementNodes(e,3),2) -nodeCoordinates(elementNodes(e,2),2));
         % cycle for Gauss point
-
+        k = zeros(numEDOF, numEDOF);
         for q=1:size(gaussWeights,1)
             GaussPoint=gaussLocations(q,:);
             xi=GaussPoint(1);
             eta=GaussPoint(2);
-
+            
             % shape functions and derivatives
             [shapeFunction,naturalDerivatives]=shapeFunctionQ4(xi,eta);
             XYderivatives(1,:) = 1/a * naturalDerivatives(1,:);
@@ -86,7 +86,7 @@ function stiffness=formStiffnessRec(GDof,numberElements,...
             B(2,2:2:numEDOF) = XYderivatives(2,:);
             B(3,1:2:numEDOF) = XYderivatives(2,:);
             B(3,2:2:numEDOF) = XYderivatives(1,:);
-
+            k = k + thickness*a*b*B'*D*B*gaussWeights(q);
             % stiffness matrix
             stiffness(elementDof,elementDof)=...
             stiffness(elementDof,elementDof)+...

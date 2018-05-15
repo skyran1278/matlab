@@ -23,7 +23,7 @@ function [] = drawing_deform(node_coordinates, element_nodes, displacements, mag
 
     hold on;
 
-    deformed_mesh = drawing_mesh(node_coordinates + displacement_reshape, element_nodes, 'r:');
+    deformed_mesh = drawing_mesh(node_coordinates + displacement_reshape, element_nodes, 'r--');
 
     legend([undeformed_mesh, deformed_mesh], 'undeformed', 'deformed', 'Location', 'northeast');
 

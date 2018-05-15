@@ -26,13 +26,9 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
 
     ngp = size(weight, 1);
 
-    % diff_shape_XY = zeros(size(diff_shape));
-
-    B = zeros(3, num_e_dof);
-
-    k = zeros(num_e_dof, num_e_dof);
-
     for e = 1 : number_elements
+
+        k = zeros(num_e_dof, num_e_dof);
 
         for index = 1 : num_node_per_element
             % x
@@ -59,12 +55,17 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
             diff_shape_XY(1, :) = 1 / a * diff_shape(1, :);
             diff_shape_XY(2, :) = 1 / b * diff_shape(2, :);
 
+            B = zeros(3, num_e_dof);
+
             B(1, 1 : 2 : num_e_dof) = diff_shape_XY(1, :);
             B(2, 2 : 2 : num_e_dof) = diff_shape_XY(2, :);
             B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
             B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
 
-            k = k + thickness * a * b * B.' * D * B;
+            k = k + weight(index) * (thickness * a * b * B.' * D * B);
+
+            % FIXME: 這裡四捨五入的問題，造成答案不一樣。
+            stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + weight(index) * (thickness * a * b * B.' * D * B);
 
         end
 
@@ -73,7 +74,7 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
         end
 
         % stiffness matrix
-        stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
+        % stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
 
     end
 
