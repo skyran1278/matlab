@@ -13,8 +13,6 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
 % @return {array} [stiffness] stiffness.
 %
 
-    syms xi eta;
-
     stiffness = zeros(G_dof);
 
     % 一個 element 有幾個 nodes
@@ -24,20 +22,15 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
     num_e_dof = 2 * num_node_per_element;
     element_dof = zeros(1, num_e_dof);
 
-    gauss_quadrature = gauss_quadrature_curry('2x2')
+    [weight, location] = gauss_const_2D('2x2');
 
-    shape = 1 / 4 * [ (1 - xi) * (1 - eta), (1 + xi) * (1 - eta), (1 + xi) * (1 + eta), (1 - xi) * (1 + eta)];
+    ngp = size(weight, 1);
 
-    diff_shape = 1 / 4 * [
-        - (1 - eta), 1 - eta, 1 + eta, - (1 + eta);
-        - (1 - xi), - (1 + xi), 1 + xi, 1 - xi;
-    ];
+    % diff_shape_XY = zeros(size(diff_shape));
 
-    diff_shape_XY = zeros(size(diff_shape));
+    B = zeros(3, num_e_dof);
 
-    B = sym(zeros(3, num_e_dof));
-
-    ke = sym(zeros(num_node_per_element, num_node_per_element));
+    k = zeros(num_e_dof, num_e_dof);
 
     for e = 1 : number_elements
 
@@ -56,17 +49,24 @@ function stiffness = form_stiffness_rec(G_dof, number_elements, element_nodes, n
 
         b = 0.5 * abs(node_coordinates(element_nodes(e, 3), 2) - node_coordinates(element_nodes(e, 2), 2));
 
-        diff_shape_XY(1, :) = 1 / a * diff_shape(1, :);
-        diff_shape_XY(2, :) = 1 / b * diff_shape(2, :);
+        for index = 1 : ngp
 
-        B(1, 1 : 2 : num_e_dof) = diff_shape_XY(1, :);
-        B(2, 2 : 2 : num_e_dof) = diff_shape_XY(2, :);
-        B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
-        B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
+            xi = location(index, 1);
+            eta = location(index, 2);
 
-        ke(xi, eta) = thickness * a * b * B.' * D * B;
+            [~, diff_shape] = shape_function_Q4(xi, eta);
 
-        k = gauss_quadrature(ke);
+            diff_shape_XY(1, :) = 1 / a * diff_shape(1, :);
+            diff_shape_XY(2, :) = 1 / b * diff_shape(2, :);
+
+            B(1, 1 : 2 : num_e_dof) = diff_shape_XY(1, :);
+            B(2, 2 : 2 : num_e_dof) = diff_shape_XY(2, :);
+            B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
+            B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
+
+            k = k + thickness * a * b * B.' * D * B;
+
+        end
 
         if det(k) ~= 0
             warning('det(k) <> 0: element %d\n', e);
