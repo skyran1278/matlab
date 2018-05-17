@@ -20,7 +20,7 @@ number_nodes = 21;
 % generation of coordinates and connectivities
 % muti_element_nodes
 element_nodes = [1 2 9 8; 2 3 10 9; 3 4 11 10; 4 5 12 11; 5 6 13 12; 6 7 14 13; 8 9 16 15; 9 10 17 16; 10 11 18 17; 11 12 19 18; 12 13 20 19; 13 14 21 20];
-node_coordinates = [0 -10; 10 -10; 20 -10; 30 -10; 40 -10; 50 -10; 60 -10; 0 0; 10 0; 20 0; 30 0; 40 0; 50 0; 60 0; 0 10; 10 10; 20 10; 30 10; 40 10; 50 10; 60 10];
+node_coordinates = [0 0; 10 0; 20 0; 30 0; 40 0; 50 0; 60 0; 0 10; 10 10; 20 10; 30 10; 40 10; 50 10; 60 10; 0 20; 10 20; 20 20; 30 20; 40 20; 50 20; 60 20];
 
 % G_dof: global number of degrees of freedom
 G_dof = 2 * number_nodes;
@@ -63,7 +63,7 @@ drawing_deform(node_coordinates, element_nodes, displacements);
 
 % output_reaction(displacements, stiffness, prescribed_dof, force)
 
-% output_stress(number_elements, element_nodes, node_coordinates, D, displacements)
+output_stress(number_elements, element_nodes, node_coordinates, D, displacements)
 
 displacement_reshape = reshape(displacements, 2, []).';
 
