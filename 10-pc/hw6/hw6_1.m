@@ -20,16 +20,33 @@ force1 = xlsread(filename, sheet, 'O3:O3759');
 
 % log(force005) = log(C) + alpha_ * log(diff(disp005))
 
-plot([dis(disp005, 0.05) dis(disp01, 0.1) dis(disp03, 0.3) dis(disp05, 0.5) dis(disp1, 1)], [force(force005) force(force01) force(force03) force(force05) force(force1)], 'ko');
+% plot([dis(disp005, 0.05) dis(disp01, 0.1) dis(disp03, 0.3) dis(disp05, 0.5) dis(disp1, 1)], [force(force005) force(force01) force(force03) force(force05) force(force1)], 'ko');
 
-x = [dis(disp005, 0.05) dis(disp01, 0.1) dis(disp03, 0.3) dis(disp05, 0.5) dis(disp1, 1)].'
-y = [force(force005) force(force01) force(force03) force(force05) force(force1)].'
+x = [dis(disp005, 0.05) dis(disp01, 0.1) dis(disp03, 0.3) dis(disp05, 0.5) dis(disp1, 1)].';
+y = [force(force005) force(force01) force(force03) force(force05) force(force1)].';
 
+alpha_ = 0.687;
+lnC = 5.9019;
+
+vel = 0 : 0.0001 : 0.25;
+
+f = exp(5.9019) * vel .^ 0.687;
+
+figure;
+theory = plot(vel, f, 'k');
+hold on;
+test_data = plot(x, y, 'r*');
+hold on;
+error_range = plot(vel, 1.15 * f, 'r:', vel, 0.85 * f, 'r:');
+title('');
+xlabel('Velocity (mm/sec)');
+ylabel('Force (tf)');
+legend([theory, test_data, error_range(1)], '²z½×­È', '¸ÕÅç­È', '15%»~®t½d³ò', 'Location', 'southeast');
 
 function output = dis(input, f)
-    output = max(log(abs(diff(input) * f)));
+    output = max(abs(diff(input) * f));
 end
 
 function output = force(input)
-    output = max(log(abs(input)));
+    output = max(abs(input));
 end
