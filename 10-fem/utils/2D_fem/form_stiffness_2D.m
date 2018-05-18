@@ -1,13 +1,12 @@
-function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, number_nodes, node_coordinates, D, thickness)
+function stiffness = form_stiffness_2D_general(G_dof, number_elements, element_nodes, node_coordinates, D, thickness)
 %
-% For the T3 element, the element stiffness matrix is Ke = tAeBeDeBe.
-% compute stiffness matrix for T3 elements
+% compute stiffness matrix.
+% for plane stress Q4 elements.
 %
 % @since 1.0.0
 % @param {number} [G_dof] global number of degrees of freedom.
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
-% @param {number} [number_nodes] number of nodes.
 % @param {array} [node_coordinates] 節點位置.
 % @param {array} [D] 2D matrix D.
 % @param {number} [thickness] 厚度.
@@ -23,7 +22,13 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nu
     num_e_dof = 2 * num_node_per_element;
     element_dof = zeros(1, num_e_dof);
 
+    [weight, location] = gauss_const_2D('2x2');
+
+    ngp = size(weight, 1);
+
     for e = 1 : number_elements
+
+        k = zeros(num_e_dof);
 
         for index = 1 : num_node_per_element
             % x
@@ -32,25 +37,35 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nu
             element_dof(2 * index) = 2 * element_nodes(e, index);
         end
 
-        % B matrix
-        x1 = node_coordinates(element_nodes(e, 1), 1);
-        y1 = node_coordinates(element_nodes(e, 1), 2);
-        x2 = node_coordinates(element_nodes(e, 2), 1);
-        y2 = node_coordinates(element_nodes(e, 2), 2);
-        x3 = node_coordinates(element_nodes(e, 3), 1);
-        y3 = node_coordinates(element_nodes(e, 3), 2);
+        for index = 1 : ngp
 
-        A = 1 / 2 * det([1 x1 y1; 1 x2 y2; 1 x3 y3]);
-        B = 1 / (2 * A) .* [y2 - y3, 0, y3 - y1, 0 y1 - y2, 0; 0, x3 - x2, 0, x1 - x3, 0, x2 - x1; x3 - x2, y2 - y3, x1 - x3, y3 - y1, x2 - x1, y1 - y2];
+            xi = location(index, 1);
+            eta = location(index, 2);
 
-        k = A * thickness * B.' * D * B;
+            [~, diff_shape] = shape_function_Q4(xi, eta);
+
+            [jacobian_matrix, ~, diff_shape_XY] = cal_jacobian(node_coordinates(element_nodes(e, :), :), diff_shape);
+
+            B = zeros(3, num_e_dof);
+
+            B(1, 1 : 2 : num_e_dof) = diff_shape_XY(1, :);
+            B(2, 2 : 2 : num_e_dof) = diff_shape_XY(2, :);
+            B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
+            B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
+
+            k = k + det(jacobian_matrix) * weight(index) * (thickness * B.' * D * B);
+
+            % FIXME: 這裡四捨五入的問題，造成答案不一樣。
+            stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + det(jacobian_matrix) * weight(index) * (thickness * B.' * D * B);
+
+        end
 
         if det(k) ~= 0
-            warning('det(k) <> 0: element %d\n', e);
+            warning('det(k) <> 0: element %d, det(k) = %e\n', e, det(k));
         end
 
         % stiffness matrix
-        stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
+        % stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
 
     end
 
