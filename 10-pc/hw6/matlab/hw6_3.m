@@ -22,11 +22,12 @@ next_reduce_prev = [
 relative_modeshape = next_reduce_prev * modeshape_normailzed;
 
 c_linear = 4 * pi * xi_d * sum(m .* modeshape_normailzed .^ 2) / (period * sum((cos_theta .^ 2) .* (relative_modeshape .^ 2)))
-% 124
+% 149
+
 
 story_drift = 0.01;
 
-h = 3;
+h = 1.5;
 
 u0 = story_drift * h * cos_theta;
 
@@ -42,7 +43,8 @@ A = story_drift * h / max(relative_modeshape);
 lamda = 2 ^ (2 + alpha_) * gamma(1 + alpha_ / 2) ^ 2 / gamma(2 + alpha_);
 
 c_nonlinear = 2 * pi * xi_d * A ^ (1 - alpha_) * omega ^ (2 - alpha_) * sum((m .* modeshape_normailzed .^ 2)) / (lamda * sum(relative_modeshape .^ (1 + alpha_) .* cos_theta .^ (1 + alpha_)))
-% 41
+% 49
+
 
 % FD_nonlinear = c_nonlinear * (omega * u0) ^ alpha_
 
@@ -55,6 +57,7 @@ A = story_drift * h / max(relative_modeshape);
 lamda = 2 ^ (2 + alpha_) * gamma(1 + alpha_ / 2) ^ 2 / gamma(2 + alpha_);
 
 c_nonlinear = 2 * pi * xi_d * A ^ (1 - alpha_) * omega ^ (2 - alpha_) * sum((m .* modeshape_normailzed .^ 2)) / (lamda * sum(relative_modeshape .^ (1 + alpha_) .* cos_theta .^ (1 + alpha_)))
-% 78
+% 93
+
 
 % FD_nonlinear = c_nonlinear * (omega * u0) ^ alpha_
