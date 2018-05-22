@@ -88,6 +88,8 @@
 **/ETABS/**/*.W1
 **/ETABS/**/*.Y3
 **/ETABS/**/*.Y4
+**/ETABS/**/*.Y11
 **/ETABS/**/*.Z3
 **/ETABS/**/*.Z4
+**/ETABS/**/*.Z11
 
