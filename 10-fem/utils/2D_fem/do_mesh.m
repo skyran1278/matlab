@@ -1,4 +1,4 @@
-function output = do_mesh(x, y, )
+function output = do_mesh(corner_coordinates, )
 %
 % description.
 %
