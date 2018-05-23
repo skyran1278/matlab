@@ -48,7 +48,7 @@ classdef test_fem_2D < matlab.unittest.TestCase
             force(7) = 5000;
 
             % calculation of the system stiffness matrix
-            stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, number_nodes, node_coordinates, D, thickness);
+            stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
 
             % solution
             displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);

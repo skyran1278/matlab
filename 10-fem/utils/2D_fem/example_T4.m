@@ -19,6 +19,7 @@ number_nodes = 6;
 
 % generation of coordinates and connectivities
 % muti_element_nodes
+
 element_nodes = [1 2 5 4; 2 3 6 5];
 node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
 
@@ -45,7 +46,7 @@ D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) /
 
 
 % calculation of the system stiffness matrix
-stiffness = form_stiffness_2D_general(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
+stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
 
 
 % solution

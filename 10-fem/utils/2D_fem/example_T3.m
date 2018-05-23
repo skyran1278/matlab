@@ -46,7 +46,7 @@ magnification_factor = 1e2;
 D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
 
 % calculation of the system stiffness matrix
-stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, number_nodes, node_coordinates, D, thickness);
+stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
 
 % solution
 displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
