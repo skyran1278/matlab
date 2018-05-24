@@ -23,6 +23,8 @@ number_nodes = 6;
 element_nodes = [1 2 5 4; 2 3 6 5];
 node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
 
+drawing_mesh(node_coordinates, element_nodes, 'k-o');
+
 % G_dof: global number of degrees of freedom
 G_dof = 2 * number_nodes;
 
@@ -30,23 +32,14 @@ G_dof = 2 * number_nodes;
 % prescribed dofs
 prescribed_dof = [1 2 7].';
 
-% force vector
-force = zeros(G_dof, 1);
-force(5) = 5000;
-force(11) = 5000;
-
 % initial displacements
 % initial_settlement
 displacements = zeros(G_dof, 1);
 
-% =========================
-% input have done
-% input have done
-% input have done
-% =========================
-
-% 確認是否畫對
-drawing_mesh(node_coordinates, element_nodes, 'k-o');
+% force vector
+force = zeros(G_dof, 1);
+force(5) = 5000;
+force(11) = 5000;
 
 % 2D matrix D
 D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];

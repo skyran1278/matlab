@@ -1,4 +1,4 @@
-function [number_elements, number_nodes, element_nodes, node_coordinates] = mesh_Q4(corner_coordinates, x_mesh, y_mesh)
+function [element_nodes, node_coordinates, number_elements, number_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh)
 %
 % for T4
 % auto output element_nodes node_coordinates.
@@ -7,10 +7,8 @@ function [number_elements, number_nodes, element_nodes, node_coordinates] = mesh
 % @param {array} [corner_coordinates] corner coordinates.
 % @param {number} [x_mesh] x 方向切幾份.
 % @param {number} [y_mesh] y 方向切幾份.
-% @return {number} [number_elements] number of elements.
-% @return {number} [number_nodes] number of nodes.
-% @return {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
-% @return {array} [node_coordinates] 節點位置.
+% @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
+% @param {array} [node_coordinates] 節點位置.
 %
 
 
