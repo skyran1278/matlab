@@ -1,4 +1,4 @@
-classdef test_fem_2D < matlab.unittest.TestCase
+classdef fem_2D_test < matlab.unittest.TestCase
 
     methods (Test)
 
