@@ -22,6 +22,7 @@ number_nodes = 6;
 
 element_nodes = [1 2 5 4; 2 3 6 5];
 node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
+% [number_elements, number_nodes, element_nodes, node_coordinates] = mesh_Q4(corner_coordinates, x_mesh, y_mesh)
 
 % G_dof: global number of degrees of freedom
 G_dof = 2 * number_nodes;

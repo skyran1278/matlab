@@ -54,14 +54,6 @@ stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordi
 displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
 
 
-% drawing_deform(node_coordinates, element_nodes, displacements);
-
-
-% output displacements
-% output_displacements(displacements, number_nodes, G_dof);
-
-% output_reaction(displacements, stiffness, prescribed_dof, force)
-
 [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, element_nodes, node_coordinates, D, displacements);
 
 fprintf('Stresses at Gauss points\n');
@@ -91,69 +83,43 @@ for e = 1 : length(stress_node_cell)
 end
 
 
+% 一個 element 有幾個 nodes
+num_node_per_element = size(element_nodes, 2);
 
-    % 一個 element 有幾個 nodes
-    num_node_per_element = size(element_nodes, 2);
+% 一個 element 有幾個自由度
+num_e_dof = 2 * num_node_per_element;
+element_dof = zeros(1, num_e_dof);
 
-    % 一個 element 有幾個自由度
-    num_e_dof = 2 * num_node_per_element;
-    element_dof = zeros(1, num_e_dof);
+[weight, location] = gauss_const_2D('2x2');
 
-    [weight, location] = gauss_const_2D('2x2');
+ngp = size(weight, 1);
 
-    ngp = size(weight, 1);
+acc_stress = zeros(3, 9);
+average_count = zeros(1, 9);
 
-    acc_stress = zeros(3, 9);
-    average_count = zeros(1, 9);
+for e = 1 : number_elements
 
-    for e = 1 : number_elements
+    for index = 1 : num_node_per_element
+        % x
+        element_dof(2 * index - 1) = 2 * element_nodes(e, index) - 1;
+        % y
+        element_dof(2 * index) = 2 * element_nodes(e, index);
+    end
 
-        for index = 1 : num_node_per_element
-            % x
-            element_dof(2 * index - 1) = 2 * element_nodes(e, index) - 1;
-            % y
-            element_dof(2 * index) = 2 * element_nodes(e, index);
-        end
+    stress = stress_node_cell{e};
 
-        stress = stress_node_cell{e};
+    for index = 1 : size(stress, 1)
 
-        for index = 1 : size(stress, 1)
-
-            acc_stress(:, element_nodes(e, index)) = acc_stress(:, element_nodes(e, index)) + stress(index, :).';
-            average_count(element_nodes(e, index)) = average_count(element_nodes(e, index)) + 1;
-
-            % fprintf('%4d%7d%20.4e%20.4e%20.4e\n', [e; index; stress(index, :).']);
-        end
-
-        % for index = 1 : ngp
-
-        %     xi = location(index, 1);
-        %     eta = location(index, 2);
-
-        %     [~, diff_shape] = shape_function_Q4(xi, eta);
-
-        %     [~, ~, diff_shape_XY] = form_jacobian(node_coordinates(element_nodes(e, :), :), diff_shape);
-
-        %     B = zeros(3, num_e_dof);
-
-        %     B(1, 1 : 2 : num_e_dof) = diff_shape_XY(1, :);
-        %     B(2, 2 : 2 : num_e_dof) = diff_shape_XY(2, :);
-        %     B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
-        %     B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
-
-        %     stress = D * B * displacements(element_dof, 1);
-
-        %     acc_stress(:, element_nodes(e, index)) = acc_stress(:, element_nodes(e, index)) + stress;
-
-        %     average_count(element_nodes(e, index)) = average_count(element_nodes(e, index)) + 1;
-
-        % end
+        acc_stress(:, element_nodes(e, index)) = acc_stress(:, element_nodes(e, index)) + stress(index, :).';
+        average_count(element_nodes(e, index)) = average_count(element_nodes(e, index)) + 1;
 
     end
 
-    fprintf('Average Nodal Stresses\n');
-    fprintf('Node           Sxx               Syy                Sxy\n');
+end
 
-    average_stress = acc_stress ./ average_count;
+fprintf('Average Nodal Stresses\n');
+fprintf('Node           Sxx               Syy                Sxy\n');
 
-    fprintf('%4d%20.4e%20.4e%20.4e\n', [(1 : 9); average_stress]);
+average_stress = acc_stress ./ average_count;
+
+fprintf('%4d%20.4e%20.4e%20.4e\n', [(1 : 9); average_stress]);

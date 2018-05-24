@@ -49,8 +49,7 @@ for index = 344 : 2 : length(force) - 2
 end
 force(342) = - 1.25;
 force(length(force)) = - 1.25;
-% force(16) = - 20;
-% force(18) = - 10;
+
 
 % 2D matrix D
 D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
