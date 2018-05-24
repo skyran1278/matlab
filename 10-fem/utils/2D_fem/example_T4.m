@@ -61,5 +61,5 @@ output_displacements(displacements, number_nodes, G_dof);
 
 % output_reaction(displacements, stiffness, prescribed_dof, force)
 
-% output_stress(number_elements, element_nodes, node_coordinates, D, displacements)
+stress_recovery(number_elements, element_nodes, node_coordinates, D, displacements)
 
