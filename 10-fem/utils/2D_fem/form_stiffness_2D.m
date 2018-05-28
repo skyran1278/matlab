@@ -3,7 +3,7 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, no
 % compute stiffness matrix.
 % for plane stress Q4 elements.
 %
-% @since 1.0.1
+% @since 1.0.2
 % @param {number} [G_dof] global number of degrees of freedom.
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
@@ -73,10 +73,11 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, no
 
         end
 
-        % FIXME: 不知道為什? k 都不為 0
-        if det(k) ~= 0
-            warning('det(k) <> 0: element %d, det(k) = %e\n', e, det(k));
-        end
+        % k 不為 0
+        % 因為 K 已經無法 exact 了
+        % if det(k) ~= 0
+        %     warning('det(k) <> 0: element %d, det(k) = %e\n', e, det(k));
+        % end
 
         % stiffness matrix
         % stiffness(element_dof, element_dof) = stiffness(element_dof, element_dof) + k;
