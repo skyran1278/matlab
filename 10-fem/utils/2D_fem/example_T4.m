@@ -12,17 +12,20 @@ thickness = 1;
 
 % preprocessing
 % number_elements: number of elements
-number_elements = 2;
+% number_elements = 2;
 
 % number_nodes: number of nodes
-number_nodes = 6;
+% number_nodes = 6;
 
 % generation of coordinates and connectivities
 % muti_element_nodes
 
-element_nodes = [1 2 5 4; 2 3 6 5];
-node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
-% [number_elements, number_nodes, element_nodes, node_coordinates] = mesh_Q4(corner_coordinates, x_mesh, y_mesh)
+% element_nodes = [1 2 5 4; 2 3 6 5];
+% node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
+corner_coordinates = [0 0; 20 0; 0 10; 20 10;];
+x_mesh = 2;
+y_mesh = 1;
+[number_elements, number_nodes, element_nodes, node_coordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
 % G_dof: global number of degrees of freedom
 G_dof = 2 * number_nodes;
@@ -33,18 +36,19 @@ prescribed_dof = [1 2 7].';
 
 % force vector
 force = zeros(G_dof, 1);
-force(5) = 5000;
-force(11) = 5000;
+% force(5) = 5000;
+% force(11) = 5000;
+force(2 * nodes(:, end) - 1) = 5000;
 
 % initial displacements
 % initial_settlement
 displacements = zeros(G_dof, 1);
 
-% =========================
+% ========================================================
 % input have done
 % input have done
 % input have done
-% =========================
+% ========================================================
 
 % 確認是否畫對
 drawing_mesh(node_coordinates, element_nodes, 'k-o');
@@ -69,5 +73,5 @@ output_displacements(displacements, number_nodes, G_dof);
 
 % output_reaction(displacements, stiffness, prescribed_dof, force)
 
-stress_recovery(number_elements, element_nodes, node_coordinates, D, displacements)
+[stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, element_nodes, node_coordinates, D, displacements);
 

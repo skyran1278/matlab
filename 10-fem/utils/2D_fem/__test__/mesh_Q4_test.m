@@ -3,7 +3,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
     methods (Test)
 
         function mesh_2x2(testCase)
-            corner_coordinates = [0 0; 2 0.5; 2 1; 0 1];
+            corner_coordinates = [0 0; 2 0.5; 0 1; 2 1;];
             x_mesh = 2;
             y_mesh = 2;
 
@@ -26,7 +26,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 2.0000    1.0000;
             ];
 
-            [element_nodes, node_coordinates] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [number_elements, number_nodes, element_nodes, node_coordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
             testCase.verifyEqual(element_nodes, exp_element_nodes);
             testCase.verifyEqual(node_coordinates, exp_node_coordinates);
@@ -34,7 +34,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
 
 
         function mesh_4x4(testCase)
-            corner_coordinates = [0 0; 2 0.5; 2 1; 0 1];
+            corner_coordinates = [0 0; 2 0.5; 0 1; 2 1;];
             x_mesh = 4;
             y_mesh = 4;
 
@@ -85,7 +85,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 2                  1;
             ];
 
-            [element_nodes, node_coordinates] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [number_elements, number_nodes, element_nodes, node_coordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
             testCase.verifyEqual(element_nodes, exp_element_nodes);
             testCase.verifyEqual(node_coordinates, exp_node_coordinates);
