@@ -1,4 +1,4 @@
-function [number_elements, number_nodes, element_nodes, node_coordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh)
+function [number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh)
 %
 % for T4 auto mesh.
 %
@@ -10,7 +10,8 @@ function [number_elements, number_nodes, element_nodes, node_coordinates, nodes]
 % @return {number} [number_nodes] number of nodes.
 % @return {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @return {array} [node_coordinates] 節點位置.
-% @return {array} [nodes] 編號形狀位置.
+% @return {array} [nodes] 編號形狀位置，實際位置.
+% @return {array} [flip_nodes] 編號形狀位置，正的排序.
 % @example
 %
 % corner_coordinates = [0 0; 20 0; 0 10; 20 10;];

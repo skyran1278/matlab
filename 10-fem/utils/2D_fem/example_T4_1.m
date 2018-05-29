@@ -22,8 +22,8 @@ thickness = 1;
 
 % element_nodes = [1 2 5 4; 2 3 6 5];
 % node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
-corner_coordinates = [0 0; 20 0; 0 10; 20 10;];
-x_mesh = 2;
+corner_coordinates = [0 0; 2 0.5; 0 1; 2 1;];
+x_mesh = 1;
 y_mesh = 1;
 [number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
@@ -32,14 +32,14 @@ G_dof = 2 * number_nodes;
 
 % boundary conditions and solution
 % prescribed dofs
-prescribed_dof = [1 2 7].';
-% prescribed_dof = reshape([2 * flip_nodes(:, 1) - 1, 2 * flip_nodes(:, 1)].', [], 1);
+% prescribed_dof = [1 2 7].';
+prescribed_dof = reshape([2 * flip_nodes(:, 1) - 1, 2 * flip_nodes(:, 1)].', [], 1);
 
 % force vector
 force = zeros(G_dof, 1);
 % force(5) = 5000;
 % force(11) = 5000;
-force(2 * nodes(:, end) - 1) = 5000;
+% force(2 * nodes(:, end) - 1) = 5000;
 
 % initial displacements
 % initial_settlement
