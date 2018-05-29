@@ -1,4 +1,4 @@
-classdef fem_2D_test < matlab.unittest.TestCase
+classdef form_stiffness_2D < matlab.unittest.TestCase
 
     methods (Test)
 
