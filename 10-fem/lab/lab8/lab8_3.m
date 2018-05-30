@@ -142,3 +142,89 @@ title('\sigma_x_x');
 xlabel('x(mm)');
 ylabel('y(mm)');
 axis([0 2 0 1.2]);
+
+
+stress_ave = zeros(number_elements, 1);
+
+for e = 1 : number_elements
+
+    stress = stress_gp_cell{e};
+
+    stress_average = mean(stress, 1);
+
+    stress_ave(e) = stress_average(1);
+
+
+end
+
+drawing_patch(node_coordinates, element_nodes, stress_ave)
+stress_ave
+
+    % 一個 element 有幾個 nodes
+    num_node_per_element = size(element_nodes, 2);
+
+    % 一個 element 有幾個自由度
+    num_e_dof = 2 * num_node_per_element;
+    element_dof = zeros(1, num_e_dof);
+
+    [weight, location] = gauss_const_2D('2x2');
+
+    location = [-1 -1; 1 -1; 1 1; -1 1];
+
+    ngp = size(weight, 1);
+
+
+
+    for e = 1 : number_elements
+
+        stress = zeros(3, 1);
+
+        for index = 1 : num_node_per_element
+            % x
+            element_dof(2 * index - 1) = 2 * element_nodes(e, index) - 1;
+            % y
+            element_dof(2 * index) = 2 * element_nodes(e, index);
+        end
+
+        for index = 1 : ngp
+
+            xi = location(index, 1);
+            eta = location(index, 2);
+
+            [~, diff_shape] = shape_function_Q4(xi, eta);
+
+            [~, ~, diff_shape_XY] = form_jacobian(node_coordinates(element_nodes(e, :), :), diff_shape);
+
+            B = zeros(3, num_e_dof);
+
+            B(1, 1 : 2 : num_e_dof) = diff_shape_XY(1, :);
+            B(2, 2 : 2 : num_e_dof) = diff_shape_XY(2, :);
+            B(3, 1 : 2 : num_e_dof) = diff_shape_XY(2, :);
+            B(3, 2 : 2 : num_e_dof) = diff_shape_XY(1, :);
+
+            stress = stress + D * B * displacements(element_dof, 1);
+
+        end
+
+        stress_ave(e) = stress(1) / 4;
+
+    end
+
+    drawing_patch(node_coordinates, element_nodes, stress_ave)
+    stress_ave
+
+stress_ave = zeros(number_elements, 1);
+
+for e = 1 : number_elements
+
+    stress = stress_node_cell{e};
+
+    stress_average = mean(stress, 1);
+
+    stress_ave(e) = stress_average(1);
+
+
+end
+
+drawing_patch(node_coordinates, element_nodes, stress_ave)
+stress_ave
