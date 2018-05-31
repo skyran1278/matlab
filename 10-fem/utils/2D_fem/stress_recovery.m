@@ -2,7 +2,7 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
 %
 % stress recovery.
 %
-% @since 1.0.2
+% @since 1.0.3
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {array} [node_coordinates] 節點位置.
@@ -16,7 +16,7 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
     num_node_per_element = size(element_nodes, 2);
 
     shape_function = create_shape_function(num_node_per_element);
-    [weight, location] = gauss_const_2D(num_node_per_element);
+    [weight, location] = gauss_2D(num_node_per_element);
     ngp = size(weight, 1);
 
     % 一個 element 有幾個自由度
