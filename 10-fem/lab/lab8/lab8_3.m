@@ -91,7 +91,7 @@ for e = 1 : number_elements
 end
 
 
-average_stress = acc_stress ./ average_count;
+average_stress = acc_stress ./ average_count
 
 drawing_patch(node_coordinates, element_nodes, average_stress(1, :))
 
@@ -228,3 +228,5 @@ end
 
 drawing_patch(node_coordinates, element_nodes, stress_ave)
 stress_ave
+
+drawing_stress(element_nodes, node_coordinates, stress_gp_cell, stress_node_cell)
