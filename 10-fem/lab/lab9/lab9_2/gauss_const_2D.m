@@ -1,16 +1,16 @@
-function [weight, location] = gauss_const_2D(num_node_per_element)
+function [weight, location] = gauss_const_2D(option)
 %
 % Gauss quadrature in 2D.
 %
-% @since 2.0.0
-% @param {number} [num_node_per_element] '2x2', '1x1'.
+% @since 1.0.2
+% @param {string} [option] '2x2', '1x1'.
 % @return {array} [weight] Gauss point weight.
 % @return {array} [location] Gauss point location.
 %
 
-    switch num_node_per_element
+    switch option
 
-        case 16
+        case '4x4'
             loc = [-0.861136311594052, -0.339981043584856, 0.339981043584856, 0.861136311594052];
             w = [0.347854845137454, 0.652145154862546, 0.652145154862546, 0.347854845137454];
             location = [
@@ -50,7 +50,7 @@ function [weight, location] = gauss_const_2D(num_node_per_element)
                 w(2) * w(3);
             ];
 
-        case {8, 9}
+        case '3x3'
 
             location = sqrt(3 / 5) * [
                 - 1, - 1;
@@ -76,7 +76,7 @@ function [weight, location] = gauss_const_2D(num_node_per_element)
                 w(2) * w(2);
             ];
 
-        case 4
+        case '2x2'
 
             location = [
                 - 1 / sqrt(3), - 1 / sqrt(3);
@@ -87,7 +87,7 @@ function [weight, location] = gauss_const_2D(num_node_per_element)
 
             weight = [1 1 1 1].';
 
-        case 1
+        case '1x1'
 
             location = [0, 0];
             weight = [4];
