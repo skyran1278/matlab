@@ -46,7 +46,6 @@ function stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, no
             eta = location(index, 2);
 
             % 輸出的已經是數值了
-            % 只適用於 Q4
             [~, diff_shape] = shape_function(xi, eta);
 
             % number array

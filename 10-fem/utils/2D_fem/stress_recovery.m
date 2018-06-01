@@ -26,12 +26,12 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
     stress_gp_cell = cell(number_elements, 2);
     stress_node_cell = cell(number_elements, 1);
 
-    recovery = [
-        1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2;
-        - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2;
-        1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2;
-        - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2;
-    ];
+    % recovery = [
+    %     1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2;
+    %     - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2;
+    %     1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2;
+    %     - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2;
+    % ];
 
     for e = 1 : number_elements
 
@@ -44,17 +44,16 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
             element_dof(2 * index) = 2 * element_nodes(e, index);
         end
 
+        stress_gp = zeros(ngp, 3);
+        stress_gp_location = zeros(ngp, 2);
+
         % 這裡已經在做高斯了
         for index = 1 : ngp
-
-            stress_gp = zeros(ngp, 3);
-            stress_gp_location = zeros(ngp, 1);
 
             xi = location(index, 1);
             eta = location(index, 2);
 
             % 輸出的已經是數值了
-            % 只適用於 Q4
             [shape, diff_shape] = shape_function(xi, eta);
 
             % number array
@@ -79,11 +78,11 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
 
         end
 
-        stress_node = recovery * stress_gp;
+        % stress_node = recovery * stress_gp;
 
         stress_gp_cell{e, 1} = stress_gp;
         stress_gp_cell{e, 2} = stress_gp_location;
-        stress_node_cell{e} = stress_node;
+        % stress_node_cell{e} = stress_node;
 
     end
 
