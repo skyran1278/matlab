@@ -1,7 +1,14 @@
 clc; clear; close all;
 
 % tic
+x = -1:0.01:1;
+y = [-1; 0; 1]*ones(1,length(x));
 
+xi = [y; x; x; x]';
+eta = [x; x; x; y]';
+shape_function = lagrange(16);
+
+[shape] = shape_function(xi, eta)
 % for index = 1 : 10
 %     xi = index;
 %     eta = -index;
