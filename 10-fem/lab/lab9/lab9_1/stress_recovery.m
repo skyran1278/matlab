@@ -2,7 +2,7 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
 %
 % stress recovery.
 %
-% @since 1.0.2
+% @since 1.0.3
 % @param {number} [number_elements] number of elements.
 % @param {array} [element_nodes] 每個元素有幾個節點，還有他們的分佈.
 % @param {array} [node_coordinates] 節點位置.
@@ -15,15 +15,15 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
     % 一個 element 有幾個 nodes
     num_node_per_element = size(element_nodes, 2);
 
+    shape_function = create_shape_function(num_node_per_element);
+    [weight, location] = gauss_2D(num_node_per_element);
+    ngp = size(weight, 1);
+
     % 一個 element 有幾個自由度
     num_e_dof = 2 * num_node_per_element;
     element_dof = zeros(1, num_e_dof);
 
-    [weight, location] = gauss_const_2D('3x3');
-
-    ngp = size(weight, 1);
-
-    stress_gp_cell = cell(number_elements, 1);
+    stress_gp_cell = cell(number_elements, 2);
     stress_node_cell = cell(number_elements, 1);
 
     recovery = [
@@ -48,13 +48,14 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
         for index = 1 : ngp
 
             stress_gp = zeros(ngp, 3);
+            stress_gp_location = zeros(ngp, 1);
 
             xi = location(index, 1);
             eta = location(index, 2);
 
             % 輸出的已經是數值了
             % 只適用於 Q4
-            [~, diff_shape] = shape_function_Q9(xi, eta);
+            [shape, diff_shape] = shape_function(xi, eta);
 
             % number array
             [~, ~, diff_shape_xy] = form_jacobian(node_coordinates(element_nodes(e, :), :), diff_shape);
@@ -74,12 +75,14 @@ function [stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, e
             B(3, 2 : 2 : num_e_dof) = diff_shape_xy(1, :);
 
             stress_gp(index, :) = (D * B * displacements(element_dof, 1)).';
+            stress_gp_location(index, :) = shape * node_coordinates(element_nodes(e, :), :);
 
         end
 
         stress_node = recovery * stress_gp;
 
-        stress_gp_cell{e} = stress_gp;
+        stress_gp_cell{e, 1} = stress_gp;
+        stress_gp_cell{e, 2} = stress_gp_location;
         stress_node_cell{e} = stress_node;
 
     end
