@@ -1,6 +1,8 @@
 function f = lagrange(Q)
 %
 % lagrange interpolation.
+% TODO: 感覺還是不能用於矩陣
+% 而且邏輯怪怪的
 %
 % @since 2.0.1
 % @param {array} [xe] 要對哪些點做 lagrange.
