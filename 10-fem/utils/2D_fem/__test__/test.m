@@ -1,13 +1,63 @@
 clc; clear; close all;
+tic;
+nodes_number = 4;
 
-syms xi eta; % be careful performance issue.
+shape_function_xi = create_shape_function(nodes_number, 4);
+shape_function_eta = create_shape_function(nodes_number, 1);
+
+xi = -1 : 0.001 : 1;
+eta = -1 : 0.001 : 1;
+
+nodes = length(xi);
+
+plot3D = zeros(nodes);
+
+xy = meshgrid(xi, eta);
+
+plot3(xy, xy.', plot3D);
+% z = 1;
+% for x = 1 : nodes
+
+%     for y = 1 : nodes
+
+%         plot3D(1, z) = 1;
+%         hold on;
+%         z = z + 1;
+
+%     end
+
+% end
+
+plot_shape_function = zeros(3, 2 * nodes);
+z = 1;
+for x = 1
+    for y = 1 : nodes
+        plot_shape_function(1, z) = xi(x);
+        plot_shape_function(2, z) = eta(y);
+        plot_shape_function(3, z) = shape_function_xi(xi(x)) * shape_function_eta(eta(y));
+        z = z + 1;
+    end
+end
+
+for y = 1
+    for x = 1 : nodes
+        plot_shape_function(1, z) = xi(x);
+        plot_shape_function(2, z) = eta(y);
+        plot_shape_function(3, z) = shape_function_xi(xi(x)) * shape_function_eta(eta(y));
+        z = z + 1;
+    end
+end
+
+plot3(plot_shape_function(1, :), plot_shape_function(2, :), plot_shape_function(3, :));
+toc
+% syms xi eta; % be careful performance issue.
 
 
-[x, ~] = lagrange_interpolation(4, xi);
+% [x, ~] = lagrange_interpolation(4, xi);
 
-[y, ~] = lagrange_interpolation(4, eta);
+% [y, ~] = lagrange_interpolation(4, eta);
 
-x(1) .* y(-1)
+% x(1) .* y(-1)
 % tic
 % x = -1:0.01:1;
 % y = [-1; 0; 1]*ones(1,length(x));
