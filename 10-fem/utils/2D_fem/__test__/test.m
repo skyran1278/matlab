@@ -1,14 +1,22 @@
 clc; clear; close all;
 
+syms xi eta; % be careful performance issue.
+
+
+[x, ~] = lagrange_interpolation(4, xi);
+
+[y, ~] = lagrange_interpolation(4, eta);
+
+x(1) .* y(-1)
 % tic
-x = -1:0.01:1;
-y = [-1; 0; 1]*ones(1,length(x));
+% x = -1:0.01:1;
+% y = [-1; 0; 1]*ones(1,length(x));
 
-xi = [y; x; x; x]';
-eta = [x; x; x; y]';
-shape_function = lagrange(16);
+% xi = [y; x; x; x]';
+% eta = [x; x; x; y]';
+% shape_function = lagrange(16);
 
-[shape] = shape_function(xi, eta)
+% [shape] = shape_function(xi, eta)
 % for index = 1 : 10
 %     xi = index;
 %     eta = -index;
@@ -40,8 +48,8 @@ shape_function = lagrange(16);
 % end
 
 % toc
-corner_coordinates = [0 0; 5 0; 5 0.5; 0 0.5;];
-x_mesh = 5;
-y_mesh = 1;
-[number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q8(corner_coordinates, x_mesh, y_mesh, 'along boundary')
+% corner_coordinates = [0 0; 5 0; 5 0.5; 0 0.5;];
+% x_mesh = 5;
+% y_mesh = 1;
+% [number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q8(corner_coordinates, x_mesh, y_mesh, 'along boundary')
 
