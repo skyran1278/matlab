@@ -8,23 +8,10 @@ function f = create_shape_function(nodes, k)
 % @return {symfun} [shape_function] shape function of x.
 %
 
-    % syms x; % be careful performance issue.
-    % x = x;
-    % nodes = linspace(-1, 1, nodes_number);
-
     xi = nodes(k);
 
     % 回傳不等於 xi 的
     xj = nodes(nodes ~= xi);
-
-    % g(x) = prod((x - xj) ./ (xi - xj));
-
-    % f = @shape_function;
-
-    % function shape = shape_function(x)
-    %     shape = g(x);
-    % end
-    % g(x) = prod((x - xj) ./ (xi - xj));
 
     reducer = prod((xi - xj));
 
