@@ -1,4 +1,4 @@
-function f = create_shape_function(nodes_number, k)
+function f = create_shape_function(nodes, k)
 %
 % lagrange interpolation.
 %
@@ -10,7 +10,7 @@ function f = create_shape_function(nodes_number, k)
 
     % syms x; % be careful performance issue.
     % x = x;
-    nodes = linspace(-1, 1, nodes_number);
+    % nodes = linspace(-1, 1, nodes_number);
 
     xi = nodes(k);
 
@@ -26,10 +26,12 @@ function f = create_shape_function(nodes_number, k)
     % end
     % g(x) = prod((x - xj) ./ (xi - xj));
 
+    reducer = prod((xi - xj));
+
     f = @shape_function;
 
     function shape = shape_function(x)
-        shape = prod((x - xj) ./ (xi - xj));
+        shape = prod((x - xj)) / reducer;
     end
 
 end

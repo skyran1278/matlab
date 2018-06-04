@@ -1,18 +1,20 @@
 clc; clear; close all;
 tic;
-nodes_number = 4;
 
-shape_function_xi = create_shape_function(nodes_number, 4);
-shape_function_eta = create_shape_function(nodes_number, 1);
+nodes_number = 4;
+nodes = linspace(-1, 1, nodes_number);
+
+shape_function_xi = create_shape_function(nodes, 4);
+shape_function_eta = create_shape_function(nodes, 1);
 
 xi = -1 : 0.001 : 1;
 eta = -1 : 0.001 : 1;
 
-nodes = length(xi);
+xi_length = length(xi);
 
-plot3D = zeros(nodes);
+plot3D = zeros(xi_length);
 
-xy = meshgrid(xi, eta);
+xy = meshgrid(nodes, xi);
 
 plot3(xy, xy.', plot3D);
 % z = 1;
