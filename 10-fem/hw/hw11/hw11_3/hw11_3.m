@@ -8,15 +8,15 @@ node_coordinates = [0 5; 5/sqrt(2) 5/sqrt(2); 5 0; 10 0; 15 0; 15/sqrt(2) 15/sqr
 % 一個 element 有幾個 nodes
 num_node_per_element = size(element_nodes, 2);
 
-shape_function = create_shape_function(num_node_per_element);
+shape_function = create_shape_function(num_node_per_element, 'along_boundry');
 
 % 一個 element 有幾個自由度
 num_e_dof = 2 * num_node_per_element;
 
 e = 1;
 
-xi = 0.5;
-eta = 0.5;
+xi = -0.774597;
+eta = -0.774597;
 
 % 輸出的已經是數值了
 [~, diff_shape] = shape_function(xi, eta);
