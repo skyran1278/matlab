@@ -23,12 +23,13 @@ N_9 = shape_xi_3 * shape_eta_l2;
 
 N_4_revised(xi, eta) = N_4 - 2 / 3 * N_11 - 1 / 3 * N_12 - 2 / 3 * N_10 - 1 / 3 * N_9;
 
-N_4_revised = matlabFunction(N_4_revised);
+% N_4_revised = matlabFunction(N_4_revised);
+matlabFunction(N_4_revised,'File','myfile','Optimize',false);
 
 figure;
 plot_grid(nodes);
 
-natural = -1 : 0.001 : 1;
+natural = -1 : 0.1 : 1;
 
 natural_length = length(natural);
 

@@ -37,6 +37,8 @@ function f = gauss_quadrature_curry(ngp)
             b = 1;
         end
 
+        % f = matlabFunction(f);
+
         % Jacobian
         % a = -1, b = 1, J = 1
         J = (b - a) / 2;

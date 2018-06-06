@@ -1,5 +1,5 @@
 clc; clear; close all;
-
+tic;
 syms x A(x) b(x);
 
 % E: modulus of elasticity (N/m^2)
@@ -78,5 +78,5 @@ legend('exact solution', 'FEM', 'Location', 'northeast');
 title('stress');
 xlabel('x (m)');
 ylabel('stress (N/m^2)');
-
+toc
 
