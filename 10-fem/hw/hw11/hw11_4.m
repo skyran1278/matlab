@@ -47,6 +47,7 @@ shape_accumulation(xi, eta) = sum(N);
 
 shape_accumulation = matlabFunction(shape_accumulation);
 
+
 figure;
 plot_grid(nodes);
 
