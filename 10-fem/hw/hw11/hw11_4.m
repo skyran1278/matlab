@@ -45,10 +45,12 @@ N(4) = N_4 - 2 / 3 * N(10) - 1 / 3 * N(9)- 2 / 3 * N(11) - 1 / 3 * N(12);
 
 shape_accumulation(xi, eta) = sum(N);
 
+shape_accumulation = matlabFunction(shape_accumulation);
+
 figure;
 plot_grid(nodes);
 
-natural = -1 : 0.1 : 1;
+natural = -1 : 0.001 : 1;
 
 natural_length = length(natural);
 
