@@ -15,7 +15,7 @@ for index = 1 : tn_length
 end
 
 acceleration_normal = acceleration / acceleration(1, 1) * 0.4;
-
+acceleration_normal(tn == 2.5)
 figure;
 plot(tn, acceleration_normal);
 title('');
