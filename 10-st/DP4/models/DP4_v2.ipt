@@ -1,0 +1,748 @@
+PISA3D
+SAP7XX
+Ton
+m
+ControlData    GeometricNL  1
+GUI_GRID  XDIR  0  3  7  10  13  15  18  21  23  26  29  33  36
+GUI_GRID  YDIR  1  5  9  13  17
+GUI_GRID  ZDIR  -30  -19  -15.5  -15  -14.5  -11  -0
+
+
+
+
+Node  1 3 5 -0
+Node  2 7 5 -0
+Node  3 13 5 -0
+Node  4 15 5 -0
+Node  5 21 5 -0
+Node  6 23 5 -0
+Node  7 29 5 -0
+Node  8 33 5 -0
+Node  9 3 5 -30
+Node  10 7 5 -30
+Node  11 13 5 -30
+Node  12 15 5 -30
+Node  13 21 5 -30
+Node  14 23 5 -30
+Node  15 29 5 -30
+Node  16 33 5 -30
+Node  17 3 13 -0
+Node  18 7 13 -0
+Node  19 13 13 -0
+Node  20 15 13 -0
+Node  21 21 13 -0
+Node  22 23 13 -0
+Node  23 29 13 -0
+Node  24 33 13 -0
+Node  25 3 13 -30
+Node  26 7 13 -30
+Node  27 13 13 -30
+Node  28 15 13 -30
+Node  29 21 13 -30
+Node  30 23 13 -30
+Node  31 29 13 -30
+Node  32 33 13 -30
+Node  33 3 9 -0
+Node  34 7 9 -0
+Node  35 13 9 -0
+Node  36 15 9 -0
+Node  37 21 9 -0
+Node  38 23 9 -0
+Node  39 29 9 -0
+Node  40 33 9 -0
+Node  41 3 9 -30
+Node  42 7 9 -30
+Node  43 13 9 -30
+Node  44 15 9 -30
+Node  45 21 9 -30
+Node  46 23 9 -30
+Node  47 29 9 -30
+Node  48 33 9 -30
+Node  49 10 5 -11
+Node  50 10 5 -19
+Node  51 26 5 -11
+Node  52 26 5 -19
+Node  53 10 9 -11
+Node  54 10 9 -19
+Node  55 26 9 -11
+Node  56 26 9 -19
+Node  57 10 17 -11
+Node  58 10 17 -19
+Node  59 26 17 -11
+Node  60 26 17 -19
+Node  61 10 13 -11
+Node  62 10 13 -19
+Node  63 26 13 -11
+Node  64 26 13 -19
+Node  65 10 17 -14.5
+Node  66 10 17 -15.5
+Node  67 26 17 -14.5
+Node  68 26 17 -15.5
+Node  69 10 13 -14.5
+Node  70 10 13 -15.5
+Node  71 26 13 -14.5
+Node  72 26 13 -15.5
+Node  73 10 1 -11
+Node  74 10 5 -14.5
+Node  75 10 1 -19
+Node  76 10 5 -15.5
+Node  77 26 1 -11
+Node  78 26 5 -14.5
+Node  79 26 1 -19
+Node  80 26 5 -15.5
+Node  81 10 9 -14.5
+Node  82 10 9 -15.5
+Node  83 26 9 -14.5
+Node  84 26 9 -15.5
+Node  85 0 17 -11
+Node  86 0 17 -19
+Node  87 0 13 -11
+Node  88 0 13 -19
+Node  89 36 17 -11
+Node  90 36 17 -19
+Node  91 36 13 -11
+Node  92 36 13 -19
+Node  93 0 5 -11
+Node  94 0 5 -19
+Node  95 0 9 -11
+Node  96 0 9 -19
+Node  97 36 5 -11
+Node  98 36 5 -19
+Node  99 36 9 -11
+Node  100 36 9 -19
+Node  101 0 1 -11
+Node  102 36 1 -11
+Node  103 0 1 -19
+Node  104 36 1 -19
+Node  105 0 1 -0
+Node  106 0 5 -0
+Node  107 10 1 -0
+Node  108 10 5 -0
+Node  109 18 1 -0
+Node  110 18 5 -0
+Node  111 26 1 -0
+Node  112 26 5 -0
+Node  113 36 1 -0
+Node  114 36 5 -0
+Node  115 18 1 -11
+Node  116 18 5 -11
+Node  117 18 1 -19
+Node  118 18 5 -19
+Node  119 0 1 -30
+Node  120 0 5 -30
+Node  121 10 1 -30
+Node  122 10 5 -30
+Node  123 18 1 -30
+Node  124 18 5 -30
+Node  125 26 1 -30
+Node  126 26 5 -30
+Node  127 36 1 -30
+Node  128 36 5 -30
+Node  129 0 13 -0
+Node  130 0 17 -0
+Node  131 10 13 -0
+Node  132 10 17 -0
+Node  133 18 13 -0
+Node  134 18 17 -0
+Node  135 26 13 -0
+Node  136 26 17 -0
+Node  137 36 13 -0
+Node  138 36 17 -0
+Node  139 18 13 -11
+Node  140 18 17 -11
+Node  141 18 13 -19
+Node  142 18 17 -19
+Node  143 0 13 -30
+Node  144 0 17 -30
+Node  145 10 13 -30
+Node  146 10 17 -30
+Node  147 18 13 -30
+Node  148 18 17 -30
+Node  149 26 13 -30
+Node  150 26 17 -30
+Node  151 36 13 -30
+Node  152 36 17 -30
+Node  153 0 9 -0
+Node  154 10 9 -0
+Node  155 18 9 -0
+Node  156 26 9 -0
+Node  157 36 9 -0
+Node  158 18 9 -11
+Node  159 18 9 -19
+Node  160 0 9 -30
+Node  161 10 9 -30
+Node  162 18 9 -30
+Node  163 26 9 -30
+Node  164 36 9 -30
+Node  165 0 5 -15
+Node  166 36 5 -15
+Node  167 0 17 -15
+Node  168 36 17 -15
+Node  169 0 13 -15
+Node  170 36 13 -15
+Node  171 0 9 -15
+Node  172 36 9 -15
+Node  173 18 17 -15
+Node  174 18 13 -15
+Node  175 18 9 -15
+Node  176 18 5 -15
+DOF  73 -1 -1 -1 -1 -1 -1 
+
+DOF  75 -1 -1 -1 -1 -1 -1 
+
+DOF  77 -1 -1 -1 -1 -1 -1 
+
+DOF  79 -1 -1 -1 -1 -1 -1 
+
+DOF  101 -1 -1 -1 -1 -1 -1 
+
+DOF  102 -1 -1 -1 -1 -1 -1 
+
+DOF  103 -1 -1 -1 -1 -1 -1 
+
+DOF  104 -1 -1 -1 -1 -1 -1 
+
+DOF  105 -1 -1 -1 -1 -1 -1 
+
+DOF  107 -1 -1 -1 -1 -1 -1 
+
+DOF  109 -1 -1 -1 -1 -1 -1 
+
+DOF  111 -1 -1 -1 -1 -1 -1 
+
+DOF  113 -1 -1 -1 -1 -1 -1 
+
+DOF  115 -1 -1 -1 -1 -1 -1 
+
+DOF  117 -1 -1 -1 -1 -1 -1 
+
+DOF  119 -1 -1 -1 -1 -1 -1 
+
+DOF  121 -1 -1 -1 -1 -1 -1 
+
+DOF  123 -1 -1 -1 -1 -1 -1 
+
+DOF  125 -1 -1 -1 -1 -1 -1 
+
+DOF  127 -1 -1 -1 -1 -1 -1 
+
+Mass  173 4.33115 0 4.33115 0 1385.76 0 
+Mass  174 6.73504 0 6.73504 0 2138.91 0 
+Mass  175 7.59206 0 7.59206 0 2359.55 0 
+Mass  176 8.08862 0 8.08862 0 2488.88 0 
+Element  BeamColumn   1 57 65 4002 1_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   2 65 66 4002 0 0 0  0 0 0  0  0   
+Element  BeamColumn   3 66 58 4002 3_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   4 59 67 4002 4_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   5 67 68 4002 0 0 0  0 0 0  0  0   
+Element  BeamColumn   6 68 60 4002 6_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   15 85 167 3501 15_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   16 167 86 3501 16_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   17 89 168 3501 17_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   18 168 90 3501 18_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   35 130 132 5007 35_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   36 132 134 5007 36_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   37 134 136 5007 37_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   38 136 138 5007 38_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   39 144 146 5007 39_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   40 146 148 5007 40_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   41 148 150 5007 41_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   42 150 152 5007 42_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   47 61 69 4002 47_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   48 69 70 4002 0 0 0  0 0 0  0  0   
+Element  BeamColumn   49 70 62 4002 49_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   50 63 71 4002 50_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   51 71 72 4002 0 0 0  0 0 0  0  0   
+Element  BeamColumn   52 72 64 4002 52_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   61 87 169 3501 61_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   62 169 88 3501 62_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   63 91 170 3501 63_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   64 170 92 3501 64_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   81 129 17 5007 81_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   82 17 18 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   83 18 131 5007 83_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   84 131 19 5007 84_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   85 19 20 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   86 20 133 5007 86_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   87 133 21 5007 87_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   88 21 22 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   89 22 135 5007 89_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   90 135 23 5007 90_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   91 23 24 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   92 24 137 5007 92_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   93 143 25 5007 93_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   94 25 26 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   95 26 145 5007 95_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   96 145 27 5007 96_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   97 27 28 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   98 28 147 5007 98_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   99 147 29 5007 99_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   100 29 30 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   101 30 149 5007 101_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   102 149 31 5007 102_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   103 31 32 5007 0 0 0  0 0 0  0  0   
+Element  BeamColumn   104 32 151 5007 104_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   109 53 81 4006 109_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   110 81 82 4006 0 0 0  0 0 0  0  0   
+Element  BeamColumn   111 82 54 4006 111_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   112 55 83 4006 112_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   113 83 84 4006 0 0 0  0 0 0  0  0   
+Element  BeamColumn   114 84 56 4006 114_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   123 95 171 3502 123_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   124 171 96 3502 124_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   125 99 172 3502 125_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   126 172 100 3502 126_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   143 153 33 5008 143_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   144 33 34 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   145 34 154 5008 145_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   146 154 35 5008 146_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   147 35 36 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   148 36 155 5008 148_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   149 155 37 5008 149_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   150 37 38 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   151 38 156 5008 151_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   152 156 39 5008 152_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   153 39 40 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   154 40 157 5008 154_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   155 160 41 5008 155_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   156 41 42 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   157 42 161 5008 157_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   158 161 43 5008 158_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   159 43 44 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   160 44 162 5008 160_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   161 162 45 5008 161_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   162 45 46 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   163 46 163 5008 163_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   164 163 47 5008 164_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   165 47 48 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   166 48 164 5008 166_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   171 49 74 4006 171_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   172 74 76 4006 0 0 0  0 0 0  0  0   
+Element  BeamColumn   173 76 50 4006 173_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   174 51 78 4006 174_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   175 78 80 4006 0 0 0  0 0 0  0  0   
+Element  BeamColumn   176 80 52 4006 176_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   185 93 165 3502 185_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   186 165 94 3502 186_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   187 97 166 3502 187_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   188 166 98 3502 188_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   205 106 1 5008 205_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   206 1 2 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   207 2 108 5008 207_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   208 108 3 5008 208_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   209 3 4 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   210 4 110 5008 210_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   211 110 5 5008 211_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   212 5 6 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   213 6 112 5008 213_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   214 112 7 5008 214_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   215 7 8 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   216 8 114 5008 216_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   217 120 9 5008 217_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   218 9 10 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   219 10 122 5008 219_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   220 122 11 5008 220_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   221 11 12 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   222 12 124 5008 222_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   223 124 13 5008 223_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   224 13 14 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   225 14 126 5008 225_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   226 126 15 5008 226_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   227 15 16 5008 0 0 0  0 0 0  0  0   
+Element  BeamColumn   228 16 128 5008 228_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   11 61 57 C3501 11_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   12 63 59 C3501 12_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   13 62 58 C3501 13_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   14 64 60 C3501 14_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   19 87 85 C3502 19_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   20 91 89 C3502 20_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   21 88 86 C3502 21_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   22 92 90 C3502 22_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   23 129 130 C6001 23_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   24 131 132 C6001 24_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   25 133 134 C6001 25_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   26 135 136 C6001 26_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   27 137 138 C6001 27_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   28 139 140 C3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   29 141 142 C3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   30 143 144 C6001 30_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   31 145 146 C6001 31_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   32 147 148 C6001 32_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   33 149 150 C6001 33_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   34 151 152 C6001 34_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   57 53 61 C3501 57_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   58 55 63 C3501 58_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   59 54 62 C3501 59_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   60 56 64 C3501 60_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   65 95 87 C3502 65_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   66 99 91 C3502 66_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   67 96 88 C3502 67_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   68 100 92 C3502 68_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   69 153 129 C6001 69_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   70 154 131 C6001 70_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   71 155 133 C6001 71_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   72 156 135 C6001 72_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   73 157 137 C6001 73_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   74 158 139 C3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   75 159 141 C3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   76 160 143 C6001 76_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   77 161 145 C6001 77_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   78 162 147 C6001 78_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   79 163 149 C6001 79_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   80 164 151 C6001 80_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   119 49 53 C4001 119_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   120 51 55 C4001 120_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   121 50 54 C4001 121_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   122 52 56 C4001 122_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   127 93 95 C3503 127_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   128 97 99 C3503 128_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   129 94 96 C3503 129_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   130 98 100 C3503 130_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   131 106 153 C6002 131_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   132 108 154 C6002 132_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   133 110 155 C6002 133_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   134 112 156 C6002 134_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   135 114 157 C6002 135_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   136 116 158 C4004 0 0 0  0 0 0  0  0   
+Element  BeamColumn   137 118 159 C4004 0 0 0  0 0 0  0  0   
+Element  BeamColumn   138 120 160 C6002 138_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   139 122 161 C6002 139_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   140 124 162 C6002 140_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   141 126 163 C6002 141_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   142 128 164 C6002 142_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   181 73 49 C4001 181_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   182 77 51 C4001 182_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   183 75 50 C4001 183_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   184 79 52 C4001 184_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   189 101 93 C3503 189_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   190 102 97 C3503 190_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   191 103 94 C3503 191_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   192 104 98 C3503 192_REZ  0 0  0 0 0  0  90   
+Element  BeamColumn   193 105 106 C6002 193_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   194 107 108 C6002 194_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   195 109 110 C6002 195_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   196 111 112 C6002 196_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   197 113 114 C6002 197_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   198 115 116 C4004 0 0 0  0 0 0  0  0   
+Element  BeamColumn   199 117 118 C4004 0 0 0  0 0 0  0  0   
+Element  BeamColumn   200 119 120 C6002 200_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   201 121 122 C6002 201_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   202 123 124 C6002 202_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   203 125 126 C6002 203_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   204 127 128 C6002 204_REZ  0 0  0 0 0  0  0   
+Element  BeamColumn   7 61 65 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   8 62 66 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   9 63 67 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   10 64 68 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   43 87 167 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   44 88 167 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   45 91 168 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   46 92 168 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   53 53 69 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   54 54 70 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   55 55 71 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   56 56 72 BOX3501 0 0 0  0 0 0  0  0   
+Element  BeamColumn   105 95 169 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   106 96 169 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   107 99 170 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   108 100 170 BR06 0 0 0  0 0 0  0  0   
+Element  BeamColumn   115 49 81 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   116 50 82 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   117 51 83 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   118 52 84 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   167 93 171 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   168 94 171 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   169 97 172 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   170 98 172 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   177 73 74 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   178 75 76 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   179 77 78 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   180 79 80 BOX4001 0 0 0  0 0 0  0  0   
+Element  BeamColumn   229 101 165 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   230 103 165 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   231 102 166 BR07 0 0 0  0 0 0  0  0   
+Element  BeamColumn   232 104 166 BR07 0 0 0  0 0 0  0  0   
+
+% MATERIAL DATA %
+Material  Bilinear STEEL 2.0389e+07 0.02 35153.5 35153.5 0.3 
+
+Material  Elastic CONC 2.50998e+06 0.2 
+
+Material  Elastic OTHER 2.0389e+07 0.3 
+
+Material  Elastic C350 2.80624e+06 0.2 
+
+Material  Elastic C280 2.50998e+06 0.2 
+
+Material  Elastic C245 2.34787e+06 0.2 
+
+Material  Elastic C210 2.17371e+06 0.2 
+
+Material  Elastic C420 3.07408e+06 0.2 
+
+Material  Elastic C490 3.32039e+06 0.2 
+
+Material  Bilinear SN490B 2.0389e+07 0.02 33000 33000 0.3 
+
+Material  Bilinear SN490C 2.0389e+07 0.02 33000 33000 0.3 
+
+Material  Bilinear A36 2.0389e+07 0.02 25000 25000 0.3 
+
+Material  Bilinear A572GR50 2.0389e+07 0.02 35200 35200 0.3 
+
+Material  Bilinear BRB15 3.06e+07 0.02 33000 33000 0.3 
+
+Material  Bilinear BRB16 3.264e+07 0.02 33000 33000 0.3 
+
+
+% SECTION DATA %
+GUI_Section I_SHAPE_SECTION 4002 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.4 0.2 0.015 0.01 0.2 0.015 
+GUI_SECTION_PROPERTY_FACTOR 4002 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 4002 0  1  1  
+Section  BCSection03 4002 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.0097 0.000264661 2.00308e-05 5.49971e-07 0.0013233 0.000200308 0.004 0.005 
+
+GUI_Section I_SHAPE_SECTION 4006 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.4 0.3 0.026 0.012 0.3 0.026 
+GUI_SECTION_PROPERTY_FACTOR 4006 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 4006 0  1  1  
+Section  BCSection03 4006 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.019776 0.000588539 0.00011705 3.51936e-06 0.0029427 0.000780334 0.0048 0.013 
+
+GUI_Section I_SHAPE_SECTION 5007 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.5 0.35 0.032 0.019 0.35 0.032 
+GUI_SECTION_PROPERTY_FACTOR 5007 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 5007 0  1  1  
+Section  BCSection03 5007 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.030684 0.00135968 0.000228916 8.17494e-06 0.0054387 0.00130809 0.0095 0.0186667 
+
+GUI_Section I_SHAPE_SECTION 5008 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.5 0.3 0.04 0.022 0.3 0.04 
+GUI_SECTION_PROPERTY_FACTOR 5008 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 5008 0  1  1  
+Section  BCSection03 5008 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.03324 0.00140863 0.000180373 1.31664e-05 0.00563451 0.00120248 0.011 0.02 
+
+GUI_Section I_SHAPE_SECTION C3501 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.35 0.35 0.019 0.012 0.35 0.019 
+GUI_SECTION_PROPERTY_FACTOR C3501 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C3501 0  1  1  
+Section  BCSection03 C3501 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.017044 0.000395062 0.000135816 1.72106e-06 0.0022575 0.00077609 0.0042 0.0110833 
+
+GUI_Section I_SHAPE_SECTION C4001 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.4 0.4 0.022 0.021 0.4 0.022 
+GUI_SECTION_PROPERTY_FACTOR C4001 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C4001 0  1  1  
+Section  BCSection03 C4001 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.025076 0.000708356 0.000234941 3.79921e-06 0.00354178 0.00117471 0.0084 0.0146667 
+
+GUI_Section I_SHAPE_SECTION C4004 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.46 0.4 0.045 0.028 0.4 0.045 
+GUI_SECTION_PROPERTY_FACTOR C4004 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C4004 0  1  1  
+Section  BCSection03 C4004 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.04636 0.00167429 0.000480677 2.51561e-05 0.00727952 0.00240338 0.01288 0.03 
+
+GUI_Section RECTANGULAR_SECTION BR06 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 0 0.06 0.06
+GUI_SECTION_PROPERTY_FACTOR BR06 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR BR06 0  1  1  
+Section  BCSection03 BR06 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 0 0.0036 1.08e-06 1.08e-06 1.82304e-06 3.6e-05 3.6e-05 0.003 0.003 
+
+GUI_Section RECTANGULAR_SECTION BR07 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 0 0.065 0.065
+GUI_SECTION_PROPERTY_FACTOR BR07 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR BR07 0  1  1  
+Section  BCSection03 BR07 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 BRB15 0 0.004225 1.48755e-06 1.48755e-06 2.51099e-06 4.57708e-05 4.57708e-05 0.00352083 0.00352083 
+
+GUI_Section I_SHAPE_SECTION C6002 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.62 0.4 0.05 0.022 0.4 0.05 
+GUI_SECTION_PROPERTY_FACTOR C6002 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C6002 0  1  1  
+Section  BCSection03 C6002 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.05144 0.00351511 0.000533795 3.25048e-05 0.0113391 0.00266897 0.01364 0.0333333 
+
+GUI_Section I_SHAPE_SECTION C6001 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.584 0.4 0.032 0.016 0.4 0.032 
+GUI_SECTION_PROPERTY_FACTOR C6001 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C6001 0  1  1  
+Section  BCSection03 C6001 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.03392 0.00213977 0.000341511 8.99394e-06 0.00732797 0.00170755 0.009344 0.0213333 
+
+GUI_Section BOX_SECTION BOX3501 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.35 0.35 0.016 0.016 
+GUI_SECTION_PROPERTY_FACTOR BOX3501 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR BOX3501 0  1  1  
+Section  BCSection03 BOX3501 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.021376 0.000398349 0.000398349 0.000596155 0.00227628 0.00227628 0.0112 0.0112 
+
+GUI_Section BOX_SECTION BOX4001 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.4 0.4 0.016 0.016 
+GUI_SECTION_PROPERTY_FACTOR BOX4001 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR BOX4001 0  1  1  
+Section  BCSection03 BOX4001 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.024576 0.000605028 0.000605028 0.00090597 0.00302514 0.00302514 0.0128 0.0128 
+
+GUI_Section I_SHAPE_SECTION 3501 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.35 0.252 0.019 0.011 0.252 0.019 
+GUI_SECTION_PROPERTY_FACTOR 3501 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 3501 0  1  1  
+Section  BCSection03 3501 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.013008 0.000290417 5.07108e-05 1.23293e-06 0.00165953 0.000402467 0.00385 0.00798 
+
+GUI_Section I_SHAPE_SECTION 3502 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.36 0.354 0.024 0.016 0.354 0.024 
+GUI_SECTION_PROPERTY_FACTOR 3502 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 3502 0  1  1  
+Section  BCSection03 3502 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.021984 0.000520893 0.000177554 3.53534e-06 0.00289385 0.00100313 0.00576 0.01416 
+
+GUI_Section I_SHAPE_SECTION C3502 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.368 0.356 0.028 0.018 0.356 0.028 
+GUI_SECTION_PROPERTY_FACTOR C3502 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C3502 0  1  1  
+Section  BCSection03 C3502 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.025552 0.00062301 0.000210702 5.53627e-06 0.00338592 0.00118372 0.006624 0.0166133 
+
+GUI_Section I_SHAPE_SECTION C3503 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.378 0.358 0.033 0.02 0.358 0.033 
+GUI_SECTION_PROPERTY_FACTOR C3503 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR C3503 0  1  1  
+Section  BCSection03 C3503 SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B SN490B 0 0.029868 0.000755844 0.000252563 8.87728e-06 0.00399917 0.00141097 0.00756 0.01969 
+
+RigidEndZone  1_REZ  0  0  0  0  0.175  0
+RigidEndZone  3_REZ  0  0  0  0  0  0.175
+RigidEndZone  4_REZ  0  0  0  0  0.175  0
+RigidEndZone  6_REZ  0  0  0  0  0  0.175
+RigidEndZone  11_REZ  0  0  0  0.4  0  0
+RigidEndZone  12_REZ  0  0  0  0.4  0  0
+RigidEndZone  13_REZ  0  0  0  0.4  0  0
+RigidEndZone  14_REZ  0  0  0  0.4  0  0
+RigidEndZone  15_REZ  0  0  0  0  0.184  0
+RigidEndZone  16_REZ  0  0  0  0  0  0.184
+RigidEndZone  17_REZ  0  0  0  0  0.184  0
+RigidEndZone  18_REZ  0  0  0  0  0  0.184
+RigidEndZone  19_REZ  0  0  0  0.35  0  0
+RigidEndZone  20_REZ  0  0  0  0.35  0  0
+RigidEndZone  21_REZ  0  0  0  0.35  0  0
+RigidEndZone  22_REZ  0  0  0  0.35  0  0
+RigidEndZone  23_REZ  0  0  0  0.5  0  0
+RigidEndZone  24_REZ  0  0  0  0.5  0  0
+RigidEndZone  25_REZ  0  0  0  0.5  0  0
+RigidEndZone  26_REZ  0  0  0  0.5  0  0
+RigidEndZone  27_REZ  0  0  0  0.5  0  0
+RigidEndZone  30_REZ  0  0  0  0.5  0  0
+RigidEndZone  31_REZ  0  0  0  0.5  0  0
+RigidEndZone  32_REZ  0  0  0  0.5  0  0
+RigidEndZone  33_REZ  0  0  0  0.5  0  0
+RigidEndZone  34_REZ  0  0  0  0.5  0  0
+RigidEndZone  35_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  36_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  37_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  38_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  39_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  40_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  41_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  42_REZ  0.292  0.292  0  0  0  0
+RigidEndZone  47_REZ  0  0  0  0  0.175  0
+RigidEndZone  49_REZ  0  0  0  0  0  0.175
+RigidEndZone  50_REZ  0  0  0  0  0.175  0
+RigidEndZone  52_REZ  0  0  0  0  0  0.175
+RigidEndZone  57_REZ  0  0  0  0.4  0  0
+RigidEndZone  58_REZ  0  0  0  0.4  0  0
+RigidEndZone  59_REZ  0  0  0  0.4  0  0
+RigidEndZone  60_REZ  0  0  0  0.4  0  0
+RigidEndZone  61_REZ  0  0  0  0  0.184  0
+RigidEndZone  62_REZ  0  0  0  0  0  0.184
+RigidEndZone  63_REZ  0  0  0  0  0.184  0
+RigidEndZone  64_REZ  0  0  0  0  0  0.184
+RigidEndZone  65_REZ  0  0  0  0.35  0  0
+RigidEndZone  66_REZ  0  0  0  0.35  0  0
+RigidEndZone  67_REZ  0  0  0  0.35  0  0
+RigidEndZone  68_REZ  0  0  0  0.35  0  0
+RigidEndZone  69_REZ  0  0  0  0.5  0  0
+RigidEndZone  70_REZ  0  0  0  0.5  0  0
+RigidEndZone  71_REZ  0  0  0  0.5  0  0
+RigidEndZone  72_REZ  0  0  0  0.5  0  0
+RigidEndZone  73_REZ  0  0  0  0.5  0  0
+RigidEndZone  76_REZ  0  0  0  0.5  0  0
+RigidEndZone  77_REZ  0  0  0  0.5  0  0
+RigidEndZone  78_REZ  0  0  0  0.5  0  0
+RigidEndZone  79_REZ  0  0  0  0.5  0  0
+RigidEndZone  80_REZ  0  0  0  0.5  0  0
+RigidEndZone  81_REZ  0.292  0  0  0  0  0
+RigidEndZone  83_REZ  0  0.292  0  0  0  0
+RigidEndZone  84_REZ  0.292  0  0  0  0  0
+RigidEndZone  86_REZ  0  0.292  0  0  0  0
+RigidEndZone  87_REZ  0.292  0  0  0  0  0
+RigidEndZone  89_REZ  0  0.292  0  0  0  0
+RigidEndZone  90_REZ  0.292  0  0  0  0  0
+RigidEndZone  92_REZ  0  0.292  0  0  0  0
+RigidEndZone  93_REZ  0.292  0  0  0  0  0
+RigidEndZone  95_REZ  0  0.292  0  0  0  0
+RigidEndZone  96_REZ  0.292  0  0  0  0  0
+RigidEndZone  98_REZ  0  0.292  0  0  0  0
+RigidEndZone  99_REZ  0.292  0  0  0  0  0
+RigidEndZone  101_REZ  0  0.292  0  0  0  0
+RigidEndZone  102_REZ  0.292  0  0  0  0  0
+RigidEndZone  104_REZ  0  0.292  0  0  0  0
+RigidEndZone  109_REZ  0  0  0  0  0.2  0
+RigidEndZone  111_REZ  0  0  0  0  0  0.2
+RigidEndZone  112_REZ  0  0  0  0  0.2  0
+RigidEndZone  114_REZ  0  0  0  0  0  0.2
+RigidEndZone  119_REZ  0  0  0  0.4  0  0
+RigidEndZone  120_REZ  0  0  0  0.4  0  0
+RigidEndZone  121_REZ  0  0  0  0.4  0  0
+RigidEndZone  122_REZ  0  0  0  0.4  0  0
+RigidEndZone  123_REZ  0  0  0  0  0.189  0
+RigidEndZone  124_REZ  0  0  0  0  0  0.189
+RigidEndZone  125_REZ  0  0  0  0  0.189  0
+RigidEndZone  126_REZ  0  0  0  0  0  0.189
+RigidEndZone  127_REZ  0  0  0  0.36  0  0
+RigidEndZone  128_REZ  0  0  0  0.36  0  0
+RigidEndZone  129_REZ  0  0  0  0.36  0  0
+RigidEndZone  130_REZ  0  0  0  0.36  0  0
+RigidEndZone  131_REZ  0  0  0  0.5  0  0
+RigidEndZone  132_REZ  0  0  0  0.5  0  0
+RigidEndZone  133_REZ  0  0  0  0.5  0  0
+RigidEndZone  134_REZ  0  0  0  0.5  0  0
+RigidEndZone  135_REZ  0  0  0  0.5  0  0
+RigidEndZone  138_REZ  0  0  0  0.5  0  0
+RigidEndZone  139_REZ  0  0  0  0.5  0  0
+RigidEndZone  140_REZ  0  0  0  0.5  0  0
+RigidEndZone  141_REZ  0  0  0  0.5  0  0
+RigidEndZone  142_REZ  0  0  0  0.5  0  0
+RigidEndZone  143_REZ  0.31  0  0  0  0  0
+RigidEndZone  145_REZ  0  0.31  0  0  0  0
+RigidEndZone  146_REZ  0.31  0  0  0  0  0
+RigidEndZone  148_REZ  0  0.31  0  0  0  0
+RigidEndZone  149_REZ  0.31  0  0  0  0  0
+RigidEndZone  151_REZ  0  0.31  0  0  0  0
+RigidEndZone  152_REZ  0.31  0  0  0  0  0
+RigidEndZone  154_REZ  0  0.31  0  0  0  0
+RigidEndZone  155_REZ  0.31  0  0  0  0  0
+RigidEndZone  157_REZ  0  0.31  0  0  0  0
+RigidEndZone  158_REZ  0.31  0  0  0  0  0
+RigidEndZone  160_REZ  0  0.31  0  0  0  0
+RigidEndZone  161_REZ  0.31  0  0  0  0  0
+RigidEndZone  163_REZ  0  0.31  0  0  0  0
+RigidEndZone  164_REZ  0.31  0  0  0  0  0
+RigidEndZone  166_REZ  0  0.31  0  0  0  0
+RigidEndZone  171_REZ  0  0  0  0  0.2  0
+RigidEndZone  173_REZ  0  0  0  0  0  0.2
+RigidEndZone  174_REZ  0  0  0  0  0.2  0
+RigidEndZone  176_REZ  0  0  0  0  0  0.2
+RigidEndZone  181_REZ  0  0  0  0.4  0  0
+RigidEndZone  182_REZ  0  0  0  0.4  0  0
+RigidEndZone  183_REZ  0  0  0  0.4  0  0
+RigidEndZone  184_REZ  0  0  0  0.4  0  0
+RigidEndZone  185_REZ  0  0  0  0  0.189  0
+RigidEndZone  186_REZ  0  0  0  0  0  0.189
+RigidEndZone  187_REZ  0  0  0  0  0.189  0
+RigidEndZone  188_REZ  0  0  0  0  0  0.189
+RigidEndZone  189_REZ  0  0  0  0.36  0  0
+RigidEndZone  190_REZ  0  0  0  0.36  0  0
+RigidEndZone  191_REZ  0  0  0  0.36  0  0
+RigidEndZone  192_REZ  0  0  0  0.36  0  0
+RigidEndZone  193_REZ  0  0  0  0.5  0  0
+RigidEndZone  194_REZ  0  0  0  0.5  0  0
+RigidEndZone  195_REZ  0  0  0  0.5  0  0
+RigidEndZone  196_REZ  0  0  0  0.5  0  0
+RigidEndZone  197_REZ  0  0  0  0.5  0  0
+RigidEndZone  200_REZ  0  0  0  0.5  0  0
+RigidEndZone  201_REZ  0  0  0  0.5  0  0
+RigidEndZone  202_REZ  0  0  0  0.5  0  0
+RigidEndZone  203_REZ  0  0  0  0.5  0  0
+RigidEndZone  204_REZ  0  0  0  0.5  0  0
+RigidEndZone  205_REZ  0.31  0  0  0  0  0
+RigidEndZone  207_REZ  0  0.31  0  0  0  0
+RigidEndZone  208_REZ  0.31  0  0  0  0  0
+RigidEndZone  210_REZ  0  0.31  0  0  0  0
+RigidEndZone  211_REZ  0.31  0  0  0  0  0
+RigidEndZone  213_REZ  0  0.31  0  0  0  0
+RigidEndZone  214_REZ  0.31  0  0  0  0  0
+RigidEndZone  216_REZ  0  0.31  0  0  0  0
+RigidEndZone  217_REZ  0.31  0  0  0  0  0
+RigidEndZone  219_REZ  0  0.31  0  0  0  0
+RigidEndZone  220_REZ  0.31  0  0  0  0  0
+RigidEndZone  222_REZ  0  0.31  0  0  0  0
+RigidEndZone  223_REZ  0.31  0  0  0  0  0
+RigidEndZone  225_REZ  0  0.31  0  0  0  0
+RigidEndZone  226_REZ  0.31  0  0  0  0  0
+RigidEndZone  228_REZ  0  0.31  0  0  0  0
+InteractionSurface  Steel  SCOL  1  0.15  -1  0.15  1  0.4  -1  0.4  2  2
+GUI_Output  OutFlag  1  1  0  2  2  1  1
+Output  OutFlag  1  1  0  2  2  1  1
+% RESPONSE HISTORY %
+STOP
