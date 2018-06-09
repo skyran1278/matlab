@@ -1,6 +1,7 @@
 10-st/**/*.ipt_COPY
 10-st/**/*.ipt_echo
 10-st/**/*.Echo
+10-st/**/*.Eigen
 10-st/**/*.ElemEnvelope
 10-st/**/*.ElemRecord
 10-st/**/*.Energy
@@ -8,6 +9,10 @@
 10-st/**/*.ipt_echo
 10-st/**/*.NodeDisRecord
 10-st/**/*.NodeEnvelope
+10-st/**/*.NodeAccRecord
+10-st/**/*.NodeVelRecord
+10-st/**/*.showElem2
+10-st/**/*.showMode
 10-st/**/*.SectionX
 10-st/**/*.SectionY
 10-st/**/*.SectionZ
