@@ -8,8 +8,8 @@ Analysis  ModeShape  6  1  2  0.02  0.02
 GUI_Analysis  AbsDispControl  PUSH_X  EQX  1  400  400  125  UX  OFF
 GUI_Analysis  AbsDispControl  PUSH_Z  EQZ  1  400  400  125  UZ  OFF
 GUI_Analysis  Gravity  DL  DL  1  OFF
-GUI_Analysis  Dynamic  Newmark  DYNAMIC  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810  0.42  none 0 0 0 D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810  0.42  0.02  3000  0.16489  0.0021654  0  ON
-Analysis  Dynamic  Newmark  DYNAMIC_XGndMot  0.42  none  0  DYNAMIC_ZGndMot  0.42  0.02  3000  0.16489  0.0021654  0  
+GUI_Analysis  Dynamic  Newmark  DYNAMIC  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810  0.33  none 0 0 0 D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810  0.33  0.02  3000  0.16589  0.0021396  0  ON
+Analysis  Dynamic  Newmark  DYNAMIC_XGndMot  0.33  none  0  DYNAMIC_ZGndMot  0.33  0.02  3000  0.16589  0.0021396  0  
 LoadPattern  GroundAccel  DYNAMIC_XGndMot  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810
 LoadPattern  GroundAccel  DYNAMIC_ZGndMot  D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810
 GUI_GRID  XDIR  0  10000  18000  26000  36000
@@ -229,12 +229,12 @@ Element  BeamColumn   39 96 98 5007 39_REZ  1 0  0 0 0  0  0
 Element  BeamColumn   40 98 100 5007 40_REZ  1 0  0 0 0  0  0   
 Element  BeamColumn   41 100 102 5007 41_REZ  1 0  0 0 0  0  0   
 Element  BeamColumn   42 102 104 5007 42_REZ  1 0  0 0 0  0  0   
-Element  BeamColumn   47 13 21 4002 47_REZ  1 0  0 0 0  0  0   
-Element  BeamColumn   48 21 22 H4002 48_REZ  1 0  0 0 0  0  0   
-Element  BeamColumn   49 22 14 4002 49_REZ  1 0  0 0 0  0  0   
-Element  BeamColumn   50 15 23 4002 50_REZ  1 0  0 0 0  0  0   
-Element  BeamColumn   51 23 24 H4002 51_REZ  1 0  0 0 0  0  0   
-Element  BeamColumn   52 24 16 4002 52_REZ  1 0  0 0 0  0  0   
+Element  BeamColumn   47 13 21 4006 47_REZ  1 0  0 0 0  0  0   
+Element  BeamColumn   48 21 22 4006 48_REZ  1 0  0 0 0  0  0   
+Element  BeamColumn   49 22 14 4006 49_REZ  1 0  0 0 0  0  0   
+Element  BeamColumn   50 15 23 4006 50_REZ  1 0  0 0 0  0  0   
+Element  BeamColumn   51 23 24 4006 51_REZ  1 0  0 0 0  0  0   
+Element  BeamColumn   52 24 16 4006 52_REZ  1 0  0 0 0  0  0   
 Element  BeamColumn   61 39 121 3501 61_REZ  1 0  0 0 0  0  0   
 Element  BeamColumn   62 121 40 3501 62_REZ  1 0  0 0 0  0  0   
 Element  BeamColumn   63 43 122 3501 63_REZ  1 0  0 0 0  0  0   
@@ -840,8 +840,8 @@ GUI_ForceGp  1F
 GUI_Output  OutFlag  1  1  0  2  2  1  1
 Output  OutFlag  1  1  0  2  2  1  1
 % RESPONSE HISTORY %
-GUI_RESPONSE_HISTORY  FORCE_GROUP_RESPONSE  base_shear_z  1F  2  FALSE
 GUI_RESPONSE_HISTORY  FORCE_GROUP_RESPONSE  base_shear_x  1F  0  FALSE
+GUI_RESPONSE_HISTORY  FORCE_GROUP_RESPONSE  base_shear_z  1F  2  FALSE
 GUI_RESPONSE_HISTORY  NODE_RESPONSE  RF_deform_x  125  0  0  FALSE
 GUI_RESPONSE_HISTORY  NODE_RESPONSE  RF_deform_z  125  2  0  FALSE
 STOP

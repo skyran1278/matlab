@@ -22,7 +22,7 @@ legend('design spectra', '5% damping normalized response spectra', ['T1x = ' num
 
 figure;
 plot(spectra_period, spectra, period_sp, CHY076SN_sp, [T1y T1y], [0 4], [T2y T2y], [0 4]);
-title('Response Spectrum in X Direction');
+title('Response Spectrum in Y Direction');
 xlabel('Period(sec)');
 ylabel('SaD(g)');
 axis([0 3 0 4]);

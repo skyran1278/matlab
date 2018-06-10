@@ -93,3 +93,16 @@ DampingRatio
 singleKu = Ku / LRBs
 Fy = (Qd + Kd * Dy) / LRBs
 postYieldingRatio
+
+x = -0.3 : 0.01 : 0.3;
+y1 = singleKu * x;
+y2 = singleKd * x + singleQd;
+y3 = singleKeD * x;
+y4 = singleKd * x - singleQd;
+
+figure;
+plot(x, y1, x, y2, x, y3, x, y4);
+title('');
+xlabel('');
+ylabel('');
+axis([-0.35 0.35 -0.6 0.6]);
