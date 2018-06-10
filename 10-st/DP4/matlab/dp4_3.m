@@ -7,10 +7,10 @@ period_sp = filename_to_array('CHY076SN_sp', 3, 1, 1);
 CHY076SN_sp = filename_to_array('CHY076SN_sp', 3, 2, 1);
 CHY076EW_sp = filename_to_array('CHY076EW_sp', 3, 2, 1);
 
-T1x = 1.0118E+000;
-T2x = 3.1046E-001;
-T1y = 5.1241E-001;
-T2y = 1.8692E-001;
+T1x = 1.0117E+000;
+T2x = 3.1047E-001;
+T1y = 5.0328E-001;
+T2y = 1.8430E-001;
 
 figure;
 plot(spectra_period, spectra, period_sp, CHY076EW_sp, [T1x T1x], [0 4], [T2x T2x], [0 4]);

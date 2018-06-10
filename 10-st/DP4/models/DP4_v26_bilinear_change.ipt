@@ -8,8 +8,8 @@ Analysis  ModeShape  6  1  2  0.02  0.02
 GUI_Analysis  AbsDispControl  PUSH_X  EQX  1  400  400  125  UX  OFF
 GUI_Analysis  AbsDispControl  PUSH_Z  EQZ  1  400  400  125  UZ  OFF
 GUI_Analysis  Gravity  DL  DL  1  OFF
-GUI_Analysis  Dynamic  Newmark  DYNAMIC  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810  0.33  none 0 0 0 D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810  0.33  0.02  3000  0.16589  0.0021396  0  ON
-Analysis  Dynamic  Newmark  DYNAMIC_XGndMot  0.33  none  0  DYNAMIC_ZGndMot  0.33  0.02  3000  0.16589  0.0021396  0  
+GUI_Analysis  Dynamic  Newmark  DYNAMIC  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810  0.08  none 0 0 0 D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810  0.08  0.02  3000  0.16589  0.0021396  0  ON
+Analysis  Dynamic  Newmark  DYNAMIC_XGndMot  0.08  none  0  DYNAMIC_ZGndMot  0.08  0.02  3000  0.16589  0.0021396  0  
 LoadPattern  GroundAccel  DYNAMIC_XGndMot  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810
 LoadPattern  GroundAccel  DYNAMIC_ZGndMot  D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810
 GUI_GRID  XDIR  0  10000  18000  26000  36000
