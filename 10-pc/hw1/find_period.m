@@ -19,9 +19,19 @@ transfer_function(transfer_function_index_1) = -Inf;
 
 [~, transfer_function_index_2]=max(transfer_function);
 
-mode1 = 1 / El50AXBS_freq(transfer_function_index_2)
-mode2 = 1 / El50AXBS_freq(407)
+f1 = 3.047;
+f2 = 10.63;
+
+mode1 = 1 / f1
+mode2 = 1 / f2
 
 title('Transfer Function');
 xlabel('f (Hz)');
 ylabel('Ampli(g)');
+
+% half-power Method
+f1 = 2.969;
+f2 = 3.151;
+
+xi = (f2 - f1) / (f2 + f1)
+
