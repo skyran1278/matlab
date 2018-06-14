@@ -2,7 +2,7 @@ function [weight, location] = gauss_2D(gauss_point, schemes)
 %
 % Gauss quadrature in 2D.
 %
-% @since 3.2.1
+% @since 3.2.0
 % @param {number} [gauss_point] 1 4 8 9 12 16.
 % @param {string} [schemes] corner first or along boundary.
 % @return {array} [weight] Gauss point weight.
@@ -159,7 +159,7 @@ function [weight, location] = gauss_2D(gauss_point, schemes)
         case 1
 
             location = [0, 0];
-            weight = 4;
+            weight = [4];
     end
 
 end
