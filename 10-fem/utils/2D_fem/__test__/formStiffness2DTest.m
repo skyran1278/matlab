@@ -1,4 +1,4 @@
-classdef formStiffness2D < matlab.unittest.TestCase
+classdef formStiffness2DTest < matlab.unittest.TestCase
 
     methods (Test)
 

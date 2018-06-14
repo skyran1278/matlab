@@ -31,13 +31,16 @@
     "yml"
   ],
   "cSpell.words": [
+    "classdef",
     "colorbar",
     "colormap",
     "jacobian",
     "linspace",
+    "matlab",
     "nargin",
     "setdiff",
     "strcmp",
-    "undeformed"
+    "undeformed",
+    "unittest"
   ]
 }

@@ -18,7 +18,7 @@ function [node_coordinates, displacements, stress] = exact_solution(E, A, L, b, 
 
     diff_u(x) = diff(u, x);
 
-    cond_ = [E * diff_u(cond_stress(1)) == - cond_stress(2), u(cond_u(1)) == cond_u(2)];
+    cond_ = [E * diff_u(cond_stress(1)) == - condStress(2), u(cond_u(1)) == cond_u(2)];
 
     displacements(x) = dsolve(diff(A * E * diff_u) + b == 0, cond_);
 
