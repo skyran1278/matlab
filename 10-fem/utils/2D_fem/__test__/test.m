@@ -103,5 +103,5 @@ toc
 % corner_coordinates = [0 0; 5 0; 5 0.5; 0 0.5;];
 % x_mesh = 5;
 % y_mesh = 1;
-% [number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q8(corner_coordinates, x_mesh, y_mesh, 'along boundary')
+% [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes, flip_nodes] = mesh_Q8(corner_coordinates, x_mesh, y_mesh, 'along boundary')
 

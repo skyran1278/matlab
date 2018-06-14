@@ -27,9 +27,9 @@ classdef form_stiffness_2D < matlab.unittest.TestCase
         %     % generation of coordinates and connectivities
         %     % muti_element_nodes
         %     element_nodes = [1 3 2; 1 4 3];
-        %     node_coordinates = [0, 0; 0, 10; 20, 10; 20, 0];
+        %     nodeCoordinates = [0, 0; 0, 10; 20, 10; 20, 0];
 
-        %     drawing_mesh(node_coordinates, element_nodes, 'k-o');
+        %     drawing_mesh(nodeCoordinates, element_nodes, 'k-o');
 
         %     % G_dof: global number of degrees of freedom
         %     G_dof = 2 * number_nodes;
@@ -48,7 +48,7 @@ classdef form_stiffness_2D < matlab.unittest.TestCase
         %     force(7) = 5000;
 
         %     % calculation of the system stiffness matrix
-        %     stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
+        %     stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nodeCoordinates, D, thickness);
 
         %     % solution
         %     displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
@@ -83,7 +83,7 @@ classdef form_stiffness_2D < matlab.unittest.TestCase
             corner_coordinates = [0 0; 20 0; 0 10; 20 10;];
             x_mesh = 2;
             y_mesh = 1;
-            [number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes, flip_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
             % G_dof: global number of degrees of freedom
             G_dof = 2 * number_nodes;
@@ -102,7 +102,7 @@ classdef form_stiffness_2D < matlab.unittest.TestCase
             displacements = zeros(G_dof, 1);
 
             % calculation of the system stiffness matrix
-            stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
+            stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nodeCoordinates, D, thickness);
 
             % solution
             displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);

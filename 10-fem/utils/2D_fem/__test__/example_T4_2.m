@@ -21,11 +21,11 @@ number_nodes = 4;
 % muti_element_nodes
 
 element_nodes = [1 2 3 4];
-% node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
-node_coordinates = [0 1; 0 0; 2 0.5; 2 1;];
+% nodeCoordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
+nodeCoordinates = [0 1; 0 0; 2 0.5; 2 1;];
 % x_mesh = 1;
 % y_mesh = 1;
-% [number_elements, number_nodes, element_nodes, node_coordinates, nodes, flip_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+% [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes, flip_nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
 % G_dof: global number of degrees of freedom
 G_dof = 2 * number_nodes;
@@ -51,22 +51,22 @@ displacements = zeros(G_dof, 1);
 % input have done
 % ========================================================
 
-% ½T»{¬O§_µe¹ï
-drawing_mesh(node_coordinates, element_nodes, 'k-o');
+% ï¿½Tï¿½{ï¿½Oï¿½_ï¿½eï¿½ï¿½
+drawing_mesh(nodeCoordinates, element_nodes, 'k-o');
 
 % 2D matrix D
 D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
 
 
 % calculation of the system stiffness matrix
-stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, node_coordinates, D, thickness);
+stiffness = form_stiffness_2D(G_dof, number_elements, element_nodes, nodeCoordinates, D, thickness);
 
 
 % solution
 displacements = solution(G_dof, prescribed_dof, stiffness, force, displacements);
 
 
-drawing_deform(node_coordinates, element_nodes, displacements);
+drawing_deform(nodeCoordinates, element_nodes, displacements);
 
 
 % output displacements
@@ -74,5 +74,5 @@ output_displacements(displacements, number_nodes, G_dof);
 
 % output_reaction(displacements, stiffness, prescribed_dof, force)
 
-[stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, element_nodes, node_coordinates, D, displacements);
+[stress_gp_cell, stress_node_cell] = stress_recovery(number_elements, element_nodes, nodeCoordinates, D, displacements);
 

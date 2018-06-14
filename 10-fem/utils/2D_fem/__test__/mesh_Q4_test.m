@@ -14,7 +14,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 5 6 9 8;
             ];
 
-            exp_node_coordinates = [
+            exp_nodeCoordinates = [
                 0         0;
                 1.0000    0.2500;
                 2.0000    0.5000;
@@ -26,10 +26,10 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 2.0000    1.0000;
             ];
 
-            [number_elements, number_nodes, element_nodes, node_coordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
             testCase.verifyEqual(element_nodes, exp_element_nodes);
-            testCase.verifyEqual(node_coordinates, exp_node_coordinates);
+            testCase.verifyEqual(nodeCoordinates, exp_nodeCoordinates);
         end
 
 
@@ -57,7 +57,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                19    20    25    24;
             ];
 
-            exp_node_coordinates = [
+            exp_nodeCoordinates = [
                 0                  0;
                 0.500000000000000  0.125000000000000;
                 1                  0.250000000000000;
@@ -85,10 +85,10 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 2                  1;
             ];
 
-            [number_elements, number_nodes, element_nodes, node_coordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
 
             testCase.verifyEqual(element_nodes, exp_element_nodes);
-            testCase.verifyEqual(node_coordinates, exp_node_coordinates);
+            testCase.verifyEqual(nodeCoordinates, exp_nodeCoordinates);
         end
 
     end
