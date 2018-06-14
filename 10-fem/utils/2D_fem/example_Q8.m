@@ -17,8 +17,8 @@ thickness = 1;
 % number_nodes: number of nodes
 % number_nodes = 6;
 
-% generation of coordinates and connectivities
-% muti_element_nodes
+% generation of coordinates and connectives
+% multi_element_nodes
 
 % element_nodes = [1 2 5 4; 2 3 6 5];
 % node_coordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
