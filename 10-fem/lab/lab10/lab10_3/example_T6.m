@@ -49,8 +49,10 @@ force = zeros(G_dof, 1);
 % force(2 * nodes(1, 1)) = -0.375;
 % force(2 * nodes(1, end)) = -0.375;
 % 這個不知道是為甚麼
-force(41) = -1000;
-force(49) = 1000;
+force(49) = 5000 / 6;
+force(47) = 5000 / 3;
+force(43) = -5000 / 3;
+force(41) = -5000 / 6;
 % force(30) = -0.25;
 % force(32) = -1;
 % force(34) = -0.5;

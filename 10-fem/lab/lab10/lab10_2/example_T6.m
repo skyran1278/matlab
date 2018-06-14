@@ -34,17 +34,8 @@ force = zeros(G_dof, 1);
 % force(2 * nodes(1, 1)) = -0.375;
 % force(2 * nodes(1, end)) = -0.375;
 % 這個不知道是為甚麼
-force(7) = -1000;
-force(9) = 1000;
-% force(30) = -0.25;
-% force(32) = -1;
-% force(34) = -0.5;
-% force(36) = -1;
-% force(38) = -0.5;
-% force(40) = -1;
-% force(42) = -0.5;
-% force(44) = -1;
-% force(46) = -0.25;
+force(17) = 5000 / 3;
+force(13) = - (5000 / 3);
 
 % initial displacements
 % initial_settlement
