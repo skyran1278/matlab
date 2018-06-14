@@ -31,7 +31,13 @@
     "yml"
   ],
   "cSpell.words": [
+    "colorbar",
+    "colormap",
+    "jacobian",
+    "linspace",
     "nargin",
-    "strcmp"
+    "setdiff",
+    "strcmp",
+    "undeformed"
   ]
 }

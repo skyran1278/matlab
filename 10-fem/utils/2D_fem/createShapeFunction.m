@@ -1,51 +1,51 @@
-function f = create_shape_function(num_node_per_element, schemes)
+function f = createShapeFunction(numNodePerElement, schemes)
 %
 % shape function and derivatives.
 %
-% @since 1.1.0
-% @param {number} [num_node_per_element] 一個 element 有幾個 nodes.
+% @since 2.1.0
+% @param {number} [numNodePerElement] 一個 element 有幾個 nodes.
 % @param {string} [schemes] corner first or along boundary.
-% @return {function} [shape_function] for Q4 Q8 Q9.
+% @return {function} [shapeFunction] for Q4 Q8 Q9.
 %
 % @param {sym} [eta] 一個 element 有幾個 nodes.
 % @param {sym} [xi] natural coordinates (-1 ... +1).
 % @param {array} [shape] Shape functions.
-% @return {array} [diff_shape] derivatives w.r.t. xi and eta.
+% @return {array} [naturalDerivatives] derivatives w.r.t. xi and eta.
 %
 
-    switch num_node_per_element
+    switch numNodePerElement
 
         case 4
-            f = @shape_function_Q4;
+            f = @shapeFunctionQ4;
 
         case 8
-            if nargin == 1 || strcmp(schemes, 'corner_first')
-                f = @shape_function_Q8;
+            if nargin == 1 || strcmp(schemes, 'cornerFirst')
+                f = @shapeFunctionQ8;
             else
-                f = @shape_function_Q8_along_boundary;
+                f = @shapeFunctionQ8AlongBoundary;
             end
 
         case 9
-            if nargin == 1 || strcmp(schemes, 'corner_first')
-                f = @shape_function_Q9;
+            if nargin == 1 || strcmp(schemes, 'cornerFirst')
+                f = @shapeFunctionQ9;
             else
-                f = @shape_function_Q9_along_boundary;
+                f = @shapeFunctionQ9AlongBoundary;
             end
 
     end
 
-    function [shape, diff_shape] = shape_function_Q4(xi, eta)
+    function [shape, naturalDerivatives] = shapeFunctionQ4(xi, eta)
 
         shape = 1 / 4 * [ (1 - xi) * (1 - eta), (1 + xi) * (1 - eta), (1 + xi) * (1 + eta), (1 - xi) * (1 + eta)];
 
-        diff_shape = 1 / 4 * [
+        naturalDerivatives = 1 / 4 * [
             - (1 - eta), 1 - eta, 1 + eta, - (1 + eta);
             - (1 - xi), - (1 + xi), 1 + xi, 1 - xi;
         ];
 
     end
 
-    function [shape, diff_shape] = shape_function_Q8(xi, eta)
+    function [shape, naturalDerivatives] = shapeFunctionQ8(xi, eta)
 
         shape = 1 / 4 * [
             (1-xi)*(1-eta)*(-xi-eta-1), ...
@@ -58,7 +58,7 @@ function f = create_shape_function(num_node_per_element, schemes)
             2*(1-xi)*(1-eta^2)
         ];
 
-        diff_shape = [
+        naturalDerivatives = [
             - ((eta - 1)*(eta + xi + 1))/4 - ((eta - 1)*(xi - 1))/4, ...
             ((eta - 1)*(eta - xi + 1))/4 - ((eta - 1)*(xi + 1))/4, ...
             ((eta + 1)*(eta + xi - 1))/4 + ((eta + 1)*(xi + 1))/4, ...
@@ -80,7 +80,7 @@ function f = create_shape_function(num_node_per_element, schemes)
 
     end
 
-    function [shape, diff_shape] = shape_function_Q9(xi, eta)
+    function [shape, naturalDerivatives] = shapeFunctionQ9(xi, eta)
 
         shape = [
             (eta*xi*(eta - 1)*(xi - 1))/4, ...
@@ -94,7 +94,7 @@ function f = create_shape_function(num_node_per_element, schemes)
             (eta - 1)*(eta + 1)*(xi - 1)*(xi + 1)
         ];
 
-        diff_shape = [
+        naturalDerivatives = [
             (eta*xi*(eta - 1))/4 + (eta*(eta - 1)*(xi - 1))/4,...
             (eta*xi*(eta - 1))/4 + (eta*(xi/2 + 1/2)*(eta - 1))/2,...
             (eta*xi*(eta + 1))/4 + (eta*(xi/2 + 1/2)*(eta + 1))/2,...
@@ -118,7 +118,7 @@ function f = create_shape_function(num_node_per_element, schemes)
 
     end
 
-    function [shape, diff_shape] = shape_function_Q8_along_boundary(xi, eta)
+    function [shape, naturalDerivatives] = shapeFunctionQ8AlongBoundary(xi, eta)
 
         shape = 1 / 4 * [
             (1-xi)*(1-eta)*(-xi-eta-1), ...
@@ -131,7 +131,7 @@ function f = create_shape_function(num_node_per_element, schemes)
             2*(1-xi)*(1-eta^2)
         ];
 
-        diff_shape = [
+        naturalDerivatives = [
             - ((eta - 1)*(eta + xi + 1))/4 - ((eta - 1)*(xi - 1))/4, ...
             (xi*(2*eta - 2))/2, ...
             ((eta - 1)*(eta - xi + 1))/4 - ((eta - 1)*(xi + 1))/4, ...
@@ -153,7 +153,7 @@ function f = create_shape_function(num_node_per_element, schemes)
 
     end
 
-    function [shape, diff_shape] = shape_function_Q9_along_boundary(xi, eta)
+    function [shape, naturalDerivatives] = shapeFunctionQ9AlongBoundary(xi, eta)
 
         shape = [
             (eta*xi*(eta - 1)*(xi - 1))/4, ...
@@ -167,7 +167,7 @@ function f = create_shape_function(num_node_per_element, schemes)
             (eta - 1)*(eta + 1)*(xi - 1)*(xi + 1)
         ];
 
-        diff_shape = [
+        naturalDerivatives = [
             (eta*xi*(eta - 1))/4 + (eta*(eta - 1)*(xi - 1))/4,...
             -(eta*(eta - 1)*(xi - 1))/2 - (eta*(eta - 1)*(xi + 1))/2,...
             (eta*xi*(eta - 1))/4 + (eta*(xi/2 + 1/2)*(eta - 1))/2,...
