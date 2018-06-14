@@ -29,5 +29,9 @@
     "typescript",
     "typescriptreact",
     "yml"
+  ],
+  "cSpell.words": [
+    "nargin",
+    "strcmp"
   ]
 }
