@@ -1,27 +1,27 @@
-function displacements = solution(GDof, prescribedDof, stiffness, force, displacements)
+function displacements = solution(gDof, prescribedDof, stiffness, force, displacements)
 %
 % displacements = inv(stiffness) / force.
 %
 % @since 2.1.0
-% @param {number} [GDof] total number of degrees of freedom.
-% @param {array} [prescribedDof] ¦³§ô¨îªº¸`ÂI.
+% @param {number} [gDof] total number of degrees of freedom.
+% @param {array} [prescribedDof] ï¿½ï¿½ï¿½ï¿½îªºï¿½`ï¿½I.
 % @param {array} [stiffness] stiffness.
 % @param {array} [force] force.
 % @param {array} [displacements] initial displacements.
 % @return {array} [displacements] displacements.
 %
     if nargin == 4
-        displacements = zeros(GDof, 1);
+        displacements = zeros(gDof, 1);
     end
 
     % function to find solution in terms of global displacements
-    activeDof = setdiff((1 : GDof)', prescribedDof);
+    activeDof = setdiff((1 : gDof)', prescribedDof);
 
-    % ³o¸Ìªº·PÄ±À³¸Ó¬O§ô¨îªº displacements¡A¹ï©ó¨S§ô¨îªº¼vÅT
+    % ï¿½oï¿½Ìªï¿½ï¿½PÄ±ï¿½ï¿½ï¿½Ó¬Oï¿½ï¿½îªº displacementsï¿½Aï¿½ï¿½ï¿½Sï¿½ï¿½îªºï¿½vï¿½T
     % fef
     fef = stiffness(prescribedDof, activeDof).' * displacements(prescribedDof);
 
-    % ¥u­pºâ¨S§ô¨îªº¦Û¥Ñ«×
+    % ï¿½uï¿½pï¿½ï¿½Sï¿½ï¿½îªºï¿½Û¥Ñ«ï¿½
     U = stiffness(activeDof, activeDof) \ (force(activeDof) - fef);
 
     displacements(activeDof) = U;

@@ -3,22 +3,22 @@ function [] = drawingPatch(nodeCoordinates, elementNodes, color)
 % drawing stress
 %
 % @since 2.1.0
-% @param {array} [nodeCoordinates] ¸`ÂI¦ì¸m.
-% @param {array} [elementNodes] ¨C­Ó¤¸¯À¦³´X­Ó¸`ÂI¡AÁÙ¦³¥L­Ìªº¤À§G.
-% @param {number|array} [color] ¦hÃä§ÎªºÃC¦â.
+% @param {array} [nodeCoordinates] ï¿½`ï¿½Iï¿½ï¿½m.
+% @param {array} [elementNodes] ï¿½Cï¿½Ó¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Ó¸`ï¿½Iï¿½Aï¿½Ù¦ï¿½ï¿½Lï¿½Ìªï¿½ï¿½ï¿½ï¿½G.
+% @param {number|array} [color] ï¿½hï¿½ï¿½Îªï¿½ï¿½Cï¿½ï¿½.
 %
 
     figure;
 
     % number of elements
-    number_elements = size(elementNodes, 1);
+    numberElements = size(elementNodes, 1);
 
-    for e = 1 : number_elements
+    for e = 1 : numberElements
 
         x = nodeCoordinates(elementNodes(e, :), 1);
         y = nodeCoordinates(elementNodes(e, :), 2);
 
-        if length(color) ~= number_elements
+        if length(color) ~= numberElements
 
             patch(x, y, color(elementNodes(e, :)));
 

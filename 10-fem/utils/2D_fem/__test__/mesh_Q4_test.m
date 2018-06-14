@@ -1,20 +1,20 @@
-classdef mesh_Q4_test < matlab.unittest.TestCase
+classdef meshQ4Test < matlab.unittest.TestCase
 
     methods (Test)
 
-        function mesh_2x2(testCase)
-            corner_coordinates = [0 0; 2 0.5; 0 1; 2 1;];
-            x_mesh = 2;
-            y_mesh = 2;
+        function mesh2x2(testCase)
+            cornerCoordinates = [0 0; 2 0.5; 0 1; 2 1;];
+            xMesh = 2;
+            yMesh = 2;
 
-            exp_element_nodes = [
+            expElementNodes = [
                 1 2 5 4;
                 2 3 6 5;
                 4 5 8 7;
                 5 6 9 8;
             ];
 
-            exp_nodeCoordinates = [
+            expNodeCoordinates = [
                 0         0;
                 1.0000    0.2500;
                 2.0000    0.5000;
@@ -26,19 +26,19 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 2.0000    1.0000;
             ];
 
-            [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes] = meshQ4(cornerCoordinates, xMesh, yMesh);
 
-            testCase.verifyEqual(element_nodes, exp_element_nodes);
-            testCase.verifyEqual(nodeCoordinates, exp_nodeCoordinates);
+            testCase.verifyEqual(elementNodes, expElementNodes);
+            testCase.verifyEqual(nodeCoordinates, expNodeCoordinates);
         end
 
 
-        function mesh_4x4(testCase)
-            corner_coordinates = [0 0; 2 0.5; 0 1; 2 1;];
-            x_mesh = 4;
-            y_mesh = 4;
+        function mesh4x4(testCase)
+            cornerCoordinates = [0 0; 2 0.5; 0 1; 2 1;];
+            xMesh = 4;
+            yMesh = 4;
 
-            exp_element_nodes = [
+            expElementNodes = [
                 1     2     7     6;
                 2     3     8     7;
                 3     4     9     8;
@@ -57,7 +57,7 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                19    20    25    24;
             ];
 
-            exp_nodeCoordinates = [
+            expNodeCoordinates = [
                 0                  0;
                 0.500000000000000  0.125000000000000;
                 1                  0.250000000000000;
@@ -85,10 +85,10 @@ classdef mesh_Q4_test < matlab.unittest.TestCase
                 2                  1;
             ];
 
-            [number_elements, number_nodes, element_nodes, nodeCoordinates, nodes] = mesh_Q4(corner_coordinates, x_mesh, y_mesh);
+            [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes] = meshQ4(cornerCoordinates, xMesh, yMesh);
 
-            testCase.verifyEqual(element_nodes, exp_element_nodes);
-            testCase.verifyEqual(nodeCoordinates, exp_nodeCoordinates);
+            testCase.verifyEqual(elementNodes, expElementNodes);
+            testCase.verifyEqual(nodeCoordinates, expNodeCoordinates);
         end
 
     end

@@ -13,10 +13,10 @@ thickness = 1;
 cornerCoordinates = [0 0; 40 0; 0 2; 40 2;];
 xMesh = 4;
 yMesh = 1;
-[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = mesh_Q8(cornerCoordinates, xMesh, yMesh)
+[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(cornerCoordinates, xMesh, yMesh)
 
-% GDof: global number of degrees of freedom
-GDof = 2 * numberNodes;
+% gDof: global number of degrees of freedom
+gDof = 2 * numberNodes;
 
 % boundary conditions and solution
 % prescribed dof
@@ -24,14 +24,14 @@ GDof = 2 * numberNodes;
 prescribedDof = reshape([2 * flipNodes(:, 1) - 1, 2 * flipNodes(:, 1)].', [], 1);
 
 % force vector
-force = zeros(GDof, 1);
+force = zeros(gDof, 1);
 % force(2 * nodes(1, :)) = -0.75;
 % force(2 * nodes(1, 1)) = -0.375;
 % force(2 * nodes(1, end)) = -0.375;
 
 
 % initial displacements
-displacements = zeros(GDof, 1);
+displacements = zeros(gDof, 1);
 
 % ========================================================
 % input have done
@@ -39,26 +39,25 @@ displacements = zeros(GDof, 1);
 % input have done
 % ========================================================
 
-% 確認是否畫對
 drawingMesh(nodeCoordinates, elementNodes, 'k-o');
 
 % 2D matrix D
 D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
 
 % calculation of the system stiffness matrix
-stiffness = formStiffness_2D(GDof, numberElements, elementNodes, nodeCoordinates, D, thickness);
+stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates, D, thickness);
 
 % solution
-displacements = solution(GDof, prescribedDof, stiffness, force, displacements);
+displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
 drawingDeform(nodeCoordinates, elementNodes, displacements);
 
 % output displacements
-outputDisplacements(displacements, numberNodes, GDof);
+outputDisplacements(displacements, numberNodes, gDof);
 
 
 outputReaction(displacements, stiffness, prescribedDof, force)
 
-[stressGpCell, stressNodeCell] = stress_recovery(numberElements, elementNodes, nodeCoordinates, D, displacements);
+[stressGpCell, stressNodeCell] = stressRecovery(numberElements, elementNodes, nodeCoordinates, D, displacements);
 
 drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell);

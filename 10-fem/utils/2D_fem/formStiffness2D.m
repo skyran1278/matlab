@@ -1,28 +1,28 @@
-function stiffness = formStiffness2D(GDof, numberElements, elementNodes, nodeCoordinates, D, thickness)
+function stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates, D, thickness)
 %
 % compute stiffness matrix.
 % for plane stress Q4 elements.
 %
 % @since 1.1.1
-% @param {number} [GDof] global number of degrees of freedom.
+% @param {number} [gDof] global number of degrees of freedom.
 % @param {number} [numberElements] number of elements.
-% @param {array} [elementNodes] ¨C­Ó¤¸¯À¦³´X­Ó¸`ÂI¡AÁÙ¦³¥L­Ìªº¤À§G.
-% @param {array} [nodeCoordinates] ¸`ÂI¦ì¸m.
+% @param {array} [elementNodes] ï¿½Cï¿½Ó¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Ó¸`ï¿½Iï¿½Aï¿½Ù¦ï¿½ï¿½Lï¿½Ìªï¿½ï¿½ï¿½ï¿½G.
+% @param {array} [nodeCoordinates] ï¿½`ï¿½Iï¿½ï¿½m.
 % @param {array} [D] 2D matrix D.
-% @param {number} [thickness] «p«×.
+% @param {number} [thickness] ï¿½pï¿½ï¿½.
 % @return {array} [stiffness] stiffness.
 %
 
-    stiffness = zeros(GDof);
+    stiffness = zeros(gDof);
 
-    % ¤@­Ó element ¦³´X­Ó nodes
+    % ï¿½@ï¿½ï¿½ element ï¿½ï¿½ï¿½Xï¿½ï¿½ nodes
     numNodePerElement = size(elementNodes, 2);
 
     shapeFunction = createShapeFunction(numNodePerElement);
     [gaussWeights, gaussLocations] = gauss2D(numNodePerElement);
     ngp = size(gaussWeights, 1);
 
-    % ¤@­Ó element ¦³´X­Ó¦Û¥Ñ«×
+    % ï¿½@ï¿½ï¿½ element ï¿½ï¿½ï¿½Xï¿½Ó¦Û¥Ñ«ï¿½
     numEDof = 2 * numNodePerElement;
     elementDof = zeros(1, numEDof);
 
@@ -39,20 +39,20 @@ function stiffness = formStiffness2D(GDof, numberElements, elementNodes, nodeCoo
             elementDof(2 * index) = 2 * elementNodes(e, index);
         end
 
-        % ³o¸Ì¤w¸g¦b°µ°ª´µ¤F
+        % ï¿½oï¿½Ì¤wï¿½gï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½F
         for index = 1 : ngp
 
             xi = gaussLocations(index, 1);
             eta = gaussLocations(index, 2);
 
-            % ¿é¥Xªº¤w¸g¬O¼Æ­È¤F
+            % ï¿½ï¿½Xï¿½ï¿½ï¿½wï¿½gï¿½Oï¿½Æ­È¤F
             [~, naturalDerivatives] = shapeFunction(xi, eta);
 
             % number array
-            [Jacob, ~, XYDerivatives] = form_jacobian(nodeCoordinates(elementNodes(e, :), :), naturalDerivatives);
+            [Jacob, ~, XYDerivatives] = Jacobian(nodeCoordinates(elementNodes(e, :), :), naturalDerivatives);
 
-            % À³¸Ó­n©î¥X¨Ó¤ñ¸û¦X²z¡A¤£¹Lºâ¤F¡C
-            % ¤w¸g¬O¼Æ­È¤F
+            % ï¿½ï¿½ï¿½Ó­nï¿½ï¿½Xï¿½Ó¤ï¿½ï¿½ï¿½Xï¿½zï¿½Aï¿½ï¿½ï¿½Lï¿½ï¿½Fï¿½C
+            % ï¿½wï¿½gï¿½Oï¿½Æ­È¤F
             B = zeros(3, numEDof);
 
             % x 0 x 0 ...
@@ -67,13 +67,13 @@ function stiffness = formStiffness2D(GDof, numberElements, elementNodes, nodeCoo
 
             k = k + det(Jacob) * gaussWeights(index) * (thickness * B.' * D * B);
 
-            % FIXME: ³o¸Ì¥|±Ë¤­¤Jªº°ÝÃD¡A³y¦¨µª®×¤£¤@¼Ë¡C
+            % FIXME: ï¿½oï¿½Ì¥|ï¿½Ë¤ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Dï¿½Aï¿½yï¿½ï¿½ï¿½ï¿½ï¿½×¤ï¿½ï¿½@ï¿½Ë¡C
             stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + det(Jacob) * gaussWeights(index) * (thickness * B.' * D * B);
 
         end
 
-        % k ¤£¬° 0
-        % ¦]¬° K ¤w¸gµLªk exact ¤F
+        % k ï¿½ï¿½ï¿½ï¿½ 0
+        % ï¿½]ï¿½ï¿½ K ï¿½wï¿½gï¿½Lï¿½k exact ï¿½F
         % if det(k) ~= 0
         %     warning('det(k) <> 0: element %d, det(k) = %e\n', e, det(k));
         % end
