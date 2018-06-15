@@ -1,4 +1,4 @@
-function meshPlot = drawingMesh(nodeCoordinates, elementNodes, format)
+function meshPlot = drawingMesh(nodeCoordinates, elementNodes, format, schemes)
 %
 % mesh elementNodes
 %
@@ -10,7 +10,12 @@ function meshPlot = drawingMesh(nodeCoordinates, elementNodes, format)
 %
 
     % close nodes around area
-    seg = [1 : size(elementNodes, 2), 1];
+    if nargin == 3 || strcmp(schemes, 'cornerFirst')
+        size(elementNodes, 2)
+
+    else
+        seg = [1 : size(elementNodes, 2), 1];
+    end
 
     % number of elements
     numberElements = size(elementNodes, 1);

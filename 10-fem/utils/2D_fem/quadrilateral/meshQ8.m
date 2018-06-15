@@ -6,7 +6,7 @@ function [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, fli
 % @param {array} [cornerCoordinates] corner coordinates 由左至右 由下至上.
 % @param {number} [xMesh] x 方向切幾份.
 % @param {number} [yMesh] y 方向切幾份.
-% @param {string} [schemes] corner first or along boundary.
+% @param {string} [schemes] cornerFirst or alongBoundary.
 % @return {number} [numberElements] number of elements.
 % @return {number} [numberNodes] number of nodes.
 % @return {array} [elementNodes] 每個元素有幾個節點，還有他們的分佈.
