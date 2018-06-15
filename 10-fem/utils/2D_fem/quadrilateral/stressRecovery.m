@@ -4,34 +4,35 @@ function [stressGpCell, stressNodeCell] = stressRecovery(numberElements, element
 %
 % @since 1.0.3
 % @param {number} [numberElements] number of elements.
-% @param {array} [elementNodes] ï¿½Cï¿½Ó¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Ó¸`ï¿½Iï¿½Aï¿½Ù¦ï¿½ï¿½Lï¿½Ìªï¿½ï¿½ï¿½ï¿½G.
-% @param {array} [nodeCoordinates] ï¿½`ï¿½Iï¿½ï¿½m.
+% @param {array} [elementNodes] ¨C­Ó¤¸¯À¦³´X­Ó¸`ÂI¡AÁÙ¦³¥L­Ìªº¤À§G.
+% @param {array} [nodeCoordinates] ¸`ÂI¦ì¸m.
 % @param {array} [D] 2D matrix D.
 % @param {array} [displacements] displacements.
 % @return {cell} [stressGpCell] stress on gauss point.
 % @return {cell} [stressNodeCell] stress on node.
 %
 
-    % ï¿½@ï¿½ï¿½ element ï¿½ï¿½ï¿½Xï¿½ï¿½ nodes
+    % ¤@­Ó element ¦³´X­Ó nodes
     numNodePerElement = size(elementNodes, 2);
 
     shapeFunction = createShapeFunction(numNodePerElement);
-    [gaussWeights, ~] = gauss2D(numNodePerElement);
+    [gaussWeights, gaussLocations] = gauss2D(numNodePerElement);
     ngp = size(gaussWeights, 1);
 
-    % ï¿½@ï¿½ï¿½ element ï¿½ï¿½ï¿½Xï¿½Ó¦Û¥Ñ«ï¿½
+    % ¤@­Ó element ¦³´X­Ó¦Û¥Ñ«×
     numEDof = 2 * numNodePerElement;
     elementDof = zeros(1, numEDof);
 
     stressGpCell = cell(numberElements, 2);
     stressNodeCell = cell(numberElements, 1);
 
-    % recovery = [
-    %     1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2;
-    %     - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2;
-    %     1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2;
-    %     - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2;
-    % ];
+    % only for 2x2
+    recovery = [
+        1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2;
+        - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2;
+        1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2;
+        - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2;
+    ];
 
     for e = 1 : numberElements
 
@@ -47,20 +48,16 @@ function [stressGpCell, stressNodeCell] = stressRecovery(numberElements, element
         stressGp = zeros(ngp, 3);
         stressGpLocation = zeros(ngp, 2);
 
-        % ï¿½oï¿½Ì¤wï¿½gï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½F
         for index = 1 : ngp
 
-            xi = location(index, 1);
-            eta = location(index, 2);
+            xi = gaussLocations(index, 1);
+            eta = gaussLocations(index, 2);
 
-            % ï¿½ï¿½Xï¿½ï¿½ï¿½wï¿½gï¿½Oï¿½Æ­È¤F
             [shape, naturalDerivatives] = shapeFunction(xi, eta);
 
             % number array
             [~, ~, XYDerivatives] = Jacobian(nodeCoordinates(elementNodes(e, :), :), naturalDerivatives);
 
-            % ï¿½ï¿½ï¿½Ó­nï¿½ï¿½Xï¿½Ó¤ï¿½ï¿½ï¿½Xï¿½zï¿½Aï¿½ï¿½ï¿½Lï¿½ï¿½Fï¿½C
-            % ï¿½wï¿½gï¿½Oï¿½Æ­È¤F
             B = zeros(3, numEDof);
 
             % x 0 x 0 ...
@@ -78,11 +75,11 @@ function [stressGpCell, stressNodeCell] = stressRecovery(numberElements, element
 
         end
 
-        % stressNode = recovery * stressGp;
+        stressNode = recovery * stressGp;
 
         stressGpCell{e, 1} = stressGp;
         stressGpCell{e, 2} = stressGpLocation;
-        % stressNodeCell{e} = stressNode;
+        stressNodeCell{e} = stressNode;
 
     end
 

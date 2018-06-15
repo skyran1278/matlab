@@ -5,8 +5,8 @@ function [] = drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressN
 % centroid
 %
 % @since 2.0.0
-% @param {array} [elementNodes] ï¿½Cï¿½Ó¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Ó¸`ï¿½Iï¿½Aï¿½Ù¦ï¿½ï¿½Lï¿½Ìªï¿½ï¿½ï¿½ï¿½G.
-% @param {array} [nodeCoordinates] ï¿½`ï¿½Iï¿½ï¿½m.
+% @param {array} [elementNodes] ¨C­Ó¤¸¯À¦³´X­Ó¸`ÂI¡AÁÙ¦³¥L­Ìªº¤À§G.
+% @param {array} [nodeCoordinates] ¸`ÂI¦ì¸m.
 % @param {cell} [stressGpCell] stress on gauss point.
 % @param {cell} [stressNodeCell] stress on node.
 % @see drawingPatch
@@ -20,7 +20,7 @@ function [] = drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressN
 
     accumulationCount = zeros(numberNodes, 1);
 
-    % ï¿½eï¿½ï¿½ï¿½ï¿½ stress x
+    % µe¥­§¡ stress x
     for e = 1 : numberElements
 
         stress = stressNodeCell{e};
@@ -33,12 +33,14 @@ function [] = drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressN
     averageStress = accumulationStress ./ accumulationCount;
 
     drawingPatch(nodeCoordinates, elementNodes, averageStress(:, 1));
+    % fprintf ¥ý¬Ý¦C
+    fprintf('%4d%20.4e%20.4e%20.4e\n', [(1 : numberNodes); averageStress.']);
 
 
-    % ï¿½e centroid stress x
+    % µe centroid stress x
     for e = 1 : numberElements
 
-        stress = stressGpCell{e};
+        stress = stressGpCell{e, 1};
 
         centroidStress(e, :) = mean(stress, 1);
 

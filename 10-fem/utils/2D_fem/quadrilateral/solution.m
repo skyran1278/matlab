@@ -4,7 +4,7 @@ function displacements = solution(gDof, prescribedDof, stiffness, force, displac
 %
 % @since 2.1.0
 % @param {number} [gDof] total number of degrees of freedom.
-% @param {array} [prescribedDof] ï¿½ï¿½ï¿½ï¿½îªºï¿½`ï¿½I.
+% @param {array} [prescribedDof] ¦³§ô¨îªº¸`ÂI.
 % @param {array} [stiffness] stiffness.
 % @param {array} [force] force.
 % @param {array} [displacements] initial displacements.
@@ -17,11 +17,11 @@ function displacements = solution(gDof, prescribedDof, stiffness, force, displac
     % function to find solution in terms of global displacements
     activeDof = setdiff((1 : gDof)', prescribedDof);
 
-    % ï¿½oï¿½Ìªï¿½ï¿½PÄ±ï¿½ï¿½ï¿½Ó¬Oï¿½ï¿½îªº displacementsï¿½Aï¿½ï¿½ï¿½Sï¿½ï¿½îªºï¿½vï¿½T
+    % ³o¸Ìªº·PÄ±À³¸Ó¬O§ô¨îªº displacements¡A¹ï©ó¨S§ô¨îªº¼vÅT
     % fef
     fef = stiffness(prescribedDof, activeDof).' * displacements(prescribedDof);
 
-    % ï¿½uï¿½pï¿½ï¿½Sï¿½ï¿½îªºï¿½Û¥Ñ«ï¿½
+    % ¥u­pºâ¨S§ô¨îªº¦Û¥Ñ«×
     U = stiffness(activeDof, activeDof) \ (force(activeDof) - fef);
 
     displacements(activeDof) = U;

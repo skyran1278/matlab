@@ -34,6 +34,7 @@
     "classdef",
     "colorbar",
     "colormap",
+    "fprintf",
     "jacobian",
     "linspace",
     "matlab",
@@ -41,6 +42,8 @@
     "setdiff",
     "strcmp",
     "undeformed",
-    "unittest"
+    "unittest",
+    "xlabel",
+    "ylabel"
   ]
 }
