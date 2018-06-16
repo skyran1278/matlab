@@ -27,12 +27,14 @@ function [stressGpCell, stressNodeCell] = stressRecovery(numberElements, element
     stressNodeCell = cell(numberElements, 1);
 
     % only for 2x2
-    recovery = [
-        1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2;
-        - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2;
-        1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2;
-        - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2;
-    ];
+    if numNodePerElement == 4
+        recovery = [
+            1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2;
+            - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2, 1 - sqrt(3) / 2;
+            1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2, - 1 / 2;
+            - 1 / 2, 1 - sqrt(3) / 2, - 1 / 2, 1 + sqrt(3) / 2;
+        ];
+    end
 
     for e = 1 : numberElements
 
@@ -75,11 +77,14 @@ function [stressGpCell, stressNodeCell] = stressRecovery(numberElements, element
 
         end
 
-        stressNode = recovery * stressGp;
+        % 目前 recovery 只支援 4 個節點的
+        if numNodePerElement == 4
+            stressNode = recovery * stressGp;
+            stressNodeCell{e} = stressNode;
+        end
 
         stressGpCell{e, 1} = stressGp;
         stressGpCell{e, 2} = stressGpLocation;
-        stressNodeCell{e} = stressNode;
 
     end
 

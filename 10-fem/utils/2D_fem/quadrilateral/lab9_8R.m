@@ -1,4 +1,3 @@
-clc; clear; close all;
 
 % materials
 % E: modulus of elasticity (N/m^2)
@@ -14,7 +13,7 @@ thickness = 1;
 cornerCoordinates = [0 0; 5 0; 0 0.5; 5 0.5;];
 xMesh = 5;
 yMesh = 1;
-[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ9(cornerCoordinates, xMesh, yMesh)
+[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(cornerCoordinates, xMesh, yMesh)
 
 nodesX = 2 * nodes - 1;
 nodesY = 2 * nodes;
@@ -47,18 +46,29 @@ stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates,
 
 displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
-figure;
-plot(nodeCoordinates(flipNodes(2, :), 1), displacements(2 * flipNodes(2, :)), 'bo');
+figure(1);
+r8Displacement = plot(nodeCoordinates(nodes(2, nodes(2, :) > 0), 1), displacements(2 * nodes(2, nodes(2, :) > 0)), 'rs');
 hold on;
 
-x = 0 : 0.01 : 5;
-M = 600;
-b = 1;
-h = 0.5;
-I = 1 / 12 * b * h ^ 3;
 
-exactDisplacements = - M * x .^ 2 / (2 * E * I);
+[stressGpCell, stressNodeCell] = stressRecovery(numberElements, elementNodes, nodeCoordinates, D, displacements);
 
-plot(x, exactDisplacements, 'k-');
-% save('lab.mat');
+stressUpperLine = zeros(numberElements * 3, 2);
 
+index = 1 : 3;
+
+for e = 1 : numberElements
+
+    gpStress = stressGpCell{e, 1};
+    gpLocation = stressGpCell{e, 2};
+
+    stressUpperLine(index, 1) = gpStress([4 7 3], 1);
+    stressUpperLine(index, 2) = gpLocation([4 7 3], 1);
+
+    index = index + 3;
+
+end
+
+figure(2);
+r8Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'rs');
+hold on;
