@@ -1,8 +1,8 @@
-function [] = drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell)
+function [] = outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell)
 %
-% drawing stress.
+% output stress.
+% nodal
 % average
-% centroid
 %
 % @since 2.0.0
 % @param {array} [elementNodes] 每個元素有幾個節點，還有他們的分佈.
@@ -20,7 +20,24 @@ function [] = drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressN
 
     accumulationCount = zeros(numberNodes, 1);
 
-    % 畫平均 stress x
+    % 輸出 nodal stress x
+    fprintf('Element Nodal Stresses\n');
+    fprintf('Element  Node           Sxx               Syy                Sxy\n');
+    for e = 1 : numberElements
+
+        stress = stressNodeCell{e, 1};
+
+        for index = 1 : size(stress, 1)
+
+            fprintf('%4d%7d%20.4e%20.4e%20.4e\n', [e; index; stress(index, :).']);
+
+        end
+
+    end
+
+    % 輸出平均 stress x
+    fprintf('Average Nodal Stresses\n');
+    fprintf('Node           Sxx               Syy                Sxy\n');
     for e = 1 : numberElements
 
         stress = stressNodeCell{e};
@@ -32,18 +49,10 @@ function [] = drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressN
 
     averageStress = accumulationStress ./ accumulationCount;
 
-    drawingPatch(nodeCoordinates, elementNodes, averageStress(:, 1));
+    % fprintf 先看列後看行
+    fprintf('%4d%20.4e%20.4e%20.4e\n', [(1 : numberNodes); averageStress.']);
 
 
-    % 畫 centroid stress x
-    for e = 1 : numberElements
 
-        stress = stressGpCell{e, 1};
-
-        centroidStress(e, :) = mean(stress, 1);
-
-    end
-
-    drawingPatch(nodeCoordinates, elementNodes, centroidStress(:, 1));
 
 end

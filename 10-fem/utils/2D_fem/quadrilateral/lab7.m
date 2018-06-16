@@ -52,14 +52,11 @@ displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
 drawingDeform(nodeCoordinates, elementNodes, displacements);
 
-displacement_reshape = reshape(displacements, 2, []).';
-
 x = 0 : 0.1: 60;
 P = force(2 * nodes(2, 1));
 h = 20;
 I = 1 / 12 * thickness * h ^ 3;
 L = 60;
-
 
 uy = P * x .^ 3 / (6 * E * I) - P * L ^ 2 * x / (2 * E * I) + P * L ^ 3 / (3 * E * I);
 
@@ -73,20 +70,8 @@ legend({'FEM', 'exact'}, 'Location', 'southeast');
 
 [stressGpCell, stressNodeCell] = stressRecovery(numberElements, elementNodes, nodeCoordinates, D, displacements);
 
-fprintf('Element Nodal Stresses\n');
-fprintf('Element  Node           Sxx               Syy                Sxy\n');
-for e = 1 : length(stressNodeCell)
-
-    stress = stressNodeCell{e, 1};
-
-    for index = 1 : size(stress, 1)
-
-        fprintf('%4d%7d%20.4e%20.4e%20.4e\n', [e; index; stress(index, :).']);
-    end
-
-end
-
-fprintf('Average Nodal Stresses\n');
-fprintf('Node           Sxx               Syy                Sxy\n');
+outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell)
 
 drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell);
+
+% save('lab7.mat');
