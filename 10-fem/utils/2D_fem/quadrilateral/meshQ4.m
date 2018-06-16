@@ -85,6 +85,14 @@ function [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, fli
 
     end
 
+    % 如果逆時針傳進來也沒關係
+    % 他們會換回正確的位置
+    if cornerCoordinates(3, 1) > cornerCoordinates(4, 1)
+        tmp = cornerCoordinates(3, :);
+        cornerCoordinates(3, :) = cornerCoordinates(4, :);
+        cornerCoordinates(4, :) = tmp;
+    end
+
     % edge 14 所有的節點位置
     edge14X = linspace(cornerCoordinates(1, 1), cornerCoordinates(3, 1), yNodes);
     edge14Y = linspace(cornerCoordinates(1, 2), cornerCoordinates(3, 2), yNodes);

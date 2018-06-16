@@ -20,6 +20,20 @@ function [] = outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNo
 
     accumulationCount = zeros(numberNodes, 1);
 
+    % 輸出 np stress x
+    fprintf('Stresses at Gauss points\n');
+    fprintf('Element  gp             Sxx               Syy                Sxy\n');
+    for e = 1 : length(stressGpCell)
+
+        stress = stressGpCell{e};
+
+        for index = 1 : size(stress, 1)
+
+            fprintf('%4d%7d%20.4e%20.4e%20.4e\n', [e; index; stress(index, :).']);
+        end
+
+    end
+
     % 輸出 nodal stress x
     fprintf('Element Nodal Stresses\n');
     fprintf('Element  Node           Sxx               Syy                Sxy\n');
@@ -35,7 +49,7 @@ function [] = outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNo
 
     end
 
-    % 輸出平均 stress x
+    % 輸出 nodal 平均後的 stress x
     fprintf('Average Nodal Stresses\n');
     fprintf('Node           Sxx               Syy                Sxy\n');
     for e = 1 : numberElements

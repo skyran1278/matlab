@@ -2,30 +2,36 @@ clc; clear; close all;
 
 % materials
 % E: modulus of elasticity (N/m^2)
-E = 2e5;
+E = 30e6;
 poisson = 0.3;
-thickness = 5;
+thickness = 1;
 
 % numberElements = 2;
 % numberNodes = 6;
 % elementNodes = [1 2 5 4; 2 3 6 5];
 % nodeCoordinates = [0 0; 15 0; 20 0; 0 10; 15 10; 20 10];
-cornerCoordinates = [0 0; 60 0; 0 20; 60 20;];
-xMesh = 6;
+% m
+cornerCoordinates = [0, 0; 2, 0.5; 2, 1; 0, 1;];
+xMesh = 2;
 yMesh = 2;
-[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ4(cornerCoordinates, xMesh, yMesh);
+[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ4(cornerCoordinates, xMesh, yMesh)
+
+nodesX = 2 * nodes - 1;
+nodesY = 2 * nodes;
+flipNodesX = 2 * flipNodes - 1;
+flipNodesY = 2 * flipNodes;
 
 gDof = 2 * numberNodes;
 
 % prescribed dof
-% prescribedDof = [2 * nodes(end, 1) - 1, 2 * nodes(2, 1) - 1, 2 * nodes(2, 1), 2 * nodes(1, 1) - 1].';
-prescribedDof = reshape([2 * nodes(:, end) - 1, 2 * nodes(:, end)].', [], 1);
+prescribedDof = reshape([flipNodesX(:, 1), flipNodesY(:, 1)].', [], 1);
 
 % force vector
+% N
 force = zeros(gDof, 1);
-force(2 * nodes(2, 1)) = -1000;
-% force(2 * nodes(1, 1)) = -0.375;
-% force(2 * nodes(1, end)) = -0.375;
+force(nodesY(1, :)) = -20 * 2 / (length(nodesY(1, :)) - 1);
+force(nodesY(1, 1)) = -20 * 2 / (length(nodesY(1, :)) - 1) / 2;
+force(nodesY(1, end)) = -20 * 2 / (length(nodesY(1, :)) - 1) / 2;
 
 displacements = zeros(gDof, 1);
 
@@ -35,7 +41,7 @@ displacements = zeros(gDof, 1);
 % input have done
 % ========================================================
 
-% drawingMesh(nodeCoordinates, elementNodes, 'k-o');
+drawingMesh(nodeCoordinates, elementNodes, 'k-o');
 
 % 2D matrix D
 D = E / (1 - poisson ^ 2) * [1, poisson, 0; poisson, 1, 0; 0, 0, (1 - poisson) / 2];
@@ -46,23 +52,8 @@ stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates,
 % solution
 displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
-drawingDeform(nodeCoordinates, elementNodes, displacements);
-
-x = 0 : 0.1: 60;
-P = force(2 * nodes(2, 1));
-h = 20;
-I = 1 / 12 * thickness * h ^ 3;
-L = 60;
-
-uy = P * x .^ 3 / (6 * E * I) - P * L ^ 2 * x / (2 * E * I) + P * L ^ 3 / (3 * E * I);
-
-figure;
-plot(nodeCoordinates(nodes(2, :), 1), displacements(2 * nodes(2, :), 1), 'b-o', x, uy, 'r');
-grid on;
-xlabel('x(mm)');
-ylabel('displacements(mm)');
-title('neutral axis displacements(mm)');
-legend({'FEM', 'exact'}, 'Location', 'southeast');
+% output displacements
+outputDisplacements(displacements, numberNodes, gDof);
 
 [stressGpCell, stressNodeCell] = stressRecovery(numberElements, elementNodes, nodeCoordinates, D, displacements);
 
@@ -70,4 +61,4 @@ outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell)
 
 drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell);
 
-% save('lab7.mat');
+% save('lab8_2.mat');
