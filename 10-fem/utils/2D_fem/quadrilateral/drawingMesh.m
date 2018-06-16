@@ -13,6 +13,7 @@ function meshPlot = drawingMesh(nodeCoordinates, elementNodes, format, schemes)
     numNodePerElement = size(elementNodes, 2);
 
     % close nodes around area
+    % 不能畫中心點
     if (nargin == 3 || strcmp(schemes, 'cornerFirst')) && (numNodePerElement == 8 || numNodePerElement == 9)
         seg = [1 5 2 6 3 7 4 8 1];
 
