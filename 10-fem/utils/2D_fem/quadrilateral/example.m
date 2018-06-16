@@ -14,7 +14,7 @@ thickness = 1;
 cornerCoordinates = [0 0; 40 0; 0 2; 40 2;];
 xMesh = 4;
 yMesh = 1;
-[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(cornerCoordinates, xMesh, yMesh)
+[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ4(cornerCoordinates, xMesh, yMesh)
 
 nodesX = 2 * nodes - 1;
 nodesY = 2 * nodes;
