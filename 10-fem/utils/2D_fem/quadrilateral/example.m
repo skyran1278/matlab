@@ -58,7 +58,7 @@ outputReaction(displacements, stiffness, prescribedDof, force);
 
 [stressGpCell, stressNodeCell] = stressRecovery(numberElements, elementNodes, nodeCoordinates, D, displacements);
 
-outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell)
+outputStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell);
 
 drawingStress(elementNodes, nodeCoordinates, stressGpCell, stressNodeCell);
 
