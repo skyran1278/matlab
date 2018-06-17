@@ -17,7 +17,7 @@ DD = min(DDx, DDy);
 % ==========================
 T = 2.5;
 
-mu = 0.08;
+mu = 0.06;
 
 W = [87.5997 170.9929 341.4667];
 
@@ -29,12 +29,12 @@ R = DD / ((2 * mu) / (pi * DampingRatio) - mu);
 
 KeD = W / R + mu * W / DD;
 
-Kh = W / DampingRatio;
+Kh = W / R;
 K1 = 51 * Kh;
 
 if DD > mu * R
-    DD;
-    mu * R;
+    DD
+    mu * R
     fprintf('OK\n');
 else
     DD
