@@ -6,7 +6,7 @@ classdef formStiffness2DTest < matlab.unittest.TestCase
 
             stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
 
-            testCase.verifyEqual(stiffness, vars.stiffness);
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
 
         end
 
@@ -16,7 +16,7 @@ classdef formStiffness2DTest < matlab.unittest.TestCase
 
             stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
 
-            testCase.verifyEqual(stiffness, vars.stiffness);
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
 
         end
 
@@ -26,7 +26,47 @@ classdef formStiffness2DTest < matlab.unittest.TestCase
 
             stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
 
-            testCase.verifyEqual(stiffness, vars.stiffness);
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
+
+        end
+
+        function lab9_8IR(testCase)
+
+            vars = load('lab9_8IR.mat');
+
+            stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
+
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
+
+        end
+
+        function lab9_8R(testCase)
+
+            vars = load('lab9_8R.mat');
+
+            stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
+
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
+
+        end
+
+        function lab9_9IR(testCase)
+
+            vars = load('lab9_9IR.mat');
+
+            stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
+
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
+
+        end
+
+        function lab9_9R(testCase)
+
+            vars = load('lab9_9R.mat');
+
+            stiffness = formStiffness2D(vars.gDof, vars.numberElements, vars.elementNodes, vars.nodeCoordinates, vars.D, vars.thickness);
+
+            testCase.verifyEqual(stiffness, vars.stiffness, 'AbsTol', 1e-7);
 
         end
 

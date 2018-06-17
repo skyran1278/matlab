@@ -1,3 +1,5 @@
+% clc; clear; close all;
+
 
 % materials
 % E: modulus of elasticity (N/m^2)
@@ -13,7 +15,7 @@ thickness = 1;
 cornerCoordinates = [0 0; 5 0; 0 0.5; 5 0.5;];
 xMesh = 5;
 yMesh = 1;
-[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ9(cornerCoordinates, xMesh, yMesh)
+[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(cornerCoordinates, xMesh, yMesh)
 
 nodesX = 2 * nodes - 1;
 nodesY = 2 * nodes;
@@ -47,7 +49,7 @@ stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates,
 displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
 figure(1);
-r9Displacement = plot(nodeCoordinates(flipNodes(2, :), 1), displacements(2 * flipNodes(2, :)), 'bo');
+r8Displacement = plot(nodeCoordinates(nodes(2, nodes(2, :) > 0), 1), displacements(2 * nodes(2, nodes(2, :) > 0)), 'rs');
 hold on;
 
 
@@ -70,7 +72,7 @@ for e = 1 : numberElements
 end
 
 figure(2);
-r9Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'bo');
+r8Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'rs');
 hold on;
 
-% save('lab.mat');
+% save('lab9_8R.mat');

@@ -67,8 +67,9 @@ function stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoo
 
             k = k + det(Jacob) * gaussWeights(index) * (thickness * B.' * D * B);
 
-            % FIXME: 這裡四捨五入的問題，造成答案不一樣。
-            stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + det(Jacob) * gaussWeights(index) * (thickness * B.' * D * B);
+            % 這裡四捨五入的問題，造成答案不一樣。
+            % IEEE 754 的問題
+            % stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + det(Jacob) * gaussWeights(index) * (thickness * B.' * D * B);
 
         end
 
@@ -79,7 +80,7 @@ function stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoo
         % end
 
         % stiffness matrix
-        % stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + k;
+        stiffness(elementDof, elementDof) = stiffness(elementDof, elementDof) + k;
 
     end
 

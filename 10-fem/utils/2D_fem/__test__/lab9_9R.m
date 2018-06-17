@@ -1,4 +1,4 @@
-clc; clear; close all;
+% clc; clear; close all;
 
 
 % materials
@@ -15,13 +15,7 @@ thickness = 1;
 cornerCoordinates = [0 0; 5 0; 0 0.5; 5 0.5;];
 xMesh = 5;
 yMesh = 1;
-[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(cornerCoordinates, xMesh, yMesh)
-
-nodeCoordinates = [
-    0 0; 0.25 0; 0.5 0; 1.25 0; 2 0; 2.75 0; 3.5 0; 4 0; 4.5 0; 4.75 0; 5 0;
-    0 0.25; 1 0.25; 2 0.25; 3 0.25; 4 0.25; 5 0.25;
-    0 0.5; 0.75 0.5; 1.5 0.5; 1.75 0.5; 2 0.5; 2.25 0.5; 2.5 0.5; 3 0.5; 3.5 0.5; 4.25 0.5; 5 0.5;
-];
+[numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ9(cornerCoordinates, xMesh, yMesh)
 
 nodesX = 2 * nodes - 1;
 nodesY = 2 * nodes;
@@ -55,7 +49,7 @@ stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates,
 displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
 figure(1);
-ir8Displacement = plot(nodeCoordinates(nodes(2, nodes(2, :) > 0), 1), displacements(2 * nodes(2, nodes(2, :) > 0)), 'k^');
+r9Displacement = plot(nodeCoordinates(flipNodes(2, :), 1), displacements(2 * flipNodes(2, :)), 'bo');
 hold on;
 
 
@@ -78,7 +72,8 @@ for e = 1 : numberElements
 end
 
 figure(2);
-ir8Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'k^');
+r9Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'bo');
 hold on;
 
-save('lab9_8IR.mat');
+% save('lab.mat');
+% save('lab9_9R.mat');

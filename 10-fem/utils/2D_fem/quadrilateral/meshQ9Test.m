@@ -1,11 +1,11 @@
-classdef meshQ8Test < matlab.unittest.TestCase
+classdef meshQ9Test < matlab.unittest.TestCase
     methods (Test)
 
-        function lab9_8R(testCase)
+        function lab9_9R(testCase)
 
-            vars = load('lab9_8R.mat');
+            vars = load('lab9_9R.mat');
 
-            [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(vars.cornerCoordinates, vars.xMesh, vars.yMesh);
+            [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ9(vars.cornerCoordinates, vars.xMesh, vars.yMesh);
 
             testCase.verifyEqual(numberElements, vars.numberElements);
             testCase.verifyEqual(numberNodes, vars.numberNodes);

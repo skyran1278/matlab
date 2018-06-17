@@ -1,3 +1,4 @@
+% clc; clear; close all;
 
 % materials
 % E: modulus of elasticity (N/m^2)
@@ -78,3 +79,5 @@ end
 figure(2);
 ir9Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'gd');
 hold on;
+
+% save('lab9_9IR.mat');

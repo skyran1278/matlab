@@ -1,3 +1,5 @@
+% clc; clear; close all;
+
 
 % materials
 % E: modulus of elasticity (N/m^2)
@@ -14,6 +16,12 @@ cornerCoordinates = [0 0; 5 0; 0 0.5; 5 0.5;];
 xMesh = 5;
 yMesh = 1;
 [numberElements, numberNodes, elementNodes, nodeCoordinates, nodes, flipNodes] = meshQ8(cornerCoordinates, xMesh, yMesh)
+
+nodeCoordinates = [
+    0 0; 0.25 0; 0.5 0; 1.25 0; 2 0; 2.75 0; 3.5 0; 4 0; 4.5 0; 4.75 0; 5 0;
+    0 0.25; 1 0.25; 2 0.25; 3 0.25; 4 0.25; 5 0.25;
+    0 0.5; 0.75 0.5; 1.5 0.5; 1.75 0.5; 2 0.5; 2.25 0.5; 2.5 0.5; 3 0.5; 3.5 0.5; 4.25 0.5; 5 0.5;
+];
 
 nodesX = 2 * nodes - 1;
 nodesY = 2 * nodes;
@@ -47,7 +55,7 @@ stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates,
 displacements = solution(gDof, prescribedDof, stiffness, force, displacements);
 
 figure(1);
-r8Displacement = plot(nodeCoordinates(nodes(2, nodes(2, :) > 0), 1), displacements(2 * nodes(2, nodes(2, :) > 0)), 'rs');
+ir8Displacement = plot(nodeCoordinates(nodes(2, nodes(2, :) > 0), 1), displacements(2 * nodes(2, nodes(2, :) > 0)), 'k^');
 hold on;
 
 
@@ -70,5 +78,7 @@ for e = 1 : numberElements
 end
 
 figure(2);
-r8Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'rs');
+ir8Stress = plot(stressUpperLine(:, 2), stressUpperLine(:, 1), 'k^');
 hold on;
+
+% save('lab9_8IR.mat');
