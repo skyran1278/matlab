@@ -1,10 +1,11 @@
 clc; clear; close all;
 
-cornerHysteresis = xlsread('FPS_corner edge center.xlsx', 1, 'C:D');
-edgeHysteresis = xlsread('FPS_corner edge center.xlsx', 1, 'G:H');
-centerHysteresis = xlsread('FPS_corner edge center.xlsx', 1, 'K:L');
+centerHysteresis = xlsread('FPS_center.xlsx', 1, 'C:D');
+cornerHysteresis = xlsread('FPS_corner.xlsx', 1, 'C:D');
+edge1Hysteresis = xlsread('FPS_edge1.xlsx', 1, 'C:D');
+edge2Hysteresis = xlsread('FPS_edge2.xlsx', 1, 'C:D');
 
-plot(cornerHysteresis(:, 1), cornerHysteresis(:, 2), edgeHysteresis(:, 1), edgeHysteresis(:, 2), centerHysteresis(:, 1), centerHysteresis(:, 2));
-legend('FPS corner', 'FPS edge', 'FPS center', 'Location', 'southeast');
+plot(centerHysteresis(:, 1), centerHysteresis(:, 2), cornerHysteresis(:, 1), cornerHysteresis(:, 2), edge1Hysteresis(:, 1), edge1Hysteresis(:, 2), edge2Hysteresis(:, 1), edge2Hysteresis(:, 2));
+legend('center', 'corner', 'edge1', 'edge2', 'Location', 'northwest');
 xlabel('displacement(m)');
 ylabel('force(tf)');
