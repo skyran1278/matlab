@@ -6,12 +6,10 @@ ControlData    GeometricNL  1
 GUI_Analysis  ModeShape  MODAL  6  1  2  0.02  0.02  ON
 Analysis  ModeShape  6  1  2  0.02  0.02  
 GUI_Analysis  AbsDispControl  PUSH_X  EQX  1  400  400  125  UX  OFF
-GUI_Analysis  AbsDispControl  PUSH_Z  EQZ  1  400  400  125  UZ  OFF
+GUI_Analysis  AbsDispControl  PUSH_Z  EQZ  1  400  400  125  UZ  ON
+Analysis  AbsDispControl  EQZ  1  400  400  125  UZ
 GUI_Analysis  Gravity  DL  DL  1  OFF
-GUI_Analysis  Dynamic  Newmark  DYNAMIC  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810  0.08  none 0 0 0 D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810  0.08  0.02  3000  0.16589  0.0021396  0  ON
-Analysis  Dynamic  Newmark  DYNAMIC_XGndMot  0.08  none  0  DYNAMIC_ZGndMot  0.08  0.02  3000  0.16589  0.0021396  0  
-LoadPattern  GroundAccel  DYNAMIC_XGndMot  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810
-LoadPattern  GroundAccel  DYNAMIC_ZGndMot  D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810
+GUI_Analysis  Dynamic  Newmark  DYNAMIC  D:\GitHub\matlab\10-st\DP4\matlab\CHY076EW.txt  1  9810  0.08  none 0 0 0 D:\GitHub\matlab\10-st\DP4\matlab\CHY076SN.txt  1  9810  0.08  0.02  3000  0.16589  0.0021396  0  OFF
 GUI_GRID  XDIR  0  10000  18000  26000  36000
 GUI_GRID  YDIR  1000  5000  9000  13000  17000
 GUI_GRID  ZDIR  -30000  -19000  -15500  -15000  -14500  -11000  -0
@@ -200,12 +198,16 @@ Mass  126 0.703527 0 0.703527 0 1.53062e+08 0
 Mass  127 0.711856 0 0.711856 0 1.55217e+08 0 
 Mass  128 0.716725 0 0.716725 0 1.56485e+08 0 
 GUI_LoadPattern  NodalLoad  EQX 125 1352.1 0 0 0 0 0 
+LoadPattern  NodalLoad  EQZ 125 0 0 1993.8 0 0 0 
 GUI_LoadPattern  NodalLoad  EQZ 125 0 0 1993.8 0 0 0 
 GUI_LoadPattern  NodalLoad  EQX 126 848.5 0 0 0 0 0 
+LoadPattern  NodalLoad  EQZ 126 0 0 1585.2 0 0 0 
 GUI_LoadPattern  NodalLoad  EQZ 126 0 0 1585.2 0 0 0 
 GUI_LoadPattern  NodalLoad  EQX 127 597.1 0 0 0 0 0 
+LoadPattern  NodalLoad  EQZ 127 0 0 1031.3 0 0 0 
 GUI_LoadPattern  NodalLoad  EQZ 127 0 0 1031.3 0 0 0 
 GUI_LoadPattern  NodalLoad  EQX 128 351.5 0 0 0 0 0 
+LoadPattern  NodalLoad  EQZ 128 0 0 541.7 0 0 0 
 GUI_LoadPattern  NodalLoad  EQZ 128 0 0 541.7 0 0 0 
 Constraint  Diaphragm  2F  128  45  46  58  72  117  1  2  26  28  60  74  62  68  70  76  3  4  30  32  64  78  49  50  66  80  118  
 Constraint  Diaphragm  3F  127  47  48  105  112  123  5  6  33  34  106  113  107  110  111  114  7  8  35  36  108  115  51  52  109  116  124  
