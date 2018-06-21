@@ -1,4 +1,4 @@
-function stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates, D, thickness)
+function stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoordinates, D, thickness, reduced)
 %
 % compute stiffness matrix.
 % for plane stress Q4 elements.
@@ -19,7 +19,13 @@ function stiffness = formStiffness2D(gDof, numberElements, elementNodes, nodeCoo
     numNodePerElement = size(elementNodes, 2);
 
     shapeFunction = createShapeFunction(numNodePerElement);
-    [gaussWeights, gaussLocations] = gauss2D(numNodePerElement);
+
+    if nargin == 6
+        [gaussWeights, gaussLocations] = gauss2D(numNodePerElement);
+    else
+        [gaussWeights, gaussLocations] = gauss2D(reduced);
+    end
+
     ngp = size(gaussWeights, 1);
 
     % 一個 element 有幾個自由度

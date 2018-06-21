@@ -15,8 +15,24 @@ function f = createShapeFunction(numNodePerElement, schemes)
 
     switch numNodePerElement
 
+        case 3
+            f = @shapeFunctionT3;
+
         case 6
             f = @shapeFunctionT6;
+
+    end
+
+    function [shape, naturalDerivatives] = shapeFunctionT3(xi2, xi3)
+
+        xi1 = 1 - xi2 -xi3;
+
+        shape = [xi1, xi2, xi3];
+
+        naturalDerivatives = [
+            -1, 1, 0;
+            -1, 0, 1;
+        ];
 
     end
 
@@ -24,7 +40,7 @@ function f = createShapeFunction(numNodePerElement, schemes)
 
         xi1 = 1 - xi2 -xi3;
 
-        shape = [ xi1*(2*xi1-1), xi2*(2*xi2-1), xi3*(2*xi3-1), 4*xi1*xi2, 4*xi2*xi3, 4*xi3*xi1];
+        shape = [xi1*(2*xi1-1), xi2*(2*xi2-1), xi3*(2*xi3-1), 4*xi1*xi2, 4*xi2*xi3, 4*xi3*xi1];
 
         naturalDerivatives = [
             4*xi2 + 4*xi3 - 3, 4*xi2 - 1,         0, 4 - 4*xi3 - 8*xi2, 4*xi3,            -4*xi3;

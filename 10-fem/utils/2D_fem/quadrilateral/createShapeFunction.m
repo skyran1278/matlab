@@ -32,6 +32,56 @@ function f = createShapeFunction(numNodePerElement, schemes)
                 f = @shapeFunctionQ9AlongBoundary;
             end
 
+        case 16
+            syms xi eta; % be careful performance issue.
+
+            nodes = linspace(-1, 1, 4);
+            nodes_length = length(nodes);
+
+            shape_xi_1 = lagrange_interpolation(nodes, 1, xi);
+            shape_xi_2 = lagrange_interpolation(nodes, 2, xi);
+            shape_xi_3 = lagrange_interpolation(nodes, 3, xi);
+            shape_xi_4 = lagrange_interpolation(nodes, 4, xi);
+            shape_eta_1 = lagrange_interpolation(nodes, 1, eta);
+            shape_eta_2 = lagrange_interpolation(nodes, 2, eta);
+            shape_eta_3 = lagrange_interpolation(nodes, 3, eta);
+            shape_eta_4 = lagrange_interpolation(nodes, 4, eta);
+
+            shape = sym(zeros(1, nodes_length));
+            shape(1) = shape_xi_1 * shape_eta_1;
+            shape(2) = shape_xi_4 * shape_eta_1;
+            shape(3) = shape_xi_4 * shape_eta_4;
+            shape(4) = shape_xi_1 * shape_eta_4;
+            shape(5) = shape_xi_2 * shape_eta_1;
+            shape(6) = shape_xi_3 * shape_eta_1;
+            shape(7) = shape_xi_4 * shape_eta_2;
+            shape(8) = shape_xi_4 * shape_eta_3;
+            shape(9) = shape_xi_3 * shape_eta_4;
+            shape(10) = shape_xi_2 * shape_eta_4;
+            shape(11) = shape_xi_1 * shape_eta_3;
+            shape(12) = shape_xi_1 * shape_eta_2;
+            shape(13) = shape_xi_2 * shape_eta_2;
+            shape(14) = shape_xi_3 * shape_eta_2;
+            shape(15) = shape_xi_3 * shape_eta_3;
+            shape(16) = shape_xi_2 * shape_eta_3;
+
+            naturalDerivatives = sym(zeros(2, nodes_length));
+            naturalDerivatives(1, :) = diff(shape, xi);
+            naturalDerivatives(2, :) = diff(shape, eta);
+
+            shapeQ16 = matlabFunction(shape);
+            naturalDerivativesQ16 = matlabFunction(naturalDerivatives);
+
+            f = @shapeFunctionQ16;
+
+    end
+
+    function [shape, naturalDerivatives] = shapeFunctionQ16(xi, eta)
+
+        shape = shapeQ16(xi, eta);
+
+        naturalDerivatives = naturalDerivativesQ16(xi, eta);
+
     end
 
     function [shape, naturalDerivatives] = shapeFunctionQ4(xi, eta)
