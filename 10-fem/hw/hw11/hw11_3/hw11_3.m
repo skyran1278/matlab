@@ -15,8 +15,8 @@ num_e_dof = 2 * num_node_per_element;
 
 e = 1;
 
-xi = -0.774597;
-eta = -0.774597;
+xi = 0.5;
+eta = 0.5;
 
 % 輸出的已經是數值了
 [~, diff_shape] = shape_function(xi, eta);
