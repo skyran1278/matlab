@@ -1,4 +1,4 @@
-function shape_function = lagrange_interpolation(xe, index, x)
+function shape_function = lagrange_interpolation(xe, x)
 %
 % lagrange interpolation.
 %
@@ -8,18 +8,18 @@ function shape_function = lagrange_interpolation(xe, index, x)
 % @return {symfun} [shape_function] shape function of x.
 %
 
-    % shape_function = sym(zeros(size(xe)));
+    shape_function = sym(zeros(size(xe)));
 
-    % for index = 1 : length(shape_function)
+    for index = 1 : length(shape_function)
 
-    xi = xe(index);
+        xi = xe(index);
 
-    % 回傳不等於 xi 的
-    xj = xe(xe ~= xi);
+        % 回傳不等於 xi 的
+        xj = xe(xe ~= xi);
 
-    % 連乘
-    % 回傳 shape function
-    shape_function = prod((x - xj) ./ (xi - xj)); % broadcasting
-    % end
+        % 連乘
+        % 回傳 shape function
+        shape_function(1, index) = prod((x - xj) ./ (xi - xj)); % broadcasting
+    end
 
 end

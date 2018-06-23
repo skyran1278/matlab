@@ -11,4 +11,10 @@ k = double(int(B.' * B, -1, 1))
 f = double(int(N.' * 2 * (2 + xi), -1, 1) + 0.1 * (N(-1)).')
 
 % U = k \ f
-displacements = solution(3, 2, k, f, [0 0.01 0].')
+displacements = solution(3, 2, k, f, [0 0.01 0].');
+
+xc = linspace(-1, 1, 10);
+
+shape_function = lagrange_interpolation(xc, xi)
+
+f = double(int(shape_function.', -1, 1))
