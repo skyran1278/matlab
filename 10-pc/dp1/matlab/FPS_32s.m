@@ -36,8 +36,8 @@ K1 = 51 * Kh;
 g = 9.81;
 
 if DD > mu * R
-    DD;
-    mu * R;
+    DD
+    mu * R
     fprintf('OK\n');
 else
     DD
@@ -52,3 +52,6 @@ mu
 R
 T = 2 * pi * sqrt((W / g) ./ KeD)
 (34.4105 * 4 + 67.1686 * 12 + 134.1333 * 8) / 24 * 1000 * 9.81
+Kh
+fprintf('%.4f   ',K1)
+K1
