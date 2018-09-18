@@ -6,8 +6,8 @@ function [frequency, amplitude] = fft_improve(data, time_interval)
 % @since 1.0.0
 % @param {array} [data] 要轉換成頻率域的資料.
 % @param {number} [time_interval] 時間間隔.
-% @return {arry} [frequency] 頻率.
-% @return {arry} [amplitude] 震幅.
+% @return {array} [frequency] 頻率.
+% @return {array} [amplitude] 震幅.
 %
 
   data_length = length(data);
