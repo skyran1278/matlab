@@ -24,5 +24,5 @@ plot(alpha_, McHinge, ':o');
 plot(alpha_, MdHinge, ':+');
 plot(alpha_, MbHinge, ':*');
 legend('MB','MC','MD','MB-hinge','MC-hinge','MD-hinge','Location','northwest');title('');
-xlabel('');
-ylabel('');
+xlabel('$$\alpha$$','Interpreter','latex');
+ylabel('$$|\frac{M}{\frac{PL}{4}}|$$','Interpreter','latex');
