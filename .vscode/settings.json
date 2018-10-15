@@ -49,5 +49,6 @@
     "xlsread",
     "xlsx",
     "ylabel"
-  ]
+  ],
+  "python.pythonPath": "C:\\Users\\skyran\\Anaconda3\\python.exe"
 }
