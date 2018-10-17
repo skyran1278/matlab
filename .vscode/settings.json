@@ -39,6 +39,8 @@
     "linspace",
     "matlab",
     "nargin",
+    "numpy",
+    "pyplot",
     "setdiff",
     "strcmp",
     "syms",
@@ -50,5 +52,6 @@
     "xlsx",
     "ylabel"
   ],
-  "python.pythonPath": "C:\\Users\\skyran\\Anaconda3\\python.exe"
+  "python.pythonPath": "C:\\Users\\skyran\\Anaconda3\\python.exe",
+  "python.terminal.activateEnvironment": false
 }
