@@ -1,3 +1,4 @@
+.pytest_cache
 10-st/**/*.ipt_COPY
 10-st/**/*.ipt_echo
 10-st/**/*.Echo
