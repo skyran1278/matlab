@@ -2,10 +2,13 @@ clc; clear; close all;
 
 pushover = 'pushover';
 
-filename = 'TCU068';
+TCU068 = 'TCU068';
 
-period = filename_to_array(filename, 2, 1);
-ag = filename_to_array(filename, 2, 2) / 981;
+period = filename_to_array(TCU068, 2, 1); % s
+ag = filename_to_array(TCU068, 2, 2) / 981; % g
+
+pushover_sd = filename_to_array(pushover, 3, 1, 2); % cm
+pushover_sa = filename_to_array(pushover, 3, 2, 2); % g
 
 tn = 0.01 : 0.01 : 5;
 tn_length = length(tn);
@@ -26,3 +29,8 @@ plot(tn, acceleration);
 title(filename);
 xlabel('T(sec)');
 ylabel('Sa(g)');
+
+
+function output = pushover_curve(pushover)
+
+end
