@@ -1,36 +1,54 @@
 clc; clear; close all;
 
-pushover = 'pushover';
+function [] = TCU068_curve()
+    figure;
+    hold on;
+    xlabel('S_d(cm)');
+    ylabel('S_a(g)');
 
-TCU068 = 'TCU068';
+    filename = 'TCU068';
 
-period = filename_to_array(TCU068, 2, 1); % s
-ag = filename_to_array(TCU068, 2, 2) / 981; % g
+    period = filename_to_array(filename, 2, 1); % s
+    ag = filename_to_array(filename, 2, 2) / 981; % g
 
-pushover_sd = filename_to_array(pushover, 3, 1, 2); % cm
-pushover_sa = filename_to_array(pushover, 3, 2, 2); % g
+    tn = 0.01 : 0.01 : 5;
 
-tn = 0.01 : 0.01 : 5;
-tn_length = length(tn);
-acceleration = zeros(1, tn_length);
+    tn_length = length(tn);
+    acceleration = zeros(1, tn_length);
 
-time_interval = period(2) - period(1);
+    time_interval = period(2) - period(1);
 
-for index = 1 : tn_length
+    for damping_ratio = 0.05 : 0.05 : 0.2
 
-    [~, ~, a_array] = newmark_beta(ag, time_interval, 0.05, tn(index), 'average');
+        for index = 1 : tn_length
 
-    acceleration(1, index) = max(abs(a_array));
+            [~, ~, a_array] = newmark_beta(ag, time_interval, damping_ratio, tn(index), 'average');
+
+            acceleration(1, index) = max(abs(a_array));
+
+        end
+
+        sd = period2sd(tn, acceleration);
+
+        plot(sd, acceleration)
+
+    end
+
+    pushover_curve()
 
 end
 
-figure;
-plot(tn, acceleration);
-title(filename);
-xlabel('T(sec)');
-ylabel('Sa(g)');
+function sd = period2sd(period, acceleration)
+    sd = (period .^ 2) / (4 * pi .^ 2) * acceleration;
+end
 
+function [] = pushover_curve()
+    filename = 'pushover';
 
-function output = pushover_curve(pushover)
+    sd = filename_to_array(filename, 3, 1, 2); % cm
+    sa = filename_to_array(filename, 3, 2, 2); % g
+
+    plot(sd, sa);
+
 
 end
