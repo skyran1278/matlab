@@ -79,9 +79,11 @@ function [] = service_ADRS_curves()
 end
 
 function [] = design_ADRS_curve(SDS, SD1, damping_ratio)
-    T0 = SD1 / SDS;
 
     [BS, B1] = damping_factor(damping_ratio);
+
+    T0 = SD1 * BS / (SDS * B1);
+    % T0 = SD1 / (SDS);
 
     tn = 0.01 : 0.01 : 3;
 
