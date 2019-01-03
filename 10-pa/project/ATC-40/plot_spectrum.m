@@ -24,6 +24,7 @@ function [] = TCU068_ADRS_curves(scaled_factor)
     tn = 0.01 : 0.01 : 3;
 
     tn_length = length(tn);
+    displacement = zeros(1, tn_length);
     acceleration = zeros(1, tn_length);
 
     time_interval = period(2) - period(1);
@@ -32,15 +33,17 @@ function [] = TCU068_ADRS_curves(scaled_factor)
 
         for index = 1 : tn_length
 
-            [~, ~, a_array] = newmark_beta(ag, time_interval, damping_ratio, tn(index), 'average');
+            [u_array, ~, a_array] = newmark_beta(ag, time_interval, damping_ratio, tn(index), 'average');
 
+            displacement(1, index) = max(abs(u_array));
             acceleration(1, index) = max(abs(a_array));
 
         end
 
-        sd = period2sd(tn, acceleration);
+        % sd = period2sd(tn, acceleration);
 
-        plot(sd, acceleration, 'DisplayName', num2str(damping_ratio));
+        plot(displacement * 981, acceleration, 'DisplayName', num2str(damping_ratio));
+        % plot(sd, acceleration, 'DisplayName', num2str(damping_ratio));
 
     end
 
