@@ -2,6 +2,10 @@ clc; clear; close all;
 
 output_timehistory(1);
 output_timehistory(0.3);
+output_TCU068_ADRS_curves(1);
+output_TCU068_ADRS_curves(0.3);
+output_design_ADRS_curves();
+output_service_ADRS_curves();
 
 function [] = output_timehistory(scaled_factor)
     filename = 'TCU068';
@@ -13,11 +17,6 @@ function [] = output_timehistory(scaled_factor)
     fprintf(fileID,'%.3f\t%.6f\n', [period ag].');
     fclose(fileID);
 end
-
-output_TCU068_ADRS_curves(1);
-output_TCU068_ADRS_curves(0.3);
-output_design_ADRS_curves();
-output_service_ADRS_curves();
 
 function [] = output_TCU068_ADRS_curves(scaled_factor)
     filename = 'TCU068';
