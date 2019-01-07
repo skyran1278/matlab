@@ -29,7 +29,7 @@ function [] = TCU068_ADRS_curves(scaled_factor)
 
     time_interval = period(2) - period(1);
 
-    for damping_ratio = 0.05 : 0.05 : 0.3
+    for damping_ratio = 0.05 : 0.06 : 0.11
 
         for index = 1 : tn_length
 
@@ -59,7 +59,7 @@ function [] = design_ADRS_curves()
 
     pushover_curve();
 
-    for damping_ratio = 0.05 : 0.05 : 0.3
+    for damping_ratio = 0.05 : 0.05 : 0.11
         design_ADRS_curve(1.096, 0.7776, damping_ratio);
     end
 
@@ -75,7 +75,7 @@ function [] = service_ADRS_curves()
 
     pushover_curve();
 
-    for damping_ratio = 0.05 : 0.05 : 0.3
+    for damping_ratio = 0.05 : 0.06 : 0.11
         design_ADRS_curve(0.8 / 3, 0.18, damping_ratio);
     end
 

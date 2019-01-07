@@ -14,7 +14,7 @@ function [] = output_timehistory(scaled_factor)
     ag = filename_to_array(filename, 2, 2) / 981 * scaled_factor; % g
 
     fileID = fopen(['TCU068_g_', num2str(scaled_factor), '.txt'], 'w');
-    fprintf(fileID,'%.3f\t%.6f\n', [period ag].');
+    fprintf(fileID,'%.3f\t%.6f\r\n', [period ag].');
     fclose(fileID);
 end
 
@@ -32,7 +32,7 @@ function [] = output_TCU068_ADRS_curves(scaled_factor)
 
     time_interval = period(2) - period(1);
 
-    for damping_ratio = 0.05 : 0.05 : 0.3
+    for damping_ratio = 0.05 : 0.01 : 0.2
 
         for index = 1 : tn_length
 
@@ -46,7 +46,7 @@ function [] = output_TCU068_ADRS_curves(scaled_factor)
         displacement = displacement * 981;
 
         fileID = fopen(['TCU068_scaled_factor=', num2str(scaled_factor),'_damping_ratio=', num2str(damping_ratio), '.txt'], 'w');
-        fprintf(fileID,'%.4f\t%.6f\t%.3f\n', [displacement; acceleration; tn]);
+        fprintf(fileID,'%.4f\t%.6f\t%.3f\r\n', [displacement; acceleration; tn]);
         fclose(fileID);
 
     end
@@ -55,11 +55,11 @@ end
 
 function [] = output_design_ADRS_curves()
 
-    for damping_ratio = 0.05 : 0.05 : 0.3
+    for damping_ratio = 0.05 : 0.01 : 0.2
         [sd, sa, tn] = output_design_ADRS_curve(1.096, 0.7776, damping_ratio);
 
         fileID = fopen(['design_damping_ratio=', num2str(damping_ratio), '.txt'], 'w');
-        fprintf(fileID,'%.4f\t%.6f\t%.3f\n', [sd; sa; tn]);
+        fprintf(fileID,'%.4f\t%.6f\t%.3f\r\n', [sd; sa; tn]);
         fclose(fileID);
 
     end
@@ -68,11 +68,11 @@ end
 
 function [] = output_service_ADRS_curves()
 
-    for damping_ratio = 0.05 : 0.05 : 0.3
+    for damping_ratio = 0.05 : 0.01 : 0.2
         [sd, sa, tn] = output_design_ADRS_curve(0.8 / 3, 0.18, damping_ratio);
 
         fileID = fopen(['service_damping_ratio=', num2str(damping_ratio), '.txt'], 'w');
-        fprintf(fileID,'%.4f\t%.6f\t%.3f\n', [sd; sa; tn]);
+        fprintf(fileID,'%.4f\t%.6f\t%.3f\r\n', [sd; sa; tn]);
         fclose(fileID);
     end
 
