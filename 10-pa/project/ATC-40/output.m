@@ -1,11 +1,12 @@
 clc; clear; close all;
 
-output_timehistory(1);
-output_timehistory(0.3);
-output_TCU068_ADRS_curves(1);
-output_TCU068_ADRS_curves(0.3);
-output_design_ADRS_curves();
-output_service_ADRS_curves();
+% output_timehistory(1);
+% output_timehistory(0.3);
+% output_TCU068_ADRS_curves(1);
+output_TCU068_ADRS_curves(0.4);
+output_TCU068_ADRS_curves(0.5);
+% output_design_ADRS_curves();
+% output_service_ADRS_curves();
 
 function [] = output_timehistory(scaled_factor)
     filename = 'TCU068';

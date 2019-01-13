@@ -1,9 +1,12 @@
 clc; clear; close all;
 
-TCU068_ADRS_curves(1);
+% TCU068_ADRS_curves(1);
 TCU068_ADRS_curves(0.3);
-design_ADRS_curves();
-service_ADRS_curves();
+TCU068_ADRS_curves(0.4);
+TCU068_ADRS_curves(0.5);
+TCU068_ADRS_curves(0.6);
+% design_ADRS_curves();
+% service_ADRS_curves();
 
 function [] = TCU068_ADRS_curves(scaled_factor)
     filename = 'TCU068';
@@ -13,6 +16,7 @@ function [] = TCU068_ADRS_curves(scaled_factor)
     title([filename ' Scaled factor: ' num2str(scaled_factor)]);
     xlabel('S_d(cm)');
     ylabel('S_a(g)');
+    % xlabel('T(s)');
     legend('show');
 
     pushover_curve();
@@ -29,7 +33,7 @@ function [] = TCU068_ADRS_curves(scaled_factor)
 
     time_interval = period(2) - period(1);
 
-    for damping_ratio = 0.05 : 0.06 : 0.11
+    for damping_ratio = 0.05 : 0.05 : 0.2
 
         for index = 1 : tn_length
 
@@ -43,6 +47,7 @@ function [] = TCU068_ADRS_curves(scaled_factor)
         % sd = period2sd(tn, acceleration);
 
         plot(displacement * 981, acceleration, 'DisplayName', num2str(damping_ratio));
+        % plot(tn, acceleration, 'DisplayName', num2str(damping_ratio));
         % plot(sd, acceleration, 'DisplayName', num2str(damping_ratio));
 
     end
@@ -55,11 +60,12 @@ function [] = design_ADRS_curves()
     title('Design');
     xlabel('S_d(cm)');
     ylabel('S_a(g)');
+    % xlabel('T(s)');
     legend('show');
 
     pushover_curve();
 
-    for damping_ratio = 0.05 : 0.05 : 0.11
+    for damping_ratio = 0.05 : 0.05 : 0.2
         design_ADRS_curve(1.096, 0.7776, damping_ratio);
     end
 
@@ -71,11 +77,12 @@ function [] = service_ADRS_curves()
     title('Service');
     xlabel('S_d(cm)');
     ylabel('S_a(g)');
+    % xlabel('T(s)');
     legend('show');
 
-    pushover_curve();
+    % pushover_curve();
 
-    for damping_ratio = 0.05 : 0.06 : 0.11
+    for damping_ratio = 0.05 : 0.06 : 0.05
         design_ADRS_curve(0.8 / 3, 0.18, damping_ratio);
     end
 
@@ -113,6 +120,7 @@ function [] = design_ADRS_curve(SDS, SD1, damping_ratio)
 
     sd = period2sd(tn, sa);
 
+    % plot(tn, sa, 'DisplayName', num2str(damping_ratio));
     plot(sd, sa, 'DisplayName', num2str(damping_ratio));
 
 end
